@@ -1,10 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 
 const PurpleNavbar = () => {
     const location = useLocation();
-    const [activeLink, setActiveLink] = useState(location.pathname === '/' ? 'individual' : 'institution');
+    const [activeLink, setActiveLink] = useState('');
+
+    // Watch for location changes and update the active link accordingly
+    useEffect(() => {
+        if (location.pathname === '/' || location.pathname.startsWith('/purple')) {
+            setActiveLink('individual');
+        } else if (location.pathname.startsWith('/red')) {
+            setActiveLink('institution');
+        }
+    }, [location.pathname]);
 
     const handleLinkClick = (link) => {
         setActiveLink(link);
@@ -52,7 +61,7 @@ const PurpleNavbar = () => {
                     <div className="flex gap-8">
                         <img src={logo} alt="logo" className="bg-cover" loading="lazy" />
                         <ul className="flex flex-row gap-4">
-                            <Link to="/purpleabout"><li className="text-[#56575d] text-[14px] leading-[20px]">About</li></Link>
+                            <Link to="/purpleabout"><li className="text-[#56575d] text-[14px] leading-[20px]">About Us</li></Link>
                             <Link to="/purpleproduct"><li className="text-[#56575d] text-[14px] leading-[20px]">Product & Solutions</li></Link>
                             <Link to="/purpleinsights"><li className="text-[#56575d] text-[14px] leading-[20px]">Insights</li></Link>
                             <Link to="/purplecareers"><li className="text-[#56575d] text-[14px] leading-[20px]">Careers</li></Link>

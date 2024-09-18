@@ -3,6 +3,7 @@ import aboutbg from "../assets/purpleabout/aboutbg.png"
 import about1 from "../assets/purpleabout/about1.png"
 import about2 from "../assets/purpleabout/about2.png"
 import { Link } from "react-router-dom"
+import SlickSlider from "../components/SlickSlider"
 
 const PurpleAbout = () => {
     return (
@@ -97,6 +98,9 @@ const PurpleAbout = () => {
                     </div>
                 </div>
             </sction>
+            <section>
+                <SlickSlider />
+            </section>
             <section>
                 <div className="w-full h-[248px] bg-black px-20 items-center py-20">
                     <div className="flex flex-col">

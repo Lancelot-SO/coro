@@ -40,7 +40,10 @@ const PurpleHome = () => {
                 <div className="w-full h-[800px] px-24 py-20">
                     <div className="flex gap-6 w-[1280px] h-full">
                         <div className="w-[630px] h-[640px]">
-                            <img src={hero1} alt="hero" className="rounded-lg bg-cover" loading="lazy" />
+                            <img
+                                src={hero1} alt="hero"
+                                className="rounded-lg bg-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                loading="lazy" />
                             <div>
                                 <h3 className="w-full h-[40px] font-semibold text-[32px] leading-[40px] mt-2">
                                     Products & Solutions for The Individual
@@ -54,7 +57,10 @@ const PurpleHome = () => {
                             </div>
                         </div>
                         <div className="w-[630px] h-[640px]">
-                            <img src={hero2} alt="hero" className="rounded-lg bg-cover" loading="lazy" />
+                            <img
+                                src={hero2} alt="hero"
+                                className="rounded-lg bg-cover transition-transform duration-500 ease-in transform hover:scale-10"
+                                loading="lazy" />
                             <div>
                                 <h3 className="w-full h-[40px] font-semibold text-[32px] leading-[40px] mt-2">
                                     Our Company Overview
@@ -75,6 +81,7 @@ const PurpleHome = () => {
                     </div>
                 </div>
             </section>
+
             <section>
                 <div className="w-full h-[700px] bg-[#F4F5F7] p-20">
                     <div className="flex flex-col w-full h-[588px]">
@@ -132,6 +139,7 @@ const PurpleHome = () => {
                     </div>
                 </div>
             </section>
+
             <section>
                 <div className="w-full h-[248px] bg-black px-28 items-center py-20">
                     <div className="flex flex-col">
