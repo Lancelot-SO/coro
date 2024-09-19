@@ -87,6 +87,37 @@ const PurpleTravel = () => {
                     </div>
                 </div>
             </section>
+
+            <section>
+                <div className="p-20">
+                    <div className="flex w-full h-[510px]">
+                        <div className="bg-yellow-600 flex-1 h-full"></div>
+                        <div className="flex-1 h-full flex items-center justify-center">
+                            <div className=" w-[604px] h-[380px] flex flex-col items-start justify-center gap-4">
+                                <h2 className="text-black text-[40px] leading-[44px] font-semibold">
+                                    BENEFITS
+                                </h2>
+                                <span className="w-[518px] h-[48px] text-[16px] leading-[24px] font-semibold text-[#56575D]">
+                                    The product has been designed with a combination of Enhanced term life which gives you an additional benefit.
+                                </span>
+
+                                <div className="pl-6">
+                                    <ul className="list-disc flex flex-col gap-2">
+                                        <li className="text-[16px] text-[#56575D]">Payment of medical assistance for illness or accident sustained while travelling</li>
+                                        <li className="text-[16px] text-[#56575D]">Provides transport or repatriation for medical reasons for the insured and/or family members travelling with the insured</li>
+                                        <li className="text-[16px] text-[#56575D]">Provides transport or repatriation of mortal remains of insured</li>
+                                        <li className="text-[16px] text-[#56575D]">Communication of urgent messages related to any event covered in the policy</li>
+                                        <li className="text-[16px] text-[#56575D]">Payment of compensation for in-flight loss of checked-in luggage</li>
+                                        <li className="text-[16px] text-[#56575D]">Payment of compensation for delay of flight and delay of luggage.</li>
+                                        <li className="text-[16px] text-[#56575D]">Emergency return home following the death of a close family member</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }

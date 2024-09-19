@@ -98,9 +98,11 @@ const PurpleAbout = () => {
                     </div>
                 </div>
             </sction>
+
             <section>
                 <SlickSlider />
             </section>
+
             <section>
                 <div className="w-full h-[248px] bg-black px-20 items-center py-20">
                     <div className="flex flex-col">
