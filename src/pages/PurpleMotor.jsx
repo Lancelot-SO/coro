@@ -8,7 +8,18 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import "./global.css"
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import MotorFeature from "../features/MotorFeature";
+import TheftFeature from "../features/TheftFeature";
+import PartyFeature from "../features/PartyFeature";
+
+
 const PurpleMotor = () => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isTravelModalOpen, setIsTravelModalOpen] = useState(false);
+    const [isPartyModalOpen, setIsPartyModalOpen] = useState(false);
+
+
 
     const [isExpanded, setIsExpanded] = useState({
         comprehensive: true,
@@ -92,7 +103,7 @@ const PurpleMotor = () => {
                                             accident or fire. It also covers legal liability to third-parties in the event of death, bodily injury, legal cost and property damage. With this policy, the cost of replacing or repairing your vehicle is covered.
                                         </span>
                                         <div className="flex gap-4">
-                                            <span className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
+                                            <span onClick={() => setIsModalOpen(true)} className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                                 Insurance Features
                                             </span>
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
@@ -102,6 +113,9 @@ const PurpleMotor = () => {
                                     </>
                                 )}
                             </div>
+                            {isModalOpen && (
+                                <MotorFeature closeModal={() => setIsModalOpen(false)} /> // Pass close function to the modal
+                            )}
 
                             {/* Third Party Fire & Theft Section */}
                             <div className="mb-4">
@@ -121,7 +135,7 @@ const PurpleMotor = () => {
                                             This is an insurance product which covers the policy holder against legal liability to third parties in the event of death, bodily injury and property damage. Beyond these, this policy also covers theft or damage by fire. Under Third party fire & theft the cost of repairs and/or outright replacement is also covered. The policy allows you to buy additional features such as personal accident and cover for riots along with the standard features of the product.
                                         </span>
                                         <div className="flex gap-4">
-                                            <span className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
+                                            <span onClick={() => setIsTravelModalOpen(true)} className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                                 Insurance Features
                                             </span>
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
@@ -131,6 +145,9 @@ const PurpleMotor = () => {
                                     </>
                                 )}
                             </div>
+                            {isTravelModalOpen && (
+                                <TheftFeature closeModal={() => setIsTravelModalOpen(false)} /> // Pass close function to the modal
+                            )}
 
                             {/* Third Party Only Section */}
                             <div className="mb-4">
@@ -150,7 +167,7 @@ const PurpleMotor = () => {
                                             It is a simple insurance product which covers the policyholder against legal liability to third parties in the event of death, bodily injury, legal cost and property damage involving the insured vehicle. Third party insurance is a mandatory requirement for all vehicles on Ghanaian roads. It became mandatory through the Motor Vehicle (third party) Insurance Act of 1958.
                                         </span>
                                         <div className="flex gap-4">
-                                            <span className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-black flex items-center justify-center mt-6">
+                                            <span onClick={() => setIsPartyModalOpen(true)} className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                                 Insurance Features
                                             </span>
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
@@ -160,6 +177,9 @@ const PurpleMotor = () => {
                                     </>
                                 )}
                             </div>
+                            {isPartyModalOpen && (
+                                <PartyFeature closeModal={() => setIsPartyModalOpen(false)} /> // Pass close function to the modal
+                            )}
                         </div>
                     </div>
                 </div>
@@ -185,8 +205,8 @@ const PurpleMotor = () => {
                                     <div className="text-[24px] leading-[32px] font-semibold">COMPREHENSIVE INSURANCE</div>
                                     <div className="pl-6 mt-2">
                                         <ul className="list-disc flex flex-col gap-2">
-                                            <li className="text-[16px] text-[#56575D]">Free tracker for vehicles with value - GHS100,000</li>
-                                            <li className="text-[16px] text-[#56575D]">No-Claim discount at renewal</li>
+                                            <li className="text-[16px] text-[#56575D]">Third party bodily injury & death - unlimited</li>
+                                            <li className="text-[16px] text-[#56575D]">Third party property damage limit: GHS6,000</li>
                                             <li className="text-[16px] text-[#56575D]">Reimbursement of legal fees if policy holder is prosecuted in court over an accident resulting in a valid claim</li>
                                             <li className="text-[16px] text-[#56575D]">Waives your windscreen excess</li>
                                             <li className="text-[16px] text-[#56575D]">Multi-car Discount</li>

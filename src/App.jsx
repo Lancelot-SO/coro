@@ -7,6 +7,10 @@ import PurpleAbout from './pages/PurpleAbout'
 import Footer from './components/Footer'
 import PurpleProduct from './pages/PurpleProduct'
 import PurpleProductDetails from './pages/PurpleProductDetails'
+import PurpleCareers from './pages/PurpleCareers'
+import PurpleContact from './pages/PurpleContact'
+import PurpleInsights from './pages/PurpleInsights'
+import DetailOne from './components/DetailOne'
 
 
 function App() {
@@ -21,7 +25,10 @@ function App() {
           <Route path='/purpleproduct' element={<PurpleProduct />} />
           <Route path='/purpleproductdetails' element={<PurpleProductDetails />} />
           <Route path="/purpleproductdetails/*" element={<PurpleProductDetails />} />
-
+          <Route path='/purplecareers' element={<PurpleCareers />} />
+          <Route path='/purplecontact' element={<PurpleContact />} />
+          <Route path='/purpleinsights' element={<PurpleInsights />} />
+          <Route path='/purpledetailone' element={<DetailOne />} />
 
           <Route path='/redhome' element={<RedHome />} />
         </Routes>

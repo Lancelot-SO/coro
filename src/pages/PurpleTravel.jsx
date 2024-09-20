@@ -2,8 +2,17 @@
 import "./global.css"
 import motorbg from "../assets/purplemotor/motorbg.png"
 import hero1 from "../assets/purplehome/hero1.png"
+import StudentFeature from "../features/StudentFeature";
+import { useState } from "react";
+import IndividualFeature from "../features/IndividualFeature";
 
 const PurpleTravel = () => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isIndModalOpen, setIsIndModalOpen] = useState(false);
+
+
+
     return (
         <div>
             <div className="flex w-full h-[450px] bg-red-500 ">
@@ -62,11 +71,14 @@ const PurpleTravel = () => {
                                 <p className="w-full h-[72px] font-normal text-[16px] leading-[24px] text-[#56575d] mt-6">
                                     Protection for students that study outside their country or travel for school excursion.
                                 </p>
-                                <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
+                                <div onClick={() => setIsModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                     Insurance Features
                                 </div>
                             </div>
                         </div>
+                        {isModalOpen && (
+                            <StudentFeature closeModal={() => setIsModalOpen(false)} /> // Pass close function to the modal
+                        )}
                         <div className="w-[627px] h-[640px] p-4 border border-b-4 border-b-[#B580D1] bg-white rounded-lg shadow-lg">
                             <img
                                 src={hero1} alt="hero"
@@ -79,11 +91,14 @@ const PurpleTravel = () => {
                                 <p className="w-full h-[72px] font-normal text-[16px] leading-[24px] text-[#56575d] mt-6">
                                     Traveling abroad? Solo or with people? Business or leisure, we’ve got something to make the journey better.
                                 </p>
-                                <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
+                                <div onClick={() => setIsIndModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                     Insurance Features
                                 </div>
                             </div>
                         </div>
+                        {isIndModalOpen && (
+                            <IndividualFeature closeModal={() => setIsIndModalOpen(false)} /> // Pass close function to the modal
+                        )}
                     </div>
                 </div>
             </section>

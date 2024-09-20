@@ -5,10 +5,16 @@ import homeIns1 from "../assets/purplehomeIns/homeIns1.png"
 import homeIns2 from "../assets/purplehomeIns/homeIns2.png"
 import homeIns3 from "../assets/purplehomeIns/homeIns3.png"
 
-import { Link } from "react-router-dom"
+import { useState } from "react"
+import HomeOwnerFeature from "../features/HomeOwnerFeature"
+import HouseHolderFeature from "../features/HouseHolderFeature"
 
 
 const PurpleHomeInsurance = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isHouseModalOpen, setIsHouseModalOpen] = useState(false);
+
+
     return (
         <div>
             <div className="relative">
@@ -62,13 +68,17 @@ const PurpleHomeInsurance = () => {
                                         refrigerator and so on.
                                     </p>
                                 </div>
-                                <Link className="text-[#B580D1]">Featured Insurance</Link>
+                                <span onClick={() => setIsModalOpen(true)} className="text-[#B580D1] cursor-pointer">Featured Insurance</span>
                             </div>
+                            {isModalOpen && (
+                                <HomeOwnerFeature closeModal={() => setIsModalOpen(false)} /> // Pass close function to the modal
+                            )}
                         </div>
                         <div className="flex-1">
                             <img src={homeIns1} alt="about" className="bg-cover w-full h-[430px] object-cover" loading="lazy" />
                         </div>
                     </div>
+
                     <div className="flex w-full">
                         <div className="flex-1">
                             <img src={homeIns2} alt="about" className="bg-cover w-full h-[430px] object-cover" loading="lazy" />
@@ -82,11 +92,16 @@ const PurpleHomeInsurance = () => {
                                         home (and therefore do not require building insurance) but still desire protection for their belongings.
                                     </p>
                                 </div>
-                                <Link className="text-[#B580D1]">Featured Insurance</Link>
+                                <span onClick={() => setIsHouseModalOpen(true)} className="text-[#B580D1] cursor-pointer">Featured Insurance</span>
                             </div>
+                            {isHouseModalOpen && (
+                                <HouseHolderFeature closeModal={() => setIsHouseModalOpen(false)} /> // Pass close function to the modal
+                            )}
                         </div>
+
                     </div>
                 </div>
+
             </sction>
 
             <section>
