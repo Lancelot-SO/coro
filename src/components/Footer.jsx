@@ -12,7 +12,9 @@ const Footer = () => {
                         <div className="w-[411px] h-[263px] pt-10">
                             <img src={logo} alt="logo" className="mb-3" loading="lazy" />
                             <span className="w-[400px] h-[216px] font-normal text-[18px] leading-[24px] text-[#888991]">
-                                At Coronation, we seek to be the most enjoyable company to do business with. Our experienced underwriting and strong risk management expertise developed over the last 16 years has prepared us to serve as your lead underwriter. With us, it's not just insurance; it's insurance For EVERYTHING
+                                At Coronation, we seek to be the most enjoyable company to do business with.
+                                Our experienced underwriting and strong risk management expertise developed over the last 16 years has prepared us to serve as your lead underwriter.
+                                With us, it's not just insurance; it's insurance for everything.
                             </span>
                         </div>
                         <div className="w-[869px] h-[392px] pl-32 pt-10">
@@ -65,7 +67,6 @@ const Footer = () => {
                                 <Link to="/"><li className="text-white"><FaLinkedin /></li></Link>
                                 <Link to="/"><li className="text-white"><FaInstagram /></li></Link>
                                 <Link to="/"><li className="text-white"><FaTwitter /></li></Link>
-
                             </ul>
                         </div>
                     </div>

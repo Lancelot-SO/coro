@@ -14,7 +14,7 @@ const PurpleInsights = () => {
                 <div className="absolute top-[260px] left-20 w-[858px] h-[152px]">
                     <h2 className="text-[56px] w-[720px] h-[128px] font-bold leading-[64px] mb-4 text-white">We guarantee the future of the things you care about!</h2>
                     <span className="w-[681px] h-[48px] text-[18px] font-normal leading-[24px] text-white">
-                        Our award winning content provides research and insights that enables<br /> you navigate Africa's unique challenges.                    </span>
+                        Our award winning content provides research and insights that enables<br /> you navigate Africa's unique challenges.</span>
                 </div>
                 <div className="absolute top-[280px] right-20 w-[300px] h-[174px] bg-black bg-opacity-40 rounded-lg shadow-md">
                     <div className="p-6">

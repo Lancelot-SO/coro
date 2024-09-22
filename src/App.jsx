@@ -11,6 +11,7 @@ import PurpleCareers from './pages/PurpleCareers'
 import PurpleContact from './pages/PurpleContact'
 import PurpleInsights from './pages/PurpleInsights'
 import DetailOne from './components/DetailOne'
+import PurpleService from './pages/PurpleService'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path='/purplecontact' element={<PurpleContact />} />
           <Route path='/purpleinsights' element={<PurpleInsights />} />
           <Route path='/purpledetailone' element={<DetailOne />} />
+          <Route path='/purpleservices' element={<PurpleService />} />
 
           <Route path='/redhome' element={<RedHome />} />
         </Routes>
