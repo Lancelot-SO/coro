@@ -12,6 +12,7 @@ import PurpleContact from './pages/PurpleContact'
 import PurpleInsights from './pages/PurpleInsights'
 import DetailOne from './components/DetailOne'
 import PurpleService from './pages/PurpleService'
+import WhistleBlowing from './pages/WhistleBlowing'
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
           <Route path='/purpleinsights' element={<PurpleInsights />} />
           <Route path='/purpledetailone' element={<DetailOne />} />
           <Route path='/purpleservices' element={<PurpleService />} />
-
+          <Route path='/purplewhistle' element={<WhistleBlowing />} />
           <Route path='/redhome' element={<RedHome />} />
         </Routes>
         <Footer />

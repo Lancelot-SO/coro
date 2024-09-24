@@ -80,29 +80,29 @@ const SlickSlider = () => {
     };
 
     return (
-        <div className="relative p-20">
+        <div className="relative lg:p-20 p-4 h-[850px]">
             <div className="text-left mb-12">
-                <h2 className="text-4xl font-bold leading-tight">Board of Directors</h2>
-                <p className="text-lg text-gray-600 mt-2">
+                <h2 className="lg:text-4xl text-[20px] font-bold leading-tight">Board of Directors</h2>
+                <p className="lg:text-lg text-[14px] text-gray-600 mt-2">
                     Our board consists of highly accomplished financial services experts with a combined wealth of experience spanning more than two centuries.
                 </p>
             </div>
             <div className="relative">
                 <Slider ref={sliderRef} {...settings}>
                     {data.map((item, index) => (
-                        <div key={index} className="px-4"> {/* Add padding around each slide item */}
-                            <div className="flex w-full h-[420px] shadow-lg overflow-hidden rounded-lg">
+                        <div key={index} className="lg:px-4"> {/* Add padding around each slide item */}
+                            <div className="flex lg:flex-row flex-col w-full lg:h-[420px] shadow-lg overflow-hidden rounded-lg">
                                 {/* Image Section */}
-                                <div className="w-1/2 bg-[#EFEFF0]">
+                                <div className="lg:w-1/2 bg-[#EFEFF0]">
                                     <img
                                         src={item.photo}
                                         alt={item.name}
-                                        className="w-full h-full object-cover"
+                                        className="lg:w-full lg:h-full w-[350px] h-[280px] object-cover"
                                     />
                                 </div>
                                 {/* Text Section */}
-                                <div className="w-1/2 bg-black text-white p-8 flex flex-col justify-center">
-                                    <h3 className="text-2xl font-semibold mb-2">{item.name}</h3>
+                                <div className="lg:w-1/2 h-[300px] lg:h-full bg-black text-white lg:p-8 p-2 flex flex-col justify-center">
+                                    <h3 className="lg:text-2xl text-[20px] font-semibold mb-2">{item.name}</h3>
                                     <p className="text-md text-gray-300 mb-4">{item.position}</p>
                                     <p className="text-sm">{item.desc}</p>
                                 </div>
@@ -113,7 +113,7 @@ const SlickSlider = () => {
             </div>
             {/* Previous Button */}
             <button
-                className="absolute top-[670px] right-40 transform -translate-y-1/2 bg-[#EFEFF0] hover:bg-[#B580D1] hover:text-white text-black px-4 py-2 rounded-lg"
+                className="absolute lg:top-[670px] top-[780px] lg:right-40 right-52 transform -translate-y-1/2 bg-[#EFEFF0] hover:bg-[#B580D1] hover:text-white text-black px-4 py-2 rounded-lg"
                 onClick={() => sliderRef.current.slickPrev()}
             >
                 <IoIosArrowRoundBack size={24} />
@@ -121,7 +121,7 @@ const SlickSlider = () => {
 
             {/* Next Button */}
             <button
-                className="absolute top-[670px] right-20 transform -translate-y-1/2 bg-[#EFEFF0] hover:bg-[#B580D1] hover:text-white text-black px-4 py-2 rounded-lg"
+                className="absolute lg:top-[670px] top-[780px] lg:right-20 transform -translate-y-1/2 bg-[#EFEFF0] hover:bg-[#B580D1] hover:text-white text-black px-4 py-2 rounded-lg"
                 onClick={() => sliderRef.current.slickNext()}
             >
                 <IoIosArrowRoundForward size={24} />
