@@ -7,13 +7,13 @@ import "./globalfeature.css";
 const PartyFeature = ({ closeModal }) => { // Receive closeModal as prop
     return (
         <div className="modal-overlay">
-            <div className="content">
-                <button className="close-button" onClick={closeModal}> {/* Close modal on click */}
-                    <FaTimes size={30} />
+            <div className="content lg:h-[580px] h-[680px]">
+                <button className="close-button absolute lg:top-[10px] top-[15px] lg:right-[10px] right-[15px]" onClick={closeModal}> {/* Close modal on click */}
+                    <FaTimes size={30} className="lg:text-black text-white" />
                 </button>
-                <div className="flex">
+                <div className="flex lg:flex-row flex-col">
                     <div className="flex-1">
-                        <img src={motor5} alt="motor" className="object-cover" loading="lazy" />
+                        <img src={motor5} alt="motor" className="object-cover  w-full lg:h-[548px] h-[180px]" loading="lazy" />
                     </div>
                     <div className="flex-1 pt-10">
                         <div className="text-[24px] leading-[32px] font-semibold">THIRD PARTY FIRE & THEFT</div>
