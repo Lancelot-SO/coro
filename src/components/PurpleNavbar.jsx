@@ -84,6 +84,17 @@ const PurpleNavbar = () => {
                     </ul>
                 </div>
 
+                {/* Self Service Button based on activeLink */}
+                {activeLink === 'individual' ? (
+                    <div className="lg:flex hidden items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#B580D1] text-white">
+                        <Link to="/purpleservices">Self Service</Link>
+                    </div>
+                ) : (
+                    <div className="lg:flex hidden items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#FF0226] text-white">
+                        <Link to="/redservices">Self Service</Link>
+                    </div>
+                )}
+
                 {/* Hamburger Menu Icon (Mobile View) */}
                 <button
                     className={`md:hidden p-3 rounded-lg text-white ${activeLink === 'individual' ? 'bg-[#B580D1]' : 'bg-[#FF0226]'}`}
@@ -112,6 +123,17 @@ const PurpleNavbar = () => {
                             <Link to="/redcareers" onClick={() => handleLinkClick('careers')}>Careers</Link>
                             <Link to="/redcontact" onClick={() => handleLinkClick('contact')}>Contact Us</Link>
                         </>
+                    )}
+
+                    {/* Self Service Button based on activeLink */}
+                    {activeLink === 'individual' ? (
+                        <div className="flex items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#B580D1] text-white">
+                            <Link to="/purpleservices">Self Service</Link>
+                        </div>
+                    ) : (
+                        <div className="flex items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#FF0226] text-white">
+                            <Link to="/redservices">Self Service</Link>
+                        </div>
                     )}
                 </div>
             )}
