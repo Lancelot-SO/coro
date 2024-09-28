@@ -60,7 +60,7 @@ function Project() {
                             className={`${active === index
                                 ? 'bg-[#B580D1] text-white'
                                 : 'bg-[#F7F7F8] text-black'
-                                } p-2 rounded-lg cursor-pointer text-[16px] font-semibold leading-[24px]`}
+                                } p-2 rounded-lg cursor-pointer lg:text-[16px] text-[10px] font-semibold leading-[24px]`}
                         >
                             {navItem.name}
                         </li>
@@ -77,7 +77,7 @@ function Project() {
                 </div>
 
                 {/* Pagination controls */}
-                <div className="flex justify-center items-center mt-8">
+                <div className="flex lg:justify-center lg:items-center mt-8 mb-8 lg:mb-0">
                     <button
                         onClick={handlePreviousPage}
                         disabled={currentPage === 1}

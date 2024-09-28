@@ -63,7 +63,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-[90px]">
+                    <div className="mt-[90px] lg:mt-0">
                         <div className="flex lg:flex-row flex-col lg:items-center justify-between lg:px-24 px-4">
                             <span className="text-white">@ 2024 Coronation. All rights reserved.</span>
                             <ul className="flex gap-4">

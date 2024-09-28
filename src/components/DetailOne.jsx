@@ -23,9 +23,9 @@ const DetailOne = () => {
         <div>
             <div className="relative">
                 <img src={storm} alt="about" className="w-full h-[400px] bg-cover" loading="lazy" />
-                <div className="absolute top-[20px] left-20 w-[858px] h-[152px]">
+                <div className="absolute top-[20px] lg:left-20 left-4 w-[858px] h-[152px]">
                     <div className="text-white flex items-center gap-1 mb-2"><IoIosArrowBack /><Link to="/purpleinsights">Back</Link></div>
-                    <span className="w-[681px] h-[48px] text-[40px] font-normal leading-[24px] text-white">
+                    <span className="w-[681px] h-[48px] lg:text-[40px] text-[24px] font-normal leading-[24px] text-white">
                         Staying ahead of the storm
                     </span>
                     <div className="flex gap-8 mt-3">
@@ -35,7 +35,7 @@ const DetailOne = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="absolute top-[50px] right-20 rounded-lg shadow-md">
+                <div className="absolute lg:top-[50px] top-[110px] lg:right-20 left-4 rounded-lg shadow-md">
 
                     <a href={brochureUrl} download className="flex mt-5 w-[120px] h-[35px] text-[12px] gap-2 bg-white text-black rounded-lg items-center justify-center">
                         <MdOutlineFileDownload />
@@ -45,10 +45,10 @@ const DetailOne = () => {
             </div>
 
             <section>
-                <div className="p-20">
-                    <div className="w-[1280px] h-[1672px] flex gap-10">
-                        <div className="w-[827px] h-full flex flex-col gap-4 ">
-                            <div className="w-[803px] h-[264px] flex flex-col gap-6">
+                <div className="lg:p-20 p-4">
+                    <div className="lg:w-[1280px] lg:h-[1672px] flex lg:flex-row flex-col gap-10">
+                        <div className="lg:w-[827px] w-[347px] h-full flex flex-col gap-4 ">
+                            <div className="lg:w-[803px] lg:h-[264px] flex flex-col gap-6">
                                 <p className="font-normal text-[16px] leading-[24px] text-[#56575D]">
                                     In today's age of global warming, characterised by a rise in the frequency and severity of floods and fires,
                                     the significance of taking preventive measures cannot be overstated.
@@ -63,21 +63,21 @@ const DetailOne = () => {
                                     or minimize the adverse effects and costs of flooding.
                                 </p>
                             </div>
-                            <div className="w-[803px] h-[72px] border-4 border-t-0 border-b-0 border-r-0 border-[#B580D1] flex items-center p-4">
+                            <div className="lg:w-[803px] lg:h-[72px] border-4 border-t-0 border-b-0 border-r-0 border-[#B580D1] flex items-center p-4">
                                 <p className="W-[771px] font-medium text-[16px] leading-[24px]">
                                     “With a same-day/24-hour claims payout policy on all household and business covers, Coronation Insurance ensures prompt assistance in times of need through its dedicated account managers.”
                                 </p>
                             </div>
-                            <div className="W-[771px] h-[72px]">
+                            <div className="lg:W-[771px] lg:h-[72px]">
                                 <p className="font-normal text-[16px] leading-[24px] text-[#56575D]">
                                     We have partnered with highly regarded global institutions to build Nigeria's first fully integrated technology-enabled investment platform, thus allowing us to become one of the region's fastest-growing fund managers.
                                 </p>
                             </div>
                             <div>
-                                <img src={storm} alt="about" className="w-[803px] h-[320px] bg-cover" loading="lazy" />
+                                <img src={storm} alt="about" className="lg:w-[803px] h-[320px] bg-cover" loading="lazy" />
                             </div>
 
-                            <div className="w-[803px] h-[120px] flex flex-col gap-6">
+                            <div className="lg:w-[803px] lg:h-[120px] flex flex-col gap-6">
                                 <p className="font-normal text-[16px] leading-[24px] text-[#56575D]">
                                     Although developing a strategy for flood or fire may seem complex,
                                     an insurance product will simplify the process significantly.
@@ -87,7 +87,7 @@ const DetailOne = () => {
                                 </p>
                             </div>
 
-                            <div className="w-[803px] h-[264px] flex flex-col gap-2">
+                            <div className="lg:w-[803px] lg:h-[264px] flex flex-col gap-2">
                                 <h2 className="font-medium text-[24px] leading-8">Here are some key aspects of home insurance:</h2>
                                 <ul className="text-[#56575D] text-[16px] leading-6 font-normal list-decimal pl-6 flex flex-col gap-2">
                                     <li>Protects the structure of your home, including its foundation, walls, roof, and attached structures like garages or decks</li>
@@ -98,7 +98,7 @@ const DetailOne = () => {
                                 </ul>
                             </div>
 
-                            <div className="w-[803px] h-[264px] flex flex-col gap-2">
+                            <div className="lg:w-[803px] lg:h-[264px] flex flex-col gap-2">
                                 <h2 className="font-medium text-[24px] leading-8">Regarding fire risks, it is crucial to adhere to some of the tips below:</h2>
                                 <ul className="text-[#56575D] text-[16px] leading-6 font-normal list-decimal pl-6 flex flex-col gap-2">
                                     <li>Address faulty electrical wiring, which remains a significant cause of fires in Ghana.</li>
@@ -111,19 +111,19 @@ const DetailOne = () => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="w-[413px] h-full flex flex-col gap-10">
+                        <div className="lg:w-[413px] h-full flex flex-col gap-10">
                             <div className="w-full h-[120px] bg-[#F7F7F8] flex flex-col gap-4 rounded-md">
                                 <h3 className="text-[16px] font-normal leading-[24px] text-[#56575D]">Connect with us</h3>
                                 <ul className="flex gap-4">
-                                    <Link to="/"><li className="text-white w-[48px] h-[48px] bg-[#B580D1] flex items-center justify-center rounded-full"><FaFacebook size={24} /></li></Link>
-                                    <Link to="/"><li className="text-white w-[48px] h-[48px] bg-[#B580D1] flex items-center justify-center rounded-full"><FaLinkedin size={24} /></li></Link>
-                                    <Link to="/"><li className="text-white w-[48px] h-[48px] bg-[#B580D1] flex items-center justify-center rounded-full"><FaInstagram size={24} /></li></Link>
-                                    <Link to="/"><li className="text-white w-[48px] h-[48px] bg-[#B580D1] flex items-center justify-center rounded-full"><FaTwitter size={24} /></li></Link>
+                                    <Link to="/"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#B580D1] flex items-center justify-center rounded-full"><FaFacebook size={24} /></li></Link>
+                                    <Link to="/"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#B580D1] flex items-center justify-center rounded-full"><FaLinkedin size={24} /></li></Link>
+                                    <Link to="/"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#B580D1] flex items-center justify-center rounded-full"><FaInstagram size={24} /></li></Link>
+                                    <Link to="/"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#B580D1] flex items-center justify-center rounded-full"><FaTwitter size={24} /></li></Link>
                                 </ul>
                             </div>
 
-                            <div className="w-full h-[1196px] flec flex-col gap-5">
-                                <div className="w-full max-w-sm">
+                            <div className="w-full lg:h-[1196px] flex lg:flex-col flex-row gap-5 overflow-x-auto lg:overflow-x-visible">
+                                <div className="w-full max-w-sm flex-shrink-0">
                                     <img
                                         src={Insight13}
                                         alt="heading"
@@ -145,7 +145,7 @@ const DetailOne = () => {
                                     </div>
                                 </div>
 
-                                <div className="w-full max-w-sm">
+                                <div className="w-full max-w-sm flex-shrink-0">
                                     <img
                                         src={Insight6}
                                         alt="heading"
@@ -167,7 +167,7 @@ const DetailOne = () => {
                                     </div>
                                 </div>
 
-                                <div className="w-full max-w-sm">
+                                <div className="w-full max-w-sm flex-shrink-0">
                                     <img
                                         src={strate}
                                         alt="heading"
@@ -189,6 +189,7 @@ const DetailOne = () => {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -196,11 +197,11 @@ const DetailOne = () => {
 
             <section>
                 <div className="relative">
-                    <img src={insightbanner} alt="banner" className="w-full h-[284px] bg-cover" />
-                    <div className="absolute top-[25%] left-[7%] text-[56px] font-semibold leading-[64px] text-white">
+                    <img src={insightbanner} alt="banner" className="w-full lg:h-[284px] h-[120px] bg-cover" />
+                    <div className="absolute lg:top-[25%] top-2 left-[7%] lg:text-[56px] text-[24px] font-semibold leading-[64px] text-white">
                         Get Insured Today
                     </div>
-                    <div className="bg-white absolute top-[70%] left-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
+                    <div className="bg-white absolute g:top-[70%] top-16 left-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
                         <Link>Contact Us</Link>
                     </div>
                 </div>

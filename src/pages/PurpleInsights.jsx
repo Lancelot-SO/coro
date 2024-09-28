@@ -5,83 +5,89 @@ import insight4 from "../assets/purpleinsight/insight4.png"
 import Articles from "../components/Articles"
 import insightbanner from "../assets/purpleinsight/insightbanner.png"
 import { Link } from "react-router-dom"
-
+import "./global.css"
 const PurpleInsights = () => {
     return (
-        <div>
+        <div className="overflow-hidden">
             <div className="relative">
-                <img src={insightmainbg} alt="about" className="w-full bg-cover" loading="lazy" />
-                <div className="absolute top-[260px] left-20 w-[858px] h-[152px]">
-                    <h2 className="text-[56px] w-[720px] h-[128px] font-bold leading-[64px] mb-4 text-white">We guarantee the future of the things you care about!</h2>
-                    <span className="w-[681px] h-[48px] text-[18px] font-normal leading-[24px] text-white">
-                        Our award winning content provides research and insights that enables<br /> you navigate Africa's unique challenges.</span>
+                <img src={insightmainbg} alt="about" className="w-full bg-cover h-[600px]" loading="lazy" />
+                <div className="absolute lg:top-[350px] top-[350px] lg:left-20 left-4 lg:w-[858px] h-[152px] ">
+                    <h2 className="lg:text-[56px] text-[32px] lg:w-[720px] w-[328px] lg:h-[128px] h-[120px] font-bold lg:leading-[64px] leading-10 mb-4 text-white">We guarantee the future of the things you care about!</h2>
+                    <span className="lg:w-[681px] w-[100px] lg:h-[48px] h-[60px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
+                        Our award winning content provides research and insights that enables<br className="hidden lg:block" /> you navigate Africa's unique challenges.
+                    </span>
                 </div>
-                <div className="absolute top-[280px] right-20 w-[300px] h-[174px] bg-black bg-opacity-40 rounded-lg shadow-md">
-                    <div className="p-6">
-                        <span className="text-white w-[232px] h-[32px] text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
-                        <p className="text-white text-[16px] leading-[24px] font-normal mt-2">
+                <div className="glass absolute lg:top-[360px] top-5 lg:right-20 right-5 lg:w-[300px] w-[250px] lg:h-[174px] h-[160px] rounded-lg shadow-md">
+                    <div className="lg:p-6 p-4">
+                        <span className="text-white w-[232px] h-[32px] lg:text-[24px] text-[18px] lg:leading-[32px] leading-[24px] font-semibold">My Insurance Account</span>
+                        <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal mt-2">
                             Want to know more about our services? Let's talk
                         </p>
-                        <div className="flex mt-5 w-[111px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
-                            GET A QUOTE
+                        <div className="flex mt-5 w-[111px] h-[35px] bg-white text-black rounded-lg items-center justify-center">
+                            Contact Us
                         </div>
                     </div>
                 </div>
             </div>
 
             <section>
-                <div className="p-20">
-                    <div className="w-[1280px] h-[800px] flex flex-col gap-12">
-                        <h2 className="w-full h-[44px] text-[40px] font-bold leading-[44px]">Read all our articles</h2>
+                <div className="lg:p-20 p-4">
+                    <div className="w-[1280px] lg:h-[800px] flex flex-col lg:gap-12">
+                        <h2 className="w-full h-[44px] lg:text-[40px] text-[24px] font-bold lg:leading-[44px] leading-[32px]">Read all our articles</h2>
 
-                        <div className="w-full h-[708px] flex flex-col gap-6">
-                            <div className="w-full h-[342px] flex">
-                                <div className="flex-1">
-                                    <img src={insight3} alt="insight" />
+                        <div className="w-full lg:h-[708px] h-[380px] flex flex-col lg:gap-6 gap-4">
+                            <div className="w-full lg:h-[342px] h-[200px] flex flex-row">
+                                <div className="lg:flex-1">
+                                    <img src={insight3} alt="insight" className="object-cover rounded-md lg:w-[630px] w-[167px] lg:h-[342px] h-[170px]" />
                                 </div>
-                                <div className="flex-1 flex flex-col gap-2 items-center justify-center px-2">
-                                    <div className="pl-8">
-                                        <div className="flex gap-10">
+                                <div className="lg:flex-1 h-[170px] lg:h-[342px] w-[167px] flex flex-col gap-2 lg:items-center lg:justify-center px-2">
+                                    <div className="lg:pl-8 pl-0 py-2 lg:py-0">
+                                        <div className="flex lg:flex-row flex-col lg:gap-10">
                                             <h3 className="text-[12px] text-[#888991]">Thought leadership articles</h3>
-                                            <ul className="list-disc">
+                                            <ul className="lg:list-disc">
                                                 <li className="text-[12px] text-[#888991]">Nov 22, 2022</li>
                                             </ul>
                                         </div>
-                                        <h2 className="w-[512px] h-[60px]">Insurance customer experience: meeting the expectations of today's customers (part 1)</h2>
-                                        <span className="w-[512px] h-[60px] text-[#888991]">
+                                        <h2 className="lg:w-[512px] w-[160px] h-auto md:h-[60px] text-left md:text-left">
+                                            Insurance customer experience: meeting the expectations of today's customers (part 1)
+                                        </h2>
+                                        <span className="hidden lg:flex lg:w-[512px] w-[347px] h-auto md:h-[60px] text-[#888991] text-[12px] lg:text-[16px] text-center md:text-left">
                                             The service landscape evolved over the last two decades. New service delivery frontiers
                                             have emerged in response to significant socio-economic changes e.g., advancements in digital, the rise of start-ups etc.
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full h-[342px] flex">
-                                <div className="flex-1">
-                                    <img src={insight4} alt="insight" />
+
+                            <div className="w-full h-[342px] flex flex-row">
+                                <div className="lg:flex-1">
+                                    <img src={insight4} alt="insight" className="object-cover rounded-md lg:w-[630px] w-[167px] lg:h-[342px] h-[170px]" />
                                 </div>
-                                <div className="flex-1 flex flex-col gap-2 items-center justify-center px-2">
-                                    <div className="pl-10">
-                                        <div className="flex gap-10">
+                                <div className="lg:flex-1 h-[170px] lg:h-[342px] w-[167px] flex flex-col gap-2 lg:items-center lg:justify-center px-2">
+                                    <div className="lg:pl-8 pl-0 py-2 lg:py-0">
+                                        <div className="flex lg:flex-row flex-col lg:gap-10">
                                             <h3 className="text-[12px] text-[#888991]">Thought leadership articles</h3>
-                                            <ul className="list-disc">
+                                            <ul className="lg:list-disc">
                                                 <li className="text-[12px] text-[#888991]">Nov 22, 2022</li>
                                             </ul>
                                         </div>
-                                        <h2 className="w-[512px] h-[60px]">Insurance customer experience: meeting the expectations of today's customers (part 1)</h2>
-                                        <span className="w-[512px] h-[60px] text-[#888991]">
-                                            The service landscape evolved over the last two decades. New service delivery frontiers
-                                            have emerged in response to significant socio-economic changes e.g., advancements in digital, the rise of start-ups etc.
+                                        <h2 className="lg:w-[512px] w-[160px] h-auto md:h-[60px] text-left md:text-left">
+                                            Insurance customer experience: meeting the expectations of today's customers (part 1)
+                                        </h2>
+                                        <span className="hidden lg:flex lg:w-[512px] w-[347px] h-auto md:h-[60px] text-[#888991] text-[12px] lg:text-[16px] text-center md:text-left">
+                                            The service landscape evolved over the last two decades. New service delivery frontiers have emerged in response to significant socio-economic changes e.g., advancements in digital, the rise of start-ups etc.
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </section>
 
             <section>
-                <div className="p-20">
+                <div className="lg:p-20">
                     <div className="w-[1280px]">
                         <Articles />
                     </div>
@@ -90,11 +96,11 @@ const PurpleInsights = () => {
 
             <section>
                 <div className="relative">
-                    <img src={insightbanner} alt="banner" className="w-full h-[284px] bg-cover" />
-                    <div className="absolute top-[25%] left-[7%] text-[56px] font-semibold leading-[64px] text-white">
+                    <img src={insightbanner} alt="banner" className="w-full lg:h-[284px] h-[120px] bg-cover" />
+                    <div className="absolute lg:top-[25%] top-2 left-[7%] lg:text-[56px] text-[24px] font-semibold leading-[64px] text-white">
                         Get Insured Today
                     </div>
-                    <div className="bg-white absolute top-[70%] left-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
+                    <div className="bg-white absolute g:top-[70%] top-16 left-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
                         <Link>Contact Us</Link>
                     </div>
                 </div>
