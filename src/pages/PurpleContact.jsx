@@ -66,7 +66,7 @@ const PurpleContact = () => {
             </div>
 
             <section>
-                <div className="flex flex-col md:flex-row items-center justify-center p-6 min-h-screen ml-[70px]">
+                <div className="flex flex-col md:flex-row items-center justify-center p-6 min-h-screen lg:ml-[70px]">
                     <div className="w-full md:w-1/2 p-6 bg-white text-black rounded-lg shadow-card">
                         <form ref={form} onSubmit={sendEmail} className="space-y-4">
                             <div className="flex space-x-4">
