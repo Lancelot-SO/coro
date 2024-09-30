@@ -22,7 +22,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Import DatePicker CSS
 import { useRef, useState } from 'react';
 
-const PurpleContact = () => {
+const RedContact = () => {
     const form = useRef();
     const [phoneNumber, setPhoneNumber] = useState('');
     const [selectedDate, setSelectedDate] = useState(null); // State for DatePicker
@@ -202,10 +202,10 @@ const PurpleContact = () => {
                             </div>
 
                             <div className="flex items-start">
-                                <input type="checkbox" id="privacy" className="h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                                <label htmlFor="privacy" className="ml-2 block text-sm text-gray-500">You agree to our friendly <Link to="/privacy" className="text-[#B580D1] hover:underline">privacy policy</Link>.</label>
+                                <input type="checkbox" id="privacy" className="h-4 w-4 text-[#FF0226] border-gray-300 rounded" />
+                                <label htmlFor="privacy" className="ml-2 block text-sm text-gray-500">You agree to our friendly <Link to="/privacy" className="text-[#FF0226] hover:underline">privacy policy</Link>.</label>
                             </div>
-                            <button type="submit" className="w-full py-2 px-4 bg-[#B580D1] text-white font-semibold rounded-md shadow-card hover:bg-[#a258ca] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">SEND MESSAGE</button>
+                            <button type="submit" className="w-full py-2 px-4 bg-[#FF0226] text-white font-semibold rounded-md shadow-card hover:bg-[#FF0226] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">SEND MESSAGE</button>
                         </form>
                     </div>
 
@@ -308,4 +308,4 @@ const PurpleContact = () => {
     );
 }
 
-export default PurpleContact;
+export default RedContact;

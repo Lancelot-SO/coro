@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <div>
             <section className="overflow-hidden">
-                <div className="bg-[#141415] w-full lg:h-[624px] h-[800px]">
+                <div className="bg-[#141415] w-full lg:h-[624px] h-[910px]">
                     <div className="flex lg:flex-row flex-col lg:p-24 p-4">
                         <div className="lg:w-[411px] lg:h-[263px] pt-10">
                             <img src={logo} alt="logo" className="mb-3 w-[291px] h-[32px] lg:w-[280px] lg:h-[30px]" loading="lazy" />
@@ -23,18 +23,18 @@ const Footer = () => {
                                     <div className="w-[199px]">
                                         <div className="mb-2 text-white">Main Service</div>
                                         <ul>
-                                            <Link to="/"><li className="text-[#888991]">Motor Insurance</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Marine Insurance</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Fire Insurance</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Accident Insurance</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Engineering</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Motor Insurance</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Marine Insurance</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Fire Insurance</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Accident Insurance</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Engineering</li></Link>
                                             <Link to="/"><li className="text-[#888991]">Travel Insurance</li></Link>
                                         </ul>
                                     </div>
                                     <div className="w-[120px]">
                                         <div className="mb-2 text-white">Self Service</div>
                                         <ul>
-                                            <Link to="/"><li className="text-[#888991]">Login</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Login</li></Link>
                                             <Link to="/"><li className="text-[#888991]">Claims</li></Link>
                                         </ul>
                                     </div>
@@ -43,13 +43,13 @@ const Footer = () => {
                                     <div className="w-[199px]">
                                         <div className="mb-2 text-white">Affiliation</div>
                                         <ul>
-                                            <Link to="/"><li className="text-[#888991]">Coronation Asset Management</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Coronation Insurance PLC</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Coronation Life Assurance</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Coronation Securities</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Coronation Capital</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Coronation Registrars</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Coronation Trustees</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Coronation Asset Management</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Coronation Insurance PLC</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Coronation Life Assurance</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Coronation Securities</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Coronation Capital</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Coronation Registrars</li></Link>
+                                            <Link to="/"><li className="text-[#888991] mb-2">Coronation Trustees</li></Link>
                                             <Link to="/"><li className="text-[#888991]">Truim</li></Link>
                                         </ul>
                                     </div>
@@ -63,7 +63,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="mt-[90px] lg:mt-0">
+                    <div className="mt-[200px] lg:mt-0">
                         <div className="flex lg:flex-row flex-col lg:items-center justify-between lg:px-24 px-4">
                             <span className="text-white">@ 2024 Coronation. All rights reserved.</span>
                             <ul className="flex gap-4">

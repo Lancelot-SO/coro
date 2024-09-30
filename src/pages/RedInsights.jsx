@@ -2,11 +2,11 @@
 import insightmainbg from "../assets/purpleinsight/insightmain.png"
 import insight3 from "../assets/purpleinsight/insight3.png"
 import insight4 from "../assets/purpleinsight/insight4.png"
-import Articles from "../components/Articles"
+import RedArticles from "../components/RedArticles"
 import insightbanner from "../assets/purpleinsight/insightbanner.png"
 import { Link } from "react-router-dom"
 import "./global.css"
-const PurpleInsights = () => {
+const RedInsights = () => {
     return (
         <div className="overflow-hidden">
             <div className="relative">
@@ -17,13 +17,13 @@ const PurpleInsights = () => {
                         Our award winning content provides research and insights that enables<br className="hidden lg:block" /> you navigate Africa's unique challenges.
                     </span>
                 </div>
-                <div className="glass absolute lg:top-[360px] top-5 lg:right-20 right-5 lg:w-[300px] w-[250px] lg:h-[174px] h-[160px] rounded-lg shadow-md">
+                <div className="glass absolute lg:top-[360px] top-5 lg:right-20 right-5 lg:w-[300px] w-[250px] lg:h-[174px] h-[160px] bg-[#FF0226] bg-opacity-70 shadow-md">
                     <div className="lg:p-6 p-4">
                         <span className="text-white w-[232px] h-[32px] lg:text-[24px] text-[18px] lg:leading-[32px] leading-[24px] font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal mt-2">
                             Want to know more about our services? Let's talk
                         </p>
-                        <div className="flex mt-5 w-[111px] h-[35px] bg-white text-black rounded-lg items-center justify-center">
+                        <div className="flex mt-5 w-[111px] h-[35px] bg-black text-white rounded-lg items-center justify-center">
                             Contact Us
                         </div>
                     </div>
@@ -89,7 +89,7 @@ const PurpleInsights = () => {
             <section>
                 <div className="lg:p-20">
                     <div className="w-[1280px]">
-                        <Articles />
+                        <RedArticles />
                     </div>
                 </div>
             </section>
@@ -100,7 +100,7 @@ const PurpleInsights = () => {
                     <div className="absolute lg:top-[25%] top-2 left-[7%] lg:text-[56px] text-[24px] font-semibold leading-[64px] text-white">
                         Get Insured Today
                     </div>
-                    <div className="bg-white absolute lg:top-[60%] top-16 left-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
+                    <div className="bg-[#FF0226] text-white absolute lg:top-[60%] top-16 left-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
                         <Link>Contact Us</Link>
                     </div>
                 </div>
@@ -109,4 +109,4 @@ const PurpleInsights = () => {
     )
 }
 
-export default PurpleInsights
+export default RedInsights

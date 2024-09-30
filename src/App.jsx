@@ -13,6 +13,15 @@ import PurpleInsights from './pages/PurpleInsights'
 import DetailOne from './components/DetailOne'
 import PurpleService from './pages/PurpleService'
 import WhistleBlowing from './pages/WhistleBlowing'
+import RedAbout from './pages/RedAbout'
+import RedProduct from './pages/RedProduct'
+import RedInsights from './pages/RedInsights'
+import RedDetailOne from './components/RedDetailOne'
+import RedCareers from './pages/RedCareers'
+import RedContact from './pages/RedContact'
+import RedService from './pages/RedService'
+import RedProductDetails from './pages/RedProductDetails'
+
 
 
 function App() {
@@ -34,6 +43,17 @@ function App() {
           <Route path='/purpleservices' element={<PurpleService />} />
           <Route path='/purplewhistle' element={<WhistleBlowing />} />
           <Route path='/redhome' element={<RedHome />} />
+          <Route path='/redabout' element={<RedAbout />} />
+          <Route path='/redproduct' element={<RedProduct />} />
+          <Route path='/redinsights' element={<RedInsights />} />
+          <Route path='/reddetailone' element={<RedDetailOne />} />
+          <Route path='/redcareers' element={<RedCareers />} />
+          <Route path='/redcontact' element={<RedContact />} />
+          <Route path='/redservices' element={<RedService />} />
+          <Route path='/redproductdetails' element={<RedProductDetails />} />
+          <Route path="/redproductdetails/*" element={<RedProductDetails />} />
+
+
         </Routes>
         <Footer />
       </BrowserRouter>

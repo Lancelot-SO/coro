@@ -1,11 +1,10 @@
+import React from "react";
 import Slider from "react-slick";
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
+import { useLocation } from "react-router-dom"; // Import useLocation
+import Board from "../assets/purpleabout/board2.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Board from "../assets/purpleabout/board2.png";
-import React from "react";
-
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
-
 
 const data = [
     {
@@ -41,6 +40,10 @@ const data = [
 
 const SlickSlider = () => {
     const sliderRef = React.useRef(null);
+    const location = useLocation(); // Use the location hook to get the current path
+
+    // Conditionally set button background color based on the path
+    const isRedAbout = location.pathname === "/redabout";
 
     const settings = {
         dots: false,
@@ -49,8 +52,8 @@ const SlickSlider = () => {
         slidesToShow: 2,
         slidesToScroll: 1,
         initialSlide: 0,
-        centerMode: true, // To ensure that the next image is visible without overlapping
-        centerPadding: "0", // Adjust padding to avoid content overlap
+        centerMode: true,
+        centerPadding: "0",
         responsive: [
             {
                 breakpoint: 1024,
@@ -58,25 +61,25 @@ const SlickSlider = () => {
                     slidesToShow: 2,
                     slidesToScroll: 1,
                     infinite: true,
-                    dots: true
-                }
+                    dots: true,
+                },
             },
             {
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    initialSlide: 1
-                }
+                    initialSlide: 1,
+                },
             },
             {
                 breakpoint: 480,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     };
 
     return (
@@ -90,7 +93,7 @@ const SlickSlider = () => {
             <div className="relative">
                 <Slider ref={sliderRef} {...settings}>
                     {data.map((item, index) => (
-                        <div key={index} className="lg:px-4"> {/* Add padding around each slide item */}
+                        <div key={index} className="lg:px-4">
                             <div className="flex lg:flex-row flex-col w-full lg:h-[420px] shadow-lg overflow-hidden rounded-lg">
                                 {/* Image Section */}
                                 <div className="lg:w-1/2 bg-[#EFEFF0]">
@@ -113,7 +116,8 @@ const SlickSlider = () => {
             </div>
             {/* Previous Button */}
             <button
-                className="absolute lg:top-[670px] top-[780px] lg:right-40 right-52 transform -translate-y-1/2 bg-[#EFEFF0] hover:bg-[#B580D1] hover:text-white text-black px-4 py-2 rounded-lg"
+                className={`absolute lg:top-[670px] top-[780px] lg:right-40 right-52 transform -translate-y-1/2 px-4 py-2 rounded-lg 
+                    ${isRedAbout ? 'bg-[#EFEFF0] hover:bg-[#FF0226] text-black' : 'bg-[#EFEFF0] hover:bg-[#B580D1] text-black'}`}
                 onClick={() => sliderRef.current.slickPrev()}
             >
                 <IoIosArrowRoundBack size={24} />
@@ -121,7 +125,8 @@ const SlickSlider = () => {
 
             {/* Next Button */}
             <button
-                className="absolute lg:top-[670px] top-[780px] lg:right-20 transform -translate-y-1/2 bg-[#EFEFF0] hover:bg-[#B580D1] hover:text-white text-black px-4 py-2 rounded-lg"
+                className={`absolute lg:top-[670px] top-[780px] lg:right-20 transform -translate-y-1/2 px-4 py-2 rounded-lg 
+                    ${isRedAbout ? 'bg-[#EFEFF0] hover:bg-[#FF0226] text-black' : 'bg-[#EFEFF0] hover:bg-[#B580D1] text-black'}`}
                 onClick={() => sliderRef.current.slickNext()}
             >
                 <IoIosArrowRoundForward size={24} />
