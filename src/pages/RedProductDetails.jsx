@@ -2,6 +2,7 @@ import { Link, Route, Routes, useLocation } from "react-router-dom";
 import RedMotor from "./RedMotor";
 import Engineer from "./Engineer";
 import Marine from "./Marine";
+import "./global.css"
 
 const RedProductDetails = () => {
     const location = useLocation();
@@ -12,7 +13,7 @@ const RedProductDetails = () => {
     return (
         <div>
             {/* Scrollable Links Container */}
-            <div className="px-4 h-[40px] md:px-10 overflow-x-auto overflow-y-hidden">
+            <div className="px-4 h-[50px] flex items-center md:px-10 overflow-x-auto overflow-y-hidden scrollbar">
                 <ul className="flex gap-3 whitespace-nowrap">
                     <li>
                         <Link

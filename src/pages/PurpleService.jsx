@@ -30,7 +30,7 @@ const PurpleService = () => {
                                 Want to know more about our services? Let's talk
                             </p>
                             <div className="flex lg:mt-5 mt-2 lg:w-[116px] w-[95px] h-[36px] bg-white font-semibold lg:text-[14px] text-[10px] leading-[20px] text-black rounded-lg items-center justify-center">
-                                GET A QUOTE
+                                <Link to="https://claims-gh.coronation.ng/" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@ const PurpleService = () => {
                                     </p>
                                 </div>
 
-                                <Link to="/" className="text-[#B580D1]">File a Claim</Link>
+                                <Link to="https://claims-gh.coronation.ng/" target='_blank' rel='noopener noreferrer' className="text-[#B580D1]">File a Claim</Link>
                             </div>
                             <div className="flex-1 flex flex-col lg:gap-4 gap-2 p-4">
                                 <IoShieldCheckmarkOutline className="text-[#B580D1] lg:w-10 w-[30px] lg:h-12 h-10" />

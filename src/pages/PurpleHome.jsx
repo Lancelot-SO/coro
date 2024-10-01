@@ -7,6 +7,7 @@ import bannerbg from "../assets/purplehome/bannerbg.png"
 
 
 import heroInsight from "../assets/purplehome/homeInsight1.png"
+import heroIns2 from "../assets/purplehome/heroIns2.jpg"
 import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 
 
@@ -40,12 +41,12 @@ const PurpleHome = () => {
                 </div>
             </div>
             <section>
-                <div className="w-full lg:h-[800px] h-[900px] lg:px-24 px-4 lg:py-20 py-8">
+                <div className="w-full lg:h-[800px] h-[900px] lg:px-24 px-4 small:p-10 lg:py-20 py-8">
                     <div className="lg:flex gap-6 lg:w-[1280px] w-full">
                         <div className="w-[630px] lg:h-[640px] h-[436px]">
                             <img
                                 src={hero1} alt="hero"
-                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
+                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
@@ -55,14 +56,14 @@ const PurpleHome = () => {
                                     Get a wide range of financial solutions with Coronation. We offer superior customer service, innovative product solutions, excellent financial advice and more. Let’s be your prosperity partner today.
                                 </p>
                                 <div className="w-[111px] h-[44px] bg-[#B580D1] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
-                                    <Link to="/">Learn More</Link>
+                                    <Link to="/purpleproduct">Learn More</Link>
                                 </div>
                             </div>
                         </div>
                         <div className="w-[630px] h-[640px]">
                             <img
                                 src={hero2} alt="hero"
-                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover transition-transform duration-500 ease-in transform hover:scale-10"
+                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
@@ -73,10 +74,10 @@ const PurpleHome = () => {
                                 </p>
                                 <div className="flex gap-6">
                                     <div className="w-[111px] h-[44px] bg-[#B580D1] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/">Learn More</Link>
+                                        <Link to="https://claims-gh.coronation.ng/" target='_blank' rel='noopener noreferrer'>Make a Claim</Link>
                                     </div>
                                     <div className="w-[111px] h-[44px] bg-[#F7F7F8] shadow-md text-[#141415] flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/">Learn More</Link>
+                                        <Link to="/purpleabout">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +98,7 @@ const PurpleHome = () => {
                                     Hear the latest trends from our industry experts
                                 </span>
                                 <div className="w-[97px] h-[44px] bg-[#B580D1] rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                    <Link>See more</Link>
+                                    <Link to="/purpleinsights">See more</Link>
                                 </div>
                             </div>
                         </div>
@@ -111,11 +112,11 @@ const PurpleHome = () => {
                                     In today's age of global warming, characterised by a rise in the frequency and severity of flood...
                                 </p>
                                 <div className="mt-6 text-[14px] text-[#B580D1]">
-                                    <Link to="/">Read More</Link>
+                                    <Link to="/purpledetailone">Read More</Link>
                                 </div>
                             </div>
                             <div className="lg:w-[416px] w-[300px] h-[316px] lg:h-[452px] shadow-lg rounded-md bg-white p-4">
-                                <img src={heroInsight} alt="heroins" className="bg-cover w-[276px] h-[160px] lg:w-[384px] lg:h-[280px]" loading="lazy" />
+                                <img src={heroIns2} alt="heroins" className="bg-cover rounded-md w-[276px] h-[160px] lg:w-[384px] lg:h-[280px]" loading="lazy" />
                                 <h3 className="lg:w-[384px] w-[276px] lg:h-[32px] h-[24px] lg:text-[22px] text-[16px] lg:leading-[32px] leading-[20px] font-semibold mt-2">
                                     Revolutionising Customer Experience
                                 </h3>
@@ -154,7 +155,7 @@ const PurpleHome = () => {
                                 We are affiliated to our mother company in Nigeria
                             </span>
                             <div className="w-[97px] h-[44px] bg-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center mt-8 lg:mt-0">
-                                <Link to="/">Contact Us</Link>
+                                <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
                             </div>
                         </div>
                     </div>

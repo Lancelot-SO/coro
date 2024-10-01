@@ -1,13 +1,16 @@
 /* eslint-disable react/no-unescaped-entities */
 import "./global.css"
 import motorbg from "../assets/purplemotor/motorbg.png"
-import hero1 from "../assets/purplehome/hero1.png"
+import student from "../assets/purpletravel/student1.png"
+import travelguy from "../assets/purpletravel/travelguy.png"
+
 import StudentFeature from "../features/StudentFeature";
 import { useState } from "react";
 import IndividualFeature from "../features/IndividualFeature";
 
 import travelmob from "../assets/purpletravel/travelmob.png"
 import travelbenefit from "../assets/purpletravel/travelbenefit.png"
+import { Link } from "react-router-dom";
 
 const PurpleTravel = () => {
 
@@ -33,14 +36,16 @@ const PurpleTravel = () => {
                     <img src={motorbg} alt="about" className="hidden lg:flex bg-cover w-full h-full" loading="lazy" />
                     <img src={travelmob} alt="about" className="flex lg:hidden bg-cover w-full h-[458px]" loading="lazy" />
                 </div>
-                <div className="glass absolute lg:bottom-[137px] bottom-[268px] right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
+                <div className="glass absolute lg:bottom-[137px] small:bottom-[305px]
+                 xxsm:bottom-[216px] nsm:bottom-[268px] msm:bottom-[112px] rsm:bottom-[287px]
+                 xsm:bottom-[39px] bottom-[268px] right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
                     <div className="lg:p-6 p-2">
                         <span className="text-white w-[300px] h-[32px] lg:text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[12px] leading-[24px] font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex lg:mt-5 mt-2 lg:w-[116px] w-[95px] h-[36px] bg-white font-semibold lg:text-[14px] text-[10px] leading-[20px] text-black rounded-lg items-center justify-center">
-                            GET A QUOTE
+                            <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                         </div>
                     </div>
                 </div>
@@ -61,12 +66,12 @@ const PurpleTravel = () => {
             </section>
 
             <section>
-                <div className="w-full lg:h-[800px] h-[900px] lg:px-28 px-4 lg:py-20 py-10">
+                <div className="w-full lg:h-[630px] h-[900px] lg:px-28 px-4 lg:py-20 py-10">
                     <div className="flex lg:flex-row flex-col gap-6 lg:w-[1280px] h-full">
-                        <div className="lg:w-[627px] w-[347px] lg:h-[640px] h-[404px] p-4 border border-b-4 border-b-[#B580D1] bg-white rounded-lg shadow-lg">
+                        <div className="lg:w-[627px] w-[347px] lg:h-[540px] h-[404px] p-4 border border-b-4 border-b-[#B580D1] bg-white rounded-lg shadow-lg">
                             <img
-                                src={hero1} alt="hero"
-                                className="lg:w-full w-[343px] lg:h-[400px] h-[220px] rounded-lg bg-cover"
+                                src={student} alt="hero"
+                                className="lg:w-[580px] w-[343px] lg:h-[280px] h-[220px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
@@ -83,10 +88,10 @@ const PurpleTravel = () => {
                         {isModalOpen && (
                             <StudentFeature closeModal={() => setIsModalOpen(false)} /> // Pass close function to the modal
                         )}
-                        <div className="lg:w-[627px] w-[347px] lg:h-[640px] h-[404px] p-4 border border-b-4 border-b-[#B580D1] bg-white rounded-lg shadow-lg">
+                        <div className="lg:w-[627px] w-[347px] lg:h-[540px] h-[404px] p-4 border border-b-4 border-b-[#B580D1] bg-white rounded-lg shadow-lg">
                             <img
-                                src={hero1} alt="hero"
-                                className="lg:w-full w-[343px] lg:h-[400px] h-[220px] rounded-lg bg-cover"
+                                src={travelguy} alt="hero"
+                                className="lg:w-[580px] w-[343px] lg:h-[280px] h-[220px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">

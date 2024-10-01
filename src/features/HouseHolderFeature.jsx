@@ -15,7 +15,7 @@ const HouseHolderFeature = ({ closeModal }) => { // Receive closeModal as prop
                     <div className="flex-1">
                         <img src={home6} alt="motor" className="object-cover  w-full lg:h-[548px] h-[180px]" loading="lazy" />
                     </div>
-                    <div className="flex-1 pt-10">
+                    <div className="flex-1 pt-3">
                         <div className="text-[24px] leading-[32px] font-semibold">HOUSEHOLDERS</div>
                         <div className="pl-6 mt-2">
                             <ul className="list-disc flex flex-col gap-2">

@@ -3,13 +3,20 @@ import Slider from "react-slick";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import { useLocation } from "react-router-dom"; // Import useLocation
 import Board from "../assets/purpleabout/board2.png";
+import Board1 from "../assets/purpleabout/board1.png";
+import Board3 from "../assets/purpleabout/board3.png";
+import Board4 from "../assets/purpleabout/board4.png";
+import Board5 from "../assets/purpleabout/board5.png";
+import Board6 from "../assets/purpleabout/board6.png";
+import Board7 from "../assets/purpleabout/board7.png";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const data = [
     {
         id: 1,
-        photo: Board,
+        photo: Board1,
         name: "Mr. Frank Beecham",
         position: "Board Chairman",
         desc: `Mr. Frank Beecham is the Chairman of the Board of Coronation Insurance Ghana LTD. Mr. Beecham is a lawyer by profession and a past National President of the Ghana Bar Association. He has spent the greater part of his working life in banking, having joined Merchant Bank Ghana Ltd as a Banking Officer in 1977.`,
@@ -17,23 +24,44 @@ const data = [
     {
         id: 2,
         photo: Board,
-        name: "Mr. Frank Beecham",
-        position: "Board Chairman",
-        desc: `Mr. Frank Beecham is the Chairman of the Board of Coronation Insurance Ghana LTD. Mr. Beecham is a lawyer by profession and a past National President of the Ghana Bar Association. He has spent the greater part of his working life in banking, having joined Merchant Bank Ghana Ltd as a Banking Officer in 1977.`,
+        name: "Mr. Olusegun Ogbonnewo",
+        position: "Non-Executive Director",
+        desc: `Mr. Olusegun Ogbonnewo is a Director in TenGen Holdings Limited with over 27 years’ professional experience in the financial service industry cutting across banking, human capital development, operations, payment systems and financial technology.`,
     },
     {
         id: 3,
-        photo: Board,
-        name: "Mr. Frank Beecham",
-        position: "Board Chairman",
-        desc: `Mr. Frank Beecham is the Chairman of the Board of Coronation Insurance Ghana LTD. Mr. Beecham is a lawyer by profession and a past National President of the Ghana Bar Association. He has spent the greater part of his working life in banking, having joined Merchant Bank Ghana Ltd as a Banking Officer in 1977.`,
+        photo: Board3,
+        name: "Mrs. Peggy Onwu",
+        position: "Non-Executive Director",
+        desc: `Mrs. Peggy Onwu has over eighteen years’ experience as a Chartered Accountant. She is a Fellow of the Chartered Certified Accountants (FCCA), England for over fifteen years and a member of the institute of Chartered Accountants Ghana (ICAG).`,
     },
     {
         id: 4,
-        photo: Board,
-        name: "Mr. Frank Beecham",
-        position: "Board Chairman",
-        desc: `Mr. Frank Beecham is the Chairman of the Board of Coronation Insurance Ghana LTD. Mr. Beecham is a lawyer by profession and a past National President of the Ghana Bar Association. He has spent the greater part of his working life in banking, having joined Merchant Bank Ghana Ltd as a Banking Officer in 1977.`,
+        photo: Board4,
+        name: "Mr. Richard Osei - Anim",
+        position: "Non-Executive Director",
+        desc: `Mr. Richard Osei-Anim is an Associate and Chartered Insurance Practitioner of the Associate Chartered Insurance Institute of London, UK. He has over 15 years’ experience in insurance and risk management and has worked in the past with Burrows Keith Group, CGU Insurance and broking giants like Aon and Miller Insurance Group.`,
+    },
+    {
+        id: 5,
+        photo: Board5,
+        name: "Mr. Olamide Olajolo",
+        position: "Non-Executive Director",
+        desc: `Mr. Olamide Olajolo has about twenty-two (22) years’ experience in the Insurance industry cutting across insurance underwriting and sales. Mr. Olamide Olajolo was formerly the Managing Director/Chief Executive Officer of the Nigeria Liability Insurance Pool and the Vice President Business Development at Heirs Insurance Limited/Heirs Assurance Limited.`,
+    },
+    {
+        id: 6,
+        photo: Board6,
+        name: "Mrs. Vesta Nunoo",
+        position: "Non-Executive Director",
+        desc: `Mrs. Vesta Nunoo has over eighteen years’ experience as a Chartered Accountant. She is a Fellow of the Chartered Certified Accountants (FCCA), England for over fifteen years and a member of the institute of Chartered Accountants Ghana (ICAG).`,
+    },
+    {
+        id: 7,
+        photo: Board7,
+        name: "Dr. Yaw Adom - Boateng",
+        position: "Managing Director",
+        desc: `Dr. Yaw Adom-Boateng is a Fellow of the Chartered Insurance Institute of Ghana (FCIIG) and the Chartered Insurance Institute of UK (FCII-UK). He is a seasoned insurance professional with over 22 years of experience in the insurance industry.`,
     },
     // Additional board members can be added here...
 ];
@@ -116,7 +144,7 @@ const SlickSlider = () => {
             </div>
             {/* Previous Button */}
             <button
-                className={`absolute lg:top-[670px] top-[780px] lg:right-40 right-52 transform -translate-y-1/2 px-4 py-2 rounded-lg 
+                className={`absolute lg:top-[670px] top-[780px] lg:right-40 small:right-[290px] right-52 transform -translate-y-1/2 px-4 py-2 rounded-lg 
                     ${isRedAbout ? 'bg-[#EFEFF0] hover:bg-[#FF0226] text-black' : 'bg-[#EFEFF0] hover:bg-[#B580D1] text-black'}`}
                 onClick={() => sliderRef.current.slickPrev()}
             >

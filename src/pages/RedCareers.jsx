@@ -1,12 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
-import insightbg from "../assets/purpleinsight/insightbg.png"
-import insight1 from "../assets/purpleinsight/insight1.png"
+import careerbg from "../assets/career/careerbg.png"
+import redcareer1 from "../assets/career/redcareer1.png"
+import redcareer2 from "../assets/career/redcareer2.png"
+
 
 import career1 from "../assets/career/career1.png"
 import career2 from "../assets/career/career2.png"
 
 
-import careerbgmob from "../assets/career/careerbgmob.png"
+import careermob from "../assets/career/careermob.png"
 
 
 import { Link } from "react-router-dom"
@@ -15,8 +17,9 @@ const RedCareers = () => {
     return (
         <div className="overflow-hidden">
             <div className="relative">
-                <img src={insightbg} alt="about" className="hidden lg:block w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
-                <img src={careerbgmob} alt="about" className="block lg:hidden w-full bg-cover lg:w-full lg:h-[600px]" loading="lazy" />
+                <img src={careerbg} alt="about" className="hidden lg:block w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
+                <img src={careermob} alt="about" className="block lg:hidden w-full bg-cover lg:w-full lg:h-[600px]" loading="lazy" />
+                <div className="absolute inset-0 bg-black opacity-40"></div>
                 <div className="absolute lg:top-[363px] top-[500px] lg:left-20 left-4 lg:w-[858px] w-[347px] lg:h-[152px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Careers at Coronation</h2>
                     <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
@@ -55,13 +58,13 @@ const RedCareers = () => {
 
                         </div>
                         <div className="flex-1 lg:p-10 p-0">
-                            <img src={insight1} alt="about" className="bg-cover lg:w-[640px] w-full lg:h-[410px] h-[320px] lg:rounded-lg object-cover" loading="lazy" />
+                            <img src={redcareer1} alt="about" className="bg-cover lg:w-[640px] w-full lg:h-[410px] h-[320px] lg:rounded-lg object-cover" loading="lazy" />
                         </div>
                     </div>
 
                     <div className="flex flex-col lg:flex-row w-full mt-4 lg:mt-0 h-[570px]">
                         <div className="flex-1 py-10 lg:pl-20 pl-0">
-                            <img src={insight1} alt="about" className="bg-cover lg:w-[640px] w-full lg:h-[410px] h-[320px] lg:rounded-lg object-cover" loading="lazy" />
+                            <img src={redcareer2} alt="about" className="bg-cover lg:w-[640px] w-full lg:h-[410px] h-[320px] lg:rounded-lg object-cover" loading="lazy" />
                         </div>
                         <div className="flex-1 flex-col flex lg:items-center justify-center lg:h-[430px]">
                             <div className="pl-4 lg:pl-0">

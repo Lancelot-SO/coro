@@ -21,10 +21,25 @@ import RedCareers from './pages/RedCareers'
 import RedContact from './pages/RedContact'
 import RedService from './pages/RedService'
 import RedProductDetails from './pages/RedProductDetails'
+import Feedback from './components/FeedBack'
+import { useEffect, useState } from 'react'
 
 
 
 function App() {
+  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+
+  useEffect(() => {
+    const isModalShown = localStorage.getItem('isFeedbackModalShown');
+    if (!isModalShown) {
+      const timer = setTimeout(() => {
+        setShowFeedbackModal(true);
+        localStorage.setItem('isFeedbackModalShown', 'true');
+      }, 30000); // 30 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   return (
     <div>
@@ -52,11 +67,11 @@ function App() {
           <Route path='/redservices' element={<RedService />} />
           <Route path='/redproductdetails' element={<RedProductDetails />} />
           <Route path="/redproductdetails/*" element={<RedProductDetails />} />
-
-
         </Routes>
         <Footer />
       </BrowserRouter>
+      <Feedback showModal={showFeedbackModal} setShowModal={setShowFeedbackModal} />
+
     </div>
   )
 }

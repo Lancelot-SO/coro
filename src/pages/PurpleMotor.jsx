@@ -55,14 +55,16 @@ const PurpleMotor = () => {
                         <img src={motorbg} alt="about" className="hidden lg:flex bg-cover w-full h-full" loading="lazy" />
                         <img src={motormob} alt="about" className="flex lg:hidden bg-cover w-full h-[458px]" loading="lazy" />
                     </div>
-                    <div className="glass absolute lg:bottom-[137px] bottom-[261px] right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
+                    <div className="glass absolute lg:bottom-[137px] small:bottom-[297px] nsm:bottom-[262px] xsm:bottom-[32px]
+                    msm:bottom-[105px] rsm:bottom-[280px]
+                    xxsm:bottom-[208px] bottom-[261px] right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
                         <div className="lg:p-6 p-2">
                             <span className="text-white w-[300px] h-[32px] lg:text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
                             <p className="text-white lg:text-[16px] text-[12px] leading-[24px] font-normal lg:mt-2 mt-0">
                                 Want to know more about our services? Let's talk
                             </p>
                             <div className="flex lg:mt-5 mt-2 lg:w-[116px] w-[95px] h-[36px] bg-white font-semibold lg:text-[14px] text-[10px] leading-[20px] text-black rounded-lg items-center justify-center">
-                                GET A QUOTE
+                                <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                             </div>
                         </div>
                     </div>
@@ -111,7 +113,7 @@ const PurpleMotor = () => {
                                                 Insurance Features
                                             </span>
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                                GET A QUOTE
+                                                <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                                             </span>
                                         </div>
                                     </>
@@ -143,7 +145,8 @@ const PurpleMotor = () => {
                                                 Insurance Features
                                             </span>
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                                GET A QUOTE
+                                                <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
+
                                             </span>
                                         </div>
                                     </>
@@ -175,7 +178,7 @@ const PurpleMotor = () => {
                                                 Insurance Features
                                             </span>
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                                GET A QUOTE
+                                                <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                                             </span>
                                         </div>
                                     </>
@@ -190,7 +193,7 @@ const PurpleMotor = () => {
             </section>
 
             <section>
-                <div className="lg:p-20 p-4">
+                <div className="lg:p-20 p-4 small:p-10">
                     <div className="w-full lg:h-[450px] h-[700px]">
                         <div className="w-full h-[108px]">
                             <h2 className="text-[40px] leading-[44px] font-semibold">BENEFITS</h2>
@@ -199,7 +202,7 @@ const PurpleMotor = () => {
                                     The product has been designed with a combination of <br className="hidden lg:block" />Enhanced term life which gives you an additional benefit.
                                 </span>
                                 <div className="w-[122px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
-                                    <Link>GET A QUOTE</Link>
+                                    <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                                 </div>
                             </div>
                         </div>

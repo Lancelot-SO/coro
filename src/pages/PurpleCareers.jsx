@@ -17,20 +17,20 @@ const PurpleCareers = () => {
             <div className="relative">
                 <img src={insightbg} alt="about" className="hidden lg:block w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
                 <img src={careerbgmob} alt="about" className="block lg:hidden w-full bg-cover lg:w-full lg:h-[600px]" loading="lazy" />
-                <div className="absolute lg:top-[293px] top-[500px] lg:left-20 left-4 lg:w-[858px] w-[347px] lg:h-[152px] h-[172px]">
+                <div className="absolute lg:top-[370px] top-[500px] lg:left-20 left-4 lg:w-[858px] w-[347px] lg:h-[152px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Careers at Coronation</h2>
                     <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
                         Taking you where you want to go. We are always on the lookout for best-in-class talent who enjoy a challenge. In exchange, we provide an environment that fosters the actualization of goals, and career fulfillment for our people while providing transformational solutions for Africa’s challenges.
                     </span>
                 </div>
-                <div className="absolute lg:top-[280px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-black bg-opacity-40 rounded-lg shadow-md">
+                <div className="absolute lg:top-[350px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-black bg-opacity-40 rounded-lg shadow-md">
                     <div className="lg:p-6 p-4">
                         <span className="text-white lg:w-[232px] lg:h-[32px] h-[24px] lg:text-[24px] text-[16px] lg:leading-[32px] leading-6 font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[90px] h-[35px] text-[12px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
-                            GET A QUOTE
+                            <Link to="https://claims-gh.coronation.ng/" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@ const PurpleCareers = () => {
                                                 Explore Life at Coronation…
                                             </p>
                                         </div>
-                                        <Link className="text-[#B580D1] pl-4 lg:pl-0">Learn More</Link>
+                                        <Link to="https://www.instagram.com/coronationgh/" target='_blank' rel='noopener noreferrer' className="text-[#B580D1] pl-4 lg:pl-0">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +186,7 @@ const PurpleCareers = () => {
                 <div className="w-full h-[164px] bg-[#B580D1] flex lg:flex-row flex-col lg:items-center lg:justify-between lg:pr-40 lg:pl-20 pr-0 pl-4 py-14 lg:py-0 gap-2 lg:gap-0">
                     <h2 className="text-white w-[343px] lg:w-full h-[40px]  font-bold lg:text-[40px] text-[32px] lg:leading-[44px] leading-[40px]">Get Insured Today</h2>
                     <div className="w-[110px] h-[44px]  bg-white flex items-center justify-center p-2 lg:p-2 rounded-lg text-[16px] leading-[24px] font-semibold">
-                        <Link>Contact Us</Link>
+                        <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
                     </div>
                 </div>
             </section>

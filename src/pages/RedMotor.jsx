@@ -55,7 +55,8 @@ const RedMotor = () => {
                         <img src={motorbg} alt="about" className="hidden lg:flex bg-cover w-full h-full" loading="lazy" />
                         <img src={motormob} alt="about" className="flex lg:hidden bg-cover w-full h-[458px]" loading="lazy" />
                     </div>
-                    <div className="glass absolute lg:bottom-[122px] bottom-[193px] bg-[#FF0226] opacity-70 right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
+                    <div className="glass absolute lg:bottom-[112px] nsm:bottom-[234px] msm:bottom-[78px] rsm:bottom-[254px]
+                     xsm:bottom-[5px] xxsm:bottom-[182px] bottom-[193px] bg-[#FF0226] opacity-70 right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
                         <div className="lg:p-6 p-2">
                             <span className="text-white w-[300px] h-[32px] lg:text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
                             <p className="text-white lg:text-[16px] text-[12px] leading-[24px] font-normal lg:mt-2 mt-0">
@@ -190,7 +191,7 @@ const RedMotor = () => {
             </section>
 
             <section>
-                <div className="lg:p-20 p-4">
+                <div className="lg:p-20 p-4 small:p-10">
                     <div className="w-full lg:h-[450px] h-[700px]">
                         <div className="w-full h-[108px]">
                             <h2 className="text-[40px] leading-[44px] font-semibold">BENEFITS</h2>

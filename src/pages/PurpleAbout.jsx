@@ -39,7 +39,7 @@ const PurpleAbout = () => {
                         </p>
                     </div>
 
-                    <div className="flex lg:flex-row flex-col lg:gap-10 gap-4 lg:w-[1280px] lg:h-[254px] h-[500px] mt-4">
+                    <div className="flex lg:flex-row flex-col lg:gap-10 gap-4 lg:w-[1280px] lg:h-[254px] h-[500px] mt-8">
                         <div className="">
                             <span className="h-[32px] lg:text-[24px] text-[20px] lg:font-semibold font-medium leading-[32px]">2008</span>
                             <p className="lg:w-[600px] w-[347px] h-[180px] lg:h-[168px] lg:text-[16px] text-[12px] font-semibold lg:leading-[24px] leading-5 text-[#56575D]">
@@ -114,7 +114,7 @@ const PurpleAbout = () => {
                                 We are affiliated to our mother company in Nigeria
                             </span>
                             <div className="w-[97px] h-[44px] bg-[#B580D1] text-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                <Link to="/">Contact Us</Link>
+                                <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
                             </div>
                         </div>
                     </div>

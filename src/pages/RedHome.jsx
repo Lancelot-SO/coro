@@ -1,12 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
-import homebg from "../assets/purplehome/purplehomebg.png"
+import aboutbg from "../assets/purplehome/instbg.png"
 import hero1 from "../assets/redhome/redhero1.png"
 import hero2 from "../assets/redhome/redhero2.png"
 import bannerbg from "../assets/purplehome/bannerbg.png"
 
 
 import heroInsight from "../assets/purplehome/homeInsight1.png"
+import heroIns2 from "../assets/purplehome/heroIns2.jpg"
+
 import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 
 
@@ -15,19 +17,13 @@ import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 const RedHome = () => {
     return (
         <div className="overflow-hidden">
-            <div className="w-full flex flex-col-reverse lg:flex-row">
-                <div className="flex flex-1 bg-black items-center lg:pl-20 pl-4">
-                    <div className="w-[545px] lg:h-[228px] md:h-[228px] h-[180px]">
-                        <h1 className="text-white lg:w-[522px] w-[266px] lg:h-[128px] h-[80px] lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-semibold">
-                            Your Partner in Ghana Prosperity
-                        </h1>
-                        <p className="lg:w-[543px] w-[319px] text-white lg:h-[84px] h-[80px] text-opacity-80 lg:text-[20px] text-[14px] font-medium lg:leading-[28px] leading-[20px] mt-2">
-                            We are a leading African financial services partner that helps build financial independence and enduring legacies that lead to sustainable wealth creation in Africa
-                        </p>
-                    </div>
-                </div>
-                <div className="flex-1">
-                    <img src={homebg} alt="home" className="w-full lg:h-[540px] md:h-[540px] h-[458px] bg-cover" loading="lazy" />
+            <div className="relative">
+                <img src={aboutbg} alt="about" className="w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
+                <div className="absolute lg:top-[370px] top-[370px] lg:left-20 left-4 lg:w-[858px] bg-[#FF0226] bg-opacity-70 px-4 w-[347px] lg:h-[152px] h-[172px]">
+                    <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Coronation</h2>
+                    <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
+                        We are a leading African financial services partner that helps build financial independence and enduring legacies that lead to sustainable wealth creation in Africa
+                    </span>
                 </div>
             </div>
 
@@ -40,7 +36,7 @@ const RedHome = () => {
                 </div>
             </div>
             <section>
-                <div className="w-full lg:h-[800px] h-[900px] lg:px-24 px-4 lg:py-20 py-8">
+                <div className="w-full lg:h-[800px] h-[900px] lg:px-24 px-4 small:px-10 lg:py-20 py-8">
                     <div className="lg:flex gap-6 lg:w-[1280px] w-full">
                         <div className="w-[630px] lg:h-[640px] h-[436px]">
                             <img
@@ -115,7 +111,7 @@ const RedHome = () => {
                                 </div>
                             </div>
                             <div className="lg:w-[416px] w-[300px] h-[316px] lg:h-[452px] shadow-lg rounded-md bg-white p-4">
-                                <img src={heroInsight} alt="heroins" className="bg-cover w-[276px] h-[160px] lg:w-[384px] lg:h-[280px]" loading="lazy" />
+                                <img src={heroIns2} alt="heroins" className="bg-cover rounded-md w-[276px] h-[160px] lg:w-[384px] lg:h-[280px]" loading="lazy" />
                                 <h3 className="lg:w-[384px] w-[276px] lg:h-[32px] h-[24px] lg:text-[22px] text-[16px] lg:leading-[32px] leading-[20px] font-semibold mt-2">
                                     Revolutionising Customer Experience
                                 </h3>

@@ -8,6 +8,7 @@ import homeInsbg from "../assets/purplehomeIns/homeInsbg.png"
 import { useState } from "react"
 import HomeOwnerFeature from "../features/HomeOwnerFeature"
 import HouseHolderFeature from "../features/HouseHolderFeature"
+import { Link } from "react-router-dom"
 
 
 const PurpleHomeInsurance = () => {
@@ -20,21 +21,22 @@ const PurpleHomeInsurance = () => {
             <div className="relative">
                 <img src={homebg} alt="about" className="hidden lg:block w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
                 <img src={homeInsbg} alt="about" className="block lg:hidden w-full bg-cover lg:w-full h-[678px]" loading="lazy" />
-                <div className="absolute lg:top-[293px] top-[370px] lg:left-20 left-4 lg:w-[858px] w-[347px] lg:h-[152px] h-[172px]">
+                <div className="absolute inset-0 bg-black opacity-40"></div>
+                <div className="absolute lg:top-[360px] top-[370px] lg:left-20 left-4 lg:w-[858px] w-[347px] lg:h-[152px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Home Insurance</h2>
                     <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
                         Ask yourself: do you want your home to be protected in the event of flood, fire, theft or other accidental damage?
                         Or would you rather deal with the expense and the stress on your own? Add to that the fact that some mortgage providers might require you to have building cover. It’s more than a minor detail. We’ll cover your house and belongings against life’s unexpected events. We offer building and contents insurance – plus a range of added extras to make sure you get the protection you need.
                     </span>
                 </div>
-                <div className="absolute lg:top-[280px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-black bg-opacity-40 rounded-lg shadow-md">
+                <div className="absolute lg:top-[380px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-black bg-opacity-40 rounded-lg shadow-md">
                     <div className="lg:p-6 p-4">
                         <span className="text-white lg:w-[232px] lg:h-[32px] h-[24px] lg:text-[24px] text-[16px] lg:leading-[32px] leading-6 font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
-                            Contact Us
+                            <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
                         </div>
                     </div>
                 </div>

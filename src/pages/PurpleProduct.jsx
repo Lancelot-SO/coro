@@ -33,7 +33,7 @@ const PurpleProduct = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
-                            Contact Us
+                            <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@ const PurpleProduct = () => {
                                 No one should have to wait more than 48 hours for their claims to be paid. That’s why we do it in less.
                             </p>
                             <div className="w-[125px] h-[44px] text-[16px] leading-[24px] font-semibold text-white bg-[#B580D1] flex items-center justify-center mt-10 rounded-lg">
-                                <Link>Make a Claim</Link>
+                                <Link to="https://claims-gh.coronation.ng/" target='_blank' rel='noopener noreferrer'>Make a Claim</Link>
                             </div>
                         </div>
                     </div>
@@ -148,7 +148,7 @@ const PurpleProduct = () => {
                         Get Insured Today
                     </div>
                     <div className="bg-white absolute top-[48%] right-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
-                        <Link>Contact Us</Link>
+                        <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
                     </div>
                 </div>
             </section>

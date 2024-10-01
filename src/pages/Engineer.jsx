@@ -37,7 +37,9 @@ const Engineer = () => {
                     <img src={motorbg} alt="about" className="hidden lg:flex bg-cover w-full h-full" loading="lazy" />
                     <img src={travelmob} alt="about" className="flex lg:hidden bg-cover w-full h-[458px]" loading="lazy" />
                 </div>
-                <div className="glass absolute bg-[#FF0226] bg-opacity-70 lg:bottom-[122px] bottom-[220px] right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
+                <div className="glass absolute bg-[#FF0226] bg-opacity-70 lg:bottom-[112px] msm:bottom-[146px]
+                nsm:bottom-[262px] small:bottom-[298px] xsm:bottom-[33px] xxsm:bottom-[210px] rsm:bottom-[282px]
+                bottom-[220px] right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
                     <div className="lg:p-6 p-2">
                         <span className="text-white w-[300px] h-[32px] lg:text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[12px] leading-[24px] font-normal lg:mt-2 mt-0">
@@ -65,7 +67,7 @@ const Engineer = () => {
             </section>
 
             <section>
-                <div className="w-full lg:h-[800px] h-[1600px] lg:px-28 px-4 lg:py-20 py-10">
+                <div className="w-full lg:h-[800px] h-[1600px] lg:px-28 px-4 small:p-10 lg:py-20 py-10">
                     <div className="flex lg:flex-row flex-col gap-6 lg:w-[1280px] h-full">
                         <div className="lg:w-[627px] w-[347px] lg:h-[770px] h-[690px] p-4 border border-b-4 border-b-[#FF0226] bg-white rounded-lg shadow-lg">
                             <img
@@ -224,7 +226,7 @@ const Engineer = () => {
             </section>
 
             <section>
-                <div className="lg:p-20 p-4">
+                <div className="lg:p-20 p-4 small:p-10">
                     <div className="w-full lg:h-[450px] h-[900px]">
                         <div className="w-full h-[108px]">
                             <h2 className="text-[40px] leading-[44px] font-semibold">BENEFITS</h2>

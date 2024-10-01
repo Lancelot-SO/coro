@@ -5,3 +5,14 @@
     -webkit-backdrop-filter: blur(4.8px);
     border: 1px solid rgba(181, 128, 209, 0.47);
 }
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar::-webkit-scrollbar {
+    scrollbar-width: none;
+    /* Firefox */
+}

@@ -24,7 +24,7 @@ const PurpleInsights = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[111px] h-[35px] bg-white text-black rounded-lg items-center justify-center">
-                            Contact Us
+                            <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@ const PurpleInsights = () => {
                         Get Insured Today
                     </div>
                     <div className="bg-white absolute lg:top-[60%] top-16 left-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
-                        <Link>Contact Us</Link>
+                        <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
                     </div>
                 </div>
             </section>
