@@ -35,10 +35,10 @@ const DetailOne = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="absolute lg:top-[50px] top-[110px] lg:right-20 right-[65%] rounded-lg shadow-md">
+                <div className="absolute lg:top-[50px] top-[110px] lg:right-20 md:right-[82%] right-[65%] rounded-lg shadow-md">
 
                     <a href={brochureUrl} download className="flex mt-5 w-[120px] h-[35px] text-[12px] gap-2 bg-white text-black rounded-lg items-center justify-center">
-                        <MdOutlineFileDownload />
+                        <MdOutlineFileDownload size={20} />
                         GET A QUOTE
                     </a>
                 </div>
@@ -47,7 +47,7 @@ const DetailOne = () => {
             <section>
                 <div className="lg:p-20 p-4">
                     <div className="lg:w-[1280px] lg:h-[1672px] flex lg:flex-row flex-col gap-10">
-                        <div className="lg:w-[827px] w-[347px] h-full flex flex-col gap-4 ">
+                        <div className="lg:w-[827px] md:w-full w-[347px] h-full flex flex-col gap-4 ">
                             <div className="lg:w-[803px] lg:h-[264px] flex flex-col gap-6">
                                 <p className="font-normal text-[16px] leading-[24px] text-[#56575D]">
                                     In today's age of global warming, characterised by a rise in the frequency and severity of floods and fires,

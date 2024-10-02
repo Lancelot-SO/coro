@@ -60,13 +60,13 @@ const Marine = () => {
 
             {/* Ensure the following sections are not overlapping */}
             <section>
-                <div className="w-full lg:h-[300px] h-[280px] bg-black lg:px-20 px-4 items-center lg:py-20 py-10">
+                <div className="w-full lg:h-[300px] h-[280px] bg-black lg:px-20 px-4 items-center lg:py-20 md:py-20 py-10">
                     <div className="flex flex-col">
                         <h3 className="text-white lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-bold lg:w-[772px]">
                             MARINE INSURANCE THAT IS FOR YOU
                         </h3>
                         <div className="flex items-center mt-4">
-                            <span className="text-white lg:text-[18px] text-[14px] leading-[24px] font-normal w-[703px] h-[48px]">
+                            <span className="text-white lg:text-[18px] md:text-[16px] text-[14px] leading-[24px] font-normal w-[703px] h-[48px]">
                                 It can cover damage to the vessel, liability for injuries or property damage, and even loss of personal belongings. Having marine insurance gives boat owners peace of mind knowing they are covered in case of unexpected events on the water.
                             </span>
                         </div>
@@ -75,7 +75,7 @@ const Marine = () => {
             </section>
 
             <section>
-                <div className="flex lg:flex-row flex-col py-5 lg:px-20 lg:gap-0 gap-8 px-4 bg-[#E9EAEC]">
+                <div className="flex lg:flex-row md:flex-row flex-col py-5 lg:px-20 lg:gap-0 gap-8 px-4 bg-[#E9EAEC]">
                     <div className="lg:w-[720px] w-full lg:h-[292px] flex flex-col items-start justify-center">
                         <h3 className="text-[24px] font-semibold leading-8">
                             Marine Cargo
@@ -112,13 +112,13 @@ const Marine = () => {
             </section>
 
             <section>
-                <div className="flex lg:flex-row flex-col w-full mb-8 lg:mb-0">
+                <div className="flex lg:flex-row md:flex-row flex-col w-full mb-8 lg:mb-0">
                     <div className="flex-1 relative flex mb-2">
-                        <div className="lg:w-[383px] w-[258px] lg:h-[600px] h-[320px] bg-[#FF0226] ">
+                        <div className="lg:w-[383px] w-[258px] lg:h-[600px] md:h-full h-[320px] bg-[#FF0226] ">
                         </div>
                         <img
                             src={mariners} alt="about"
-                            className="bg-cover w-[354px] lg:w-[628px] lg:h-[400px] h-[302px] absolute lg:top-[100px] top-[10px] lg:left-20 left-4"
+                            className="bg-cover w-[354px] lg:w-[628px] lg:h-[400px] h-[302px] absolute lg:top-[100px] md:top-[60px] top-[10px] lg:left-20 left-4"
                             loading="lazy" />
                     </div>
                     <div className="flex-1 flex-col flex p-4 lg:items-center justify-center">

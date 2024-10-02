@@ -18,10 +18,10 @@ const RedProduct = () => {
         <div className="overflow-hidden">
             <div className="relative">
                 <img src={productbg} alt="about" className="hidden lg:block w-full bg-cover lg:w-full" loading="lazy" />
-                <img src={productmob} alt="about" className="lg:hidden block bg-cover w-full" loading="lazy" />
-                <div className="absolute lg:top-[293px] top-[470px] lg:left-20 left-4 lg:w-[858px] w-[347px] lg:h-[152px] h-[172px]">
+                <img src={productmob} alt="about" className="lg:hidden block bg-cover w-full md:h-[800px]" loading="lazy" />
+                <div className="absolute lg:top-[293px] md:top-[500px] top-[470px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Individual Insurance</h2>
-                    <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
+                    <span className="w-full h-[72px] lg:text-[18px] md:text-[24px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
                         Coronation Insurance Ghana Ltd offers comprehensive insurance for your car, home, business and life - with only one telephone call. Find out more & get a quote.
                     </span>
                 </div>

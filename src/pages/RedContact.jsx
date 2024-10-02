@@ -213,8 +213,8 @@ const RedContact = () => {
             </section>
 
             <section>
-                <div className='lg:p-20 p-8'>
-                    <div className='lg:w-[1280px] lg:h-[608px] flex lg:flex-row flex-col gap-6'>
+                <div className='lg:p-20 md:p-14 p-8'>
+                    <div className='lg:w-[1280px] lg:h-[608px] flex lg:flex-row md:flex-row flex-col gap-6'>
                         <div className='lg:w-[628px] w-[320px] h-[608px] border rounded-lg shadow-md bg-[#E9EAEC]'>
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.715074559653!2d-0.19685382525451506!3d5.609034194371856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9bae79bae68f%3A0xb8969a3fa0ca5a02!2s35%20Aviation%20Rd%2C%20Accra!5e0!3m2!1sen!2sgh!4v1726821871869!5m2!1sen!2sgh"
