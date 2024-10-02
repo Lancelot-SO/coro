@@ -60,7 +60,7 @@ function Project() {
                             className={`${active === index
                                 ? 'bg-[#B580D1] text-white'
                                 : 'bg-[#F7F7F8] text-black'
-                                } p-2 rounded-lg cursor-pointer lg:text-[16px] text-[10px] font-semibold leading-[24px]`}
+                                } p-2 rounded-lg cursor-pointer lg:text-[16px] md:text-[14px] text-[10px] font-semibold leading-[24px]`}
                         >
                             {navItem.name}
                         </li>
@@ -70,7 +70,7 @@ function Project() {
 
             {/* Project grid */}
             <section>
-                <div className="w-full mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="w-full mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 md:gap-2">
                     {currentArticles.map((item) => (
                         <Book item={item} key={item.id} />
                     ))}

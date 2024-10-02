@@ -16,23 +16,23 @@ import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 const PurpleHome = () => {
     return (
         <div className="overflow-hidden">
-            <div className="w-full flex flex-col-reverse lg:flex-row">
-                <div className="flex flex-1 bg-black items-center lg:pl-20 pl-4">
-                    <div className="w-[545px] lg:h-[228px] md:h-[228px] h-[180px]">
-                        <h1 className="text-white lg:w-[522px] w-[266px] lg:h-[128px] h-[80px] lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-semibold">
+            <div id="pruplehome_section1" className="w-full flex flex-col-reverse lg:flex-row">
+                <div className="flex flex-1 bg-black items-center lg:pl-20 pl-4 md:pl-6">
+                    <div className="w-[545px] lg:h-[228px] md:h-[188px] h-[180px]">
+                        <h1 className="text-white lg:w-[522px] w-[266px] lg:h-[128px] md:w-[500px] h-[80px] lg:text-[56px] md:text-[40px] text-[32px] lg:leading-[64px] leading-[40px] font-semibold">
                             Your Partner in Ghana Prosperity
                         </h1>
-                        <p className="lg:w-[543px] w-[319px] text-white lg:h-[84px] h-[80px] text-opacity-80 lg:text-[20px] text-[14px] font-medium lg:leading-[28px] leading-[20px] mt-2">
+                        <p className="lg:w-[543px] md:w-[400px] w-[319px] text-white lg:h-[84px] h-[80px] text-opacity-80 lg:text-[20px] text-[14px] font-medium lg:leading-[28px] leading-[20px] mt-2">
                             We are a leading African financial services partner that helps build financial independence and enduring legacies that lead to sustainable wealth creation in Africa
                         </p>
                     </div>
                 </div>
                 <div className="flex-1">
-                    <img src={homebg} alt="home" className="w-full lg:h-[540px] md:h-[540px] h-[458px] bg-cover" loading="lazy" />
+                    <img src={homebg} alt="home" className="w-full lg:h-[540px] md:h-[450px] h-[458px] bg-cover" loading="lazy" />
                 </div>
             </div>
 
-            <div className="flex w-full lg:h-[120px] h-[112px] bg-[#B580D1] items-center justify-between lg:px-20 px-4">
+            <div id="pruplehome_section2" className="flex w-full lg:h-[120px] h-[112px] bg-[#B580D1] items-center justify-between lg:px-20 px-4 md:px-6">
                 <div className="lg:text-[32px] text-[24px] font-semibold lg:leading-[40px] leading-8 text-white">
                     My Insurance Account
                 </div>
@@ -40,19 +40,19 @@ const PurpleHome = () => {
                     <Link to="/" >Request & Pay</Link>
                 </div>
             </div>
-            <section>
-                <div className="w-full lg:h-[800px] h-[900px] lg:px-24 px-4 small:p-10 lg:py-20 py-8">
-                    <div className="lg:flex gap-6 lg:w-[1280px] w-full">
+            <section id="pruplehome_section3">
+                <div className="w-full lg:h-[800px] md:h-[530px] h-[900px] lg:px-24 md:px-6 px-4 small:p-10 lg:py-20 py-8">
+                    <div className="lg:flex md:flex gap-6 lg:w-[1280px] w-full">
                         <div className="w-[630px] lg:h-[640px] h-[436px]">
                             <img
                                 src={hero1} alt="hero"
                                 className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
-                                <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
+                                <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] md:leading-[24px] leading-[28px] mt-2">
                                     Products & Solutions for The Individual
                                 </h3>
-                                <p className="lg:w-full w-[347px] lg:h-[72px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-2">
+                                <p className="lg:w-full w-[347px] lg:h-[72px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 md:mt-4 mt-2">
                                     Get a wide range of financial solutions with Coronation. We offer superior customer service, innovative product solutions, excellent financial advice and more. Let’s be your prosperity partner today.
                                 </p>
                                 <div className="w-[111px] h-[44px] bg-[#B580D1] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
@@ -66,10 +66,10 @@ const PurpleHome = () => {
                                 className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
-                                <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
+                                <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
                                     Our Company Overview
                                 </h3>
-                                <p className="lg:w-full w-[347px] lg:h-[72px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-2">
+                                <p className="lg:w-full w-[347px] lg:h-[72px] md:h-[100px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 md:mt-4 mt-2">
                                     Live your best life with Coronation Insurance. Make a decision to protect those that matter to you.
                                 </p>
                                 <div className="flex gap-6">
@@ -86,7 +86,7 @@ const PurpleHome = () => {
                 </div>
             </section>
 
-            <section>
+            <section id="purplehome_section4">
                 <div className="w-full lg:h-[700px] h-[500px] bg-[#F4F5F7] lg:p-20 p-4">
                     <div className="flex flex-col w-full h-[588px]">
                         <div className="w-full lg:h-[88px] h-[100px]">
@@ -144,17 +144,17 @@ const PurpleHome = () => {
                 </div>
             </section>
 
-            <section>
-                <div className="w-full lg:h-[248px] h-[336px] bg-black lg:px-28 px-5 items-center lg:py-20 py-5">
+            <section id="purplehome_section5">
+                <div className="w-full lg:h-[248px] h-[336px] bg-black lg:px-28 px-5 items-center lg:py-20 md:py-32 py-5">
                     <div className="flex flex-col">
-                        <h3 className="text-white lg:w-[540px] lg:h-[90px] w-[248px] h-[130px] lg:text-[40px] text-[32px] lg:leading-[44px] leading-[40px] font-bold">
+                        <h3 className="text-white lg:w-[540px] md:w-[500px] lg:h-[90px] md:h-[60px] w-[248px] h-[130px] lg:text-[40px] text-[32px] lg:leading-[44px] leading-[40px] font-bold">
                             We are affiliated to the Group
                         </h3>
-                        <div className="flex lg:flex-row flex-col lg:items-center justify-between">
+                        <div className="flex md:flex-row lg:flex-row flex-col lg:items-center justify-between">
                             <span className="text-white text-[20px] leading-[28px] font-medium">
                                 We are affiliated to our mother company in Nigeria
                             </span>
-                            <div className="w-[97px] h-[44px] bg-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center mt-8 lg:mt-0">
+                            <div className="w-[97px] h-[44px] bg-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center mt-8 lg:mt-0 md:mt-0">
                                 <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
                             </div>
                         </div>
@@ -162,7 +162,7 @@ const PurpleHome = () => {
                 </div>
             </section>
 
-            <section>
+            <section id="purplehome_section6">
                 <div className="relative">
                     <img src={bannerbg} alt="banner" className="w-full bg-cover lg:h-full h-[200px]" />
                     <div className="absolute lg:top-[48%] top-[50%] lg:left-[7%] left-8 lg:text-[56px] text-[32px] font-semibold leading-[64px] text-white">

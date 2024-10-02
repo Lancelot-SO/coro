@@ -19,7 +19,7 @@ const RedHome = () => {
         <div className="overflow-hidden">
             <div className="relative">
                 <img src={aboutbg} alt="about" className="w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
-                <div className="absolute lg:top-[370px] top-[370px] lg:left-20 left-4 lg:w-[858px] bg-[#FF0226] bg-opacity-70 px-4 w-[347px] lg:h-[152px] h-[172px]">
+                <div className="absolute lg:top-[370px] md:top-[430px] top-[370px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] bg-[#FF0226] bg-opacity-70 px-4 w-[347px] lg:h-[152px] md:h-[120px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Coronation</h2>
                     <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
                         We are a leading African financial services partner that helps build financial independence and enduring legacies that lead to sustainable wealth creation in Africa
@@ -36,15 +36,15 @@ const RedHome = () => {
                 </div>
             </div>
             <section>
-                <div className="w-full lg:h-[800px] h-[900px] lg:px-24 px-4 small:px-10 lg:py-20 py-8">
-                    <div className="lg:flex gap-6 lg:w-[1280px] w-full">
+                <div className="w-full lg:h-[800px] md:h-[530px] h-[900px] lg:px-24 md:px-6 px-4 small:px-10 lg:py-20 py-8">
+                    <div className="lg:flex md:flex gap-6 lg:w-[1280px] w-full">
                         <div className="w-[630px] lg:h-[640px] h-[436px]">
                             <img
                                 src={hero1} alt="hero"
                                 className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
-                                <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
+                                <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] md:leading-[20px] leading-[28px] mt-2">
                                     Products & Solutions for The Institution
                                 </h3>
                                 <p className="lg:w-full w-[347px] lg:h-[72px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-2">
@@ -64,7 +64,7 @@ const RedHome = () => {
                                 <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
                                     Our Company Overview
                                 </h3>
-                                <p className="lg:w-full w-[347px] lg:h-[72px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-2">
+                                <p className="lg:w-full w-[347px] lg:h-[72px] md:h-[100px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-2">
                                     Live your best life with Coronation Insurance. Make a decision to protect those that matter to you.
                                 </p>
                                 <div className="flex gap-6">

@@ -40,7 +40,7 @@ const RedProduct = () => {
             <section>
                 <div className="lg:p-20 p-6 bg-black">
                     <div className="w-full lg:h-[748px]">
-                        <div className="hidden lg:block">
+                        <div className="hidden md:block lg:block md:mb-4 lg:mb-0 mb-0">
                             <h2 className="text-[48px] font-bold leading-[56px] text-white w-[790px] h-[112px]">
                                 Looking for The <br />Right Insurance for You?
                             </h2>
@@ -49,7 +49,7 @@ const RedProduct = () => {
                                 business, and life. One call, and Total protection. Get a quote now!
                             </span>
                         </div>
-                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 w-full lg:h-[524px] h-[1204px]">
+                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:px-40 lg:px-0 px-0 w-full lg:h-[524px] h-[1204px]">
                             <div className="w-[436px] h-full">
                                 <img
                                     src={product1}
@@ -123,13 +123,13 @@ const RedProduct = () => {
                             loading="lazy" />
                         <img
                             src={product44} alt="about"
-                            className="lg:hidden block bg-cover w-[662px] h-[350px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                            className="lg:hidden block bg-cover w-[662px] md:w-full h-[350px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                             loading="lazy" />
                     </div>
                     <div className="flex-1 flex-col flex items-center justify-center">
                         <div className="p-4 lg:p-0">
                             <h2 className="lg:w-[558px] lg:h-[112px] lg:text-[48px] text-[24px] lg:leading-[56px] leading-[32px] font-bold">Get Insurance From CORONATION Today</h2>
-                            <p className="lg:w-[560px] lg:text-[16px] text-[14px] leading-[20px] font-medium text-[#56575D] mt-4">
+                            <p className="lg:w-[560px] md:w-[400px] lg:text-[16px] text-[14px] leading-[20px] font-medium text-[#56575D] mt-4">
                                 No one should have to wait more than 48 hours for their claims to be paid. That’s why we do it in less.
                             </p>
                             <div className="w-[125px] h-[44px] text-[16px] leading-[24px] font-semibold text-white bg-[#FF0226] flex items-center justify-center mt-10 rounded-lg">

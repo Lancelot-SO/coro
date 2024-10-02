@@ -86,11 +86,11 @@ const PurpleNavbar = () => {
 
                 {/* Self Service Button based on activeLink */}
                 {activeLink === 'individual' ? (
-                    <div className="lg:flex hidden items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#B580D1] text-white">
+                    <div className="lg:flex hidden md:flex items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#B580D1] text-white">
                         <Link to="/purpleservices">Self Service</Link>
                     </div>
                 ) : (
-                    <div className="lg:flex hidden items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#FF0226] text-white">
+                    <div className="lg:flex hidden md:flex items-center justify-center w-[112px] h-[44px] rounded-lg bg-[#FF0226] text-white">
                         <Link to="/redservices">Self Service</Link>
                     </div>
                 )}

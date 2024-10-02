@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <div>
             <section className="overflow-hidden">
-                <div className="bg-[#141415] w-full lg:h-[624px] h-[910px]">
+                <div className="bg-[#141415] w-full lg:h-[624px] md:h-[820px] h-[910px]">
                     <div className="flex lg:flex-row flex-col lg:p-24 p-4">
                         <div className="lg:w-[411px] lg:h-[263px] pt-10">
                             <img src={logo} alt="logo" className="mb-3 w-[291px] h-[32px] lg:w-[280px] lg:h-[30px]" loading="lazy" />
@@ -64,7 +64,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div className="mt-[200px] lg:mt-0">
-                        <div className="flex lg:flex-row flex-col lg:items-center justify-between lg:px-24 px-4">
+                        <div className="flex md:flex-row lg:flex-row flex-col lg:items-center justify-between lg:px-24 px-4">
                             <span className="text-white">@ 2024 Coronation. All rights reserved.</span>
                             <ul className="flex gap-4">
                                 <Link to="/"><li className="text-white"><FaFacebook /></li></Link>

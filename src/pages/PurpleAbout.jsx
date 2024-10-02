@@ -10,7 +10,7 @@ const PurpleAbout = () => {
         <div className="overflow-hidden">
             <div className="relative">
                 <img src={aboutbg} alt="about" className="w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
-                <div className="absolute lg:top-[293px] top-[370px] lg:left-20 left-4 lg:w-[858px] w-[347px] lg:h-[152px] h-[172px]">
+                <div className="absolute lg:top-[293px] top-[370px] lg:left-20 left-4 lg:w-[858px] md:w-[500px] w-[347px] lg:h-[152px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">About Us</h2>
                     <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
                         We are a leading Ghanaian insurance company offering a diverse range of products and
@@ -32,14 +32,14 @@ const PurpleAbout = () => {
             <section>
                 <div className="lg:p-20 p-4">
                     <div className="w-[560px] lg:h-[188px] h-[150px]">
-                        <h2 className="w-[347px] lg:w-[500px] lg:h-[90px] h-[64px] lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-semibold">ABOUT CORONATION INSURANCE GHANA LTD</h2>
-                        <p className="w-[347px] h-[80px] lg:text-[16px] text-[14px] leading-[20px] lg:font-medium font-normal text-[#56575D] mt-4">
+                        <h2 className="w-[347px] md:w-[450px] lg:w-[500px] lg:h-[90px] h-[64px] lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-semibold">ABOUT CORONATION INSURANCE GHANA LTD</h2>
+                        <p className="w-[347px] md:w-[550px] h-[80px] lg:text-[16px] text-[14px] leading-[20px] lg:font-medium font-normal text-[#56575D] mt-4">
                             Coronation Insurance Group stands as a pinnacle in West Africa,
                             a dynamic multi-line insurance company committed to securing the life, general, and special risks of our valued partners.
                         </p>
                     </div>
 
-                    <div className="flex lg:flex-row flex-col lg:gap-10 gap-4 lg:w-[1280px] lg:h-[254px] h-[500px] mt-8">
+                    <div className="flex lg:flex-row md:flex-row flex-col lg:gap-10 gap-4 lg:w-[1280px] lg:h-[254px] md:h-[400px] h-[500px] mt-8">
                         <div className="">
                             <span className="h-[32px] lg:text-[24px] text-[20px] lg:font-semibold font-medium leading-[32px]">2008</span>
                             <p className="lg:w-[600px] w-[347px] h-[180px] lg:h-[168px] lg:text-[16px] text-[12px] font-semibold lg:leading-[24px] leading-5 text-[#56575D]">
@@ -63,19 +63,19 @@ const PurpleAbout = () => {
                     <div className="flex lg:flex-row flex-col-reverse w-full h-[488px]">
                         <div className=" flex-1 flex-col px-4 lg:px-0 bg-[#EFEFF0] flex items-center justify-center">
                             <h2 className="lg:text-[32px] text-[24px] leading-[40px] font-semibold">What We Do</h2>
-                            <p className="lg:w-[560px] lg:text-[16px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4">
+                            <p className="lg:w-[560px] md:h-[100px] lg:text-[16px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4">
                                 We are an insurance company in Ghana offering a variety of coverage options for individuals and businesses.
                                 We design our policies to be affordable and comprehensive, protecting your assets and providing peace of mind.
                                 Our local expertise and use of technology make it convenient to get the insurance you need and manage your policies easily.
                             </p>
                         </div>
                         <div className="flex-1">
-                            <img src={about1} alt="about" className="bg-cover w-full h-full" loading="lazy" />
+                            <img src={about1} alt="about" className="bg-cover w-full h-full md:h-[400px]" loading="lazy" />
                         </div>
                     </div>
-                    <div className="flex lg:flex-row flex-col w-full h-[488px]">
+                    <div className="flex lg:flex-row flex-col w-full h-[488px] ">
                         <div className="flex-1">
-                            <img src={about2} alt="about" className="bg-cover w-full h-full" loading="lazy" />
+                            <img src={about2} alt="about" className="bg-cover w-full h-full md:h-[400px]" loading="lazy" />
                         </div>
                         <div className="flex-1 flex-col px-4 lg:px-0 flex items-center justify-center">
                             <h2 className="lg:text-[32px] text-[24px] leading-[40px] font-semibold">Our Offering</h2>
@@ -87,7 +87,7 @@ const PurpleAbout = () => {
                         </div>
                     </div>
                     <div>
-                        <div className="lg:py-20 py-4 lg:px-20 px-4 bg-[#EFEFF0]">
+                        <div className="lg:py-20 py-4 md:mt-12 lg:mt-0 mt-0 lg:px-20 px-4 bg-[#EFEFF0]">
                             <h2 className="text-[32px] leading-[40px] font-semibold">History</h2>
                             <p className="lg:w-[560px] lg:text-[16px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4">
                                 Having established a 30-year record of achievements in financial services across Africa and beyond,
@@ -104,12 +104,12 @@ const PurpleAbout = () => {
             </section>
 
             <section>
-                <div className="w-full h-[248px] bg-black lg:px-20 px-4 items-center lg:py-20 py-4">
+                <div className="w-full h-[248px] bg-black lg:px-20 px-4 items-center lg:py-20 md:py-20 py-4">
                     <div className="flex flex-col">
                         <h3 className="text-white lg:text-[40px] text-[32px] lg:leading-[44px] leading-[40px] font-bold">
                             We are affiliated to the Group
                         </h3>
-                        <div className="flex lg:flex-row flex-col lg:items-center justify-between">
+                        <div className="flex md:flex-row lg:flex-row flex-col lg:items-center justify-between">
                             <span className="text-white text-[20px] leading-[28px] font-medium">
                                 We are affiliated to our mother company in Nigeria
                             </span>
