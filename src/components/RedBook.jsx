@@ -15,12 +15,14 @@ const RedBook = ({ item }) => {
                         <li className="text-[12px]">{item.date}</li>
                     </ul>
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                    {item.heading}
-                </h3>
-                <p className="text-gray-600 text-sm mb-4">
-                    {item.details}
-                </p>
+                <div className="h-[130px]" >
+                    <h3 className="text-xl font-semibold mb-2 text-gray-800">
+                        {item.heading}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-4">
+                        {item.details}
+                    </p>
+                </div>
                 <a href={item.link} className="text-[#FF0226] font-semibold hover:underline">
                     Read More
                 </a>

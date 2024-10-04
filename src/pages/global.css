@@ -1,5 +1,6 @@
 .glass {
     background: rgba(181, 128, 209, 0.86);
+    opacity: 80%;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(4.8px);
     -webkit-backdrop-filter: blur(4.8px);

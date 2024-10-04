@@ -69,7 +69,7 @@ const PurpleHomeInsurance = () => {
                                         refrigerator and so on.
                                     </p>
                                 </div>
-                                <span onClick={() => setIsModalOpen(true)} className="lg:text-[#B580D1] text-white bg-[#B580D1] p-2 lg:bg-transparent rounded-md cursor-pointer">Featured Insurance</span>
+                                <span onClick={() => setIsModalOpen(true)} className="text-white bg-[#B580D1] p-2  rounded-md cursor-pointer">Featured Insurance</span>
                             </div>
                             {isModalOpen && (
                                 <HomeOwnerFeature closeModal={() => setIsModalOpen(false)} /> // Pass close function to the modal
@@ -93,7 +93,7 @@ const PurpleHomeInsurance = () => {
                                         home (and therefore do not require building insurance) but still desire protection for their belongings.
                                     </p>
                                 </div>
-                                <span onClick={() => setIsHouseModalOpen(true)} className="lg:text-[#B580D1] text-white bg-[#B580D1] p-2 lg:bg-transparent rounded-md cursor-pointer">Featured Insurance</span>
+                                <span onClick={() => setIsHouseModalOpen(true)} className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Featured Insurance</span>
                             </div>
                             {isHouseModalOpen && (
                                 <HouseHolderFeature closeModal={() => setIsHouseModalOpen(false)} /> // Pass close function to the modal

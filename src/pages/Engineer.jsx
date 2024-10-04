@@ -39,8 +39,8 @@ const Engineer = () => {
                 </div>
                 <div className="glass absolute bg-[#FF0226] bg-opacity-70 lg:bottom-[112px] md:bottom-[200px] msm:bottom-[146px]
                 nsm:bottom-[262px] small:bottom-[298px] xsm:bottom-[33px] xxsm:bottom-[210px] rsm:bottom-[282px]
-                bottom-[220px] right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
-                    <div className="lg:p-6 p-2">
+                bottom-[220px] right-0 lg:w-[385px] w-[243px] lg:h-[164px] h-[140px]">
+                    <div className="lg:p-4 p-2">
                         <span className="text-white w-[300px] h-[32px] lg:text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[12px] leading-[24px] font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
@@ -76,7 +76,7 @@ const Engineer = () => {
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
-                                    PLANT ALL-RISK
+                                    Plant All - Risk
                                 </h3>
                                 <div className="pl-6 mt-2">
                                     <ul className="list-disc flex flex-col gap-2">
@@ -201,7 +201,7 @@ const Engineer = () => {
                     <div className="flex flex-col items-center">
                         <div className="lg:w-[467px] md:w-[650px] w-[375px] lg:h-[328px] md:h-[300px] h-[430px] px-4 lg:px-0 mt-4 lg:mt-0">
                             <h3 className="lg:w-[437PX] w-[307px] lg:h-[88px] h-[50px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
-                                Electronic equipment Computer all - risk
+                                Electronic Equipment Computer All - Risk
                             </h3>
                             <p className="mt-2">
                                 A Computer All Risk Policy seeks to cover electronic equipment risks ranging from all sudden and unforeseen physical losses,
@@ -252,7 +252,7 @@ const Engineer = () => {
                                         </ul>
                                     </div>
                                 </div>
-                                <Link className="font-semibold text-[14px] leading-[20px] text-black mt-6 md:mt-0">
+                                <Link className="font-semibold text-[14px] leading-[20px] text-black lg:mt-6 md:mt-0">
                                     Learn More
                                 </Link>
                             </div>

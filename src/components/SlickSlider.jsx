@@ -111,7 +111,7 @@ const SlickSlider = () => {
     };
 
     return (
-        <div className="relative lg:p-20 p-4 h-[850px]">
+        <div className="relative lg:p-20 p-4 lg:h-[700px] h-[850px]">
             <div className="text-left mb-12">
                 <h2 className="lg:text-4xl text-[20px] font-bold leading-tight">Board of Directors</h2>
                 <p className="lg:text-lg text-[14px] text-gray-600 mt-2">

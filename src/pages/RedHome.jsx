@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom"
 import aboutbg from "../assets/purplehome/instbg.png"
-import hero1 from "../assets/redhome/redhero1.png"
-import hero2 from "../assets/redhome/redhero2.png"
+// import hero1 from "../assets/redhome/redhero1.png"
+// import hero2 from "../assets/redhome/redhero2.png"
 import bannerbg from "../assets/purplehome/bannerbg.png"
 
 
@@ -10,11 +10,32 @@ import heroInsight from "../assets/purplehome/homeInsight1.png"
 import heroIns2 from "../assets/purplehome/heroIns2.jpg"
 
 import heroInsight3 from "../assets/purplehome/homeInsight3.png"
+import { useEffect, useState } from "react"
 
 
 
 
 const RedHome = () => {
+    const [homeData, setHomeData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/fetch');
+                const data = await response.json();
+                console.log(data);
+                setHomeData(data[0]);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+
+    if (!homeData) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className="overflow-hidden">
             <div className="relative">
@@ -35,44 +56,60 @@ const RedHome = () => {
                     <Link to="/" >Request & Pay</Link>
                 </div>
             </div>
-            <section>
-                <div className="w-full lg:h-[800px] md:h-[530px] h-[900px] lg:px-24 md:px-6 px-4 small:px-10 lg:py-20 py-8">
-                    <div className="lg:flex md:flex gap-6 lg:w-[1280px] w-full">
+            <section id="redhome_section3">
+                <div className="w-full lg:h-[800px] md:h-[530px] h-[900px] lg:px-20 md:px-6 px-4 small:p-10 lg:py-20 py-8">
+                    <div className="lg:flex md:flex lg:gap-20 gap-6  lg:w-[1340px] w-full">
                         <div className="w-[630px] lg:h-[640px] h-[436px]">
                             <img
-                                src={hero1} alt="hero"
+                                src={homeData?.tile1_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile1_image}` : "assets/purplehome/purplehomebg.png"}
+                                alt="hero"
                                 className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
-                                <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] md:leading-[20px] leading-[28px] mt-2">
-                                    Products & Solutions for The Institution
-                                </h3>
-                                <p className="lg:w-full w-[347px] lg:h-[72px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-2">
-                                    Get a wide range of financial solutions with Coronation. We offer superior customer service, innovative product solutions, excellent financial advice and more. Let’s be your prosperity partner today.
-                                </p>
+                                <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] md:leading-[24px] leading-[28px] mt-2"
+                                    dangerouslySetInnerHTML={{
+                                        __html: homeData.tile1_caption
+                                    }}
+                                />
+                                <p className="lg:w-full w-[347px] lg:h-[72px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 md:mt-4 mt-2"
+                                    dangerouslySetInnerHTML={{
+                                        __html: homeData.tile1_text
+
+                                    }}
+                                />
                                 <div className="w-[111px] h-[44px] bg-[#FF0226] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
-                                    <Link to="/">Learn More</Link>
+                                    <Link to={homeData?.tile1_btn_link || "/purpleabout"}>
+                                        {homeData?.tile1_btn_text || "Learn More"}
+                                    </Link>
                                 </div>
                             </div>
                         </div>
                         <div className="w-[630px] h-[640px]">
                             <img
-                                src={hero2} alt="hero"
-                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover transition-transform duration-500 ease-in transform hover:scale-10"
+                                src={homeData?.tile2_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile2_image}` : "assets/purplehome/purplehomebg.png"}
+                                alt="hero"
+                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
-                                <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
-                                    Our Company Overview
-                                </h3>
-                                <p className="lg:w-full w-[347px] lg:h-[72px] md:h-[100px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-2">
-                                    Live your best life with Coronation Insurance. Make a decision to protect those that matter to you.
-                                </p>
+                                <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2"
+                                    dangerouslySetInnerHTML={{
+                                        __html: homeData.tile2_caption
+                                    }}
+                                />
+                                <p className="lg:w-full w-[347px] lg:h-[72px] md:h-[100px] h-[80px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 md:mt-4 mt-2"
+                                    dangerouslySetInnerHTML={{
+                                        __html: homeData.tile2_text
+
+                                    }}
+                                />
                                 <div className="flex gap-6">
                                     <div className="w-[111px] h-[44px] bg-[#FF0226] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/">Learn More</Link>
+                                        <Link to={homeData?.tile2_btn_link || "/"} target='_blank' rel='noopener noreferrer'>
+                                            {homeData?.tile2_btn_text || "Make a Claim"}
+                                        </Link>
                                     </div>
                                     <div className="w-[111px] h-[44px] bg-[#F7F7F8] shadow-md text-[#141415] flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/">Learn More</Link>
+                                        <Link to="/purpleabout">Learn More</Link>
                                     </div>
                                 </div>
                             </div>

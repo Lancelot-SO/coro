@@ -32,14 +32,14 @@ const PurpleTravel = () => {
                         </p>
                     </div>
                 </div>
-                <div className="flex-1">
+                <div className="">
                     <img src={motorbg} alt="about" className="hidden lg:flex bg-cover w-full h-full" loading="lazy" />
                     <img src={travelmob} alt="about" className="flex lg:hidden md:h-[500px] bg-cover w-full h-[458px]" loading="lazy" />
                 </div>
                 <div className="glass absolute lg:bottom-[137px] md:bottom-[235px] small:bottom-[305px]
                  xxsm:bottom-[216px] nsm:bottom-[268px] msm:bottom-[112px] rsm:bottom-[287px]
-                 xsm:bottom-[39px] bottom-[268px] right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
-                    <div className="lg:p-6 p-2">
+                 xsm:bottom-[39px] bottom-[268px] right-0 lg:w-[385px] w-[243px] lg:h-[164px] h-[140px]">
+                    <div className="lg:p-4 p-2">
                         <span className="text-white w-[300px] h-[32px] lg:text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[12px] leading-[24px] font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk

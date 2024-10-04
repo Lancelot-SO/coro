@@ -55,10 +55,10 @@ const RedMotor = () => {
                         <img src={motorbg} alt="about" className="hidden lg:flex bg-cover w-full h-full" loading="lazy" />
                         <img src={motormob} alt="about" className="flex lg:hidden bg-cover w-full h-[458px]" loading="lazy" />
                     </div>
-                    <div className="glass bg-[#FF0226] bg-opacity-70 absolute lg:bottom-[137px] md:bottom-[200px] small:bottom-[297px] nsm:bottom-[262px] xsm:bottom-[32px]
+                    <div className="glass bg-[#FF0226] bg-opacity-70 absolute lg:bottom-[112px] md:bottom-[200px] small:bottom-[297px] nsm:bottom-[262px] xsm:bottom-[32px]
                     msm:bottom-[105px] rsm:bottom-[280px]
-                    xxsm:bottom-[208px] bottom-[261px] right-0 lg:w-[385px] w-[243px] lg:h-[174px] h-[140px]">
-                        <div className="lg:p-6 p-2">
+                    xxsm:bottom-[208px] bottom-[261px] right-0 lg:w-[385px] w-[243px] lg:h-[164px] h-[140px]">
+                        <div className="lg:p-4 p-2">
                             <span className="text-white w-[300px] h-[32px] lg:text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
                             <p className="text-white lg:text-[16px] text-[12px] leading-[24px] font-normal lg:mt-2 mt-0">
                                 Want to know more about our services? Let's talk

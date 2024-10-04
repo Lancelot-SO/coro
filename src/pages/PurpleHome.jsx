@@ -72,8 +72,8 @@ const PurpleHome = () => {
                 </div>
             </div>
             <section id="pruplehome_section3">
-                <div className="w-full lg:h-[800px] md:h-[530px] h-[900px] lg:px-24 md:px-6 px-4 small:p-10 lg:py-20 py-8">
-                    <div className="lg:flex md:flex gap-6 lg:w-[1280px] w-full">
+                <div className="w-full lg:h-[800px] md:h-[530px] h-[900px] lg:px-20 md:px-6 px-4 small:p-10 lg:py-20 py-8">
+                    <div className="lg:flex md:flex lg:gap-20 gap-6  lg:w-[1340px] w-full">
                         <div className="w-[630px] lg:h-[640px] h-[436px]">
                             <img
                                 src={homeData?.tile1_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile1_image}` : "assets/purplehome/purplehomebg.png"}
@@ -149,7 +149,7 @@ const PurpleHome = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex gap-10 mt-4 lg:pl-3 pl-0 overflow-x-auto">
+                        <div className="flex lg:gap-10 gap-10 mt-4 lg:pl-3 pl-0 overflow-x-auto">
                             <div className="lg:w-[416px] w-[300px] h-[316px] lg:h-[452px] shadow-lg rounded-md bg-white p-4">
                                 <img src={heroInsight} alt="heroins" className="bg-cover w-[276px] h-[160px] lg:w-[384px] lg:h-[280px]" loading="lazy" />
                                 <h3 className="lg:w-[384px] w-[276px] lg:h-[32px] h-[24px] lg:text-[24px] text-[16px] lg:leading-[32px] leading-[24px] font-semibold mt-2">
@@ -194,8 +194,8 @@ const PurpleHome = () => {
             <section id="purplehome_section5">
                 <div className="w-full lg:h-[248px] h-[336px] bg-black lg:px-28 px-5 items-center lg:py-20 md:py-32 py-5">
                     <div className="flex flex-col">
-                        <h3 className="text-white lg:w-[540px] md:w-[500px] lg:h-[90px] md:h-[60px] w-[248px] h-[130px] lg:text-[40px] text-[32px] lg:leading-[44px] leading-[40px] font-bold">
-                            We are affiliated to the Group
+                        <h3 className="text-white lg:w-[700px] md:w-[550px] lg:h-[50px] md:h-[60px] w-[248px] h-[130px] lg:text-[40px] text-[32px] lg:leading-[44px] leading-[40px] font-bold">
+                            WE ARE AFFILIATED TO THE GROUP
                         </h3>
                         <div className="flex md:flex-row lg:flex-row flex-col lg:items-center justify-between">
                             <span className="text-white text-[20px] leading-[28px] font-medium">

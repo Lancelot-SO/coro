@@ -17,8 +17,8 @@ const PurpleInsights = () => {
                         Our award winning content provides research and insights that enables<br className="hidden lg:block" /> you navigate Africa's unique challenges.
                     </span>
                 </div>
-                <div className="glass absolute lg:top-[360px] top-5 lg:right-20 right-5 lg:w-[300px] w-[250px] lg:h-[174px] h-[160px] rounded-lg shadow-md">
-                    <div className="lg:p-6 p-4">
+                <div className="glass absolute bg-opacity-70 lg:top-[360px] top-5 lg:right-20 right-5 lg:w-[300px] w-[250px] lg:h-[174px] h-[160px] rounded-lg shadow-md">
+                    <div className="lg:p-4 p-4">
                         <span className="text-white w-[232px] h-[32px] lg:text-[24px] text-[18px] lg:leading-[32px] leading-[24px] font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal mt-2">
                             Want to know more about our services? Let's talk

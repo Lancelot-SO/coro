@@ -90,7 +90,7 @@ const PurpleCareers = () => {
                                     <img src={career1} alt="career" className="bg-cover w-[631px] h-full rounded-l-md" loading="lazy" />
                                 </div>
                                 <div className="flex-1 border-b-4 border-b-[#B580D1] flex items-center justify-center">
-                                    <div className="lg:w-[357px] h-[220px]">
+                                    <div className="lg:w-[357px] h-[220px] lg:pt-10 pt-0">
                                         <div className="mb-4 pl-4 lg:pl-0">
                                             <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]">Life at CORONATION</h2>
                                             <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[18px]">
@@ -120,12 +120,14 @@ const PurpleCareers = () => {
                                 <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
                                     <img src={career1} alt="career" className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full" />
                                     <div className="p-4">
-                                        <div className="mt-4">
+                                        <div className="mt-4 mb-1">
                                             <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]">Life at CORONATION</h2>
                                             <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2">
                                                 Being a part of Coronation means being a part of a community of smart and ambitious people from diverse backgrounds that makes the One Coronation. Explore Life at Coronation…
                                             </p>
                                         </div>
+                                        <Link to="https://www.instagram.com/coronationgh/" target='_blank' rel='noopener noreferrer' className="text-[#B580D1]">Learn More</Link>
+
                                     </div>
                                 </div>
                                 <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
