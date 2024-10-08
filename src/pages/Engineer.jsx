@@ -4,18 +4,28 @@ import motorbg from "../assets/purplemotor/motorbg.png"
 import hero1 from "../assets/redmotor/redmotor.png"
 import hero2 from "../assets/engineer/engineer3.png"
 import engineer6 from "../assets/engineer/engineer6.png"
-import StudentFeature from "../features/StudentFeature";
 import { useState } from "react";
-import IndividualFeature from "../features/IndividualFeature";
 
 import travelmob from "../assets/purpletravel/travelmob.png"
 import travelbenefit from "../assets/purpletravel/travelbenefit.png"
 import { Link } from "react-router-dom"
+import PlantRiskFeature from "../features/PlantRiskFeature"
+import ContractorFeature from "../features/ContractorFeature"
+import MachineFeature from "../features/MachineFeature"
+import ErectionFeature from "../features/ErectionFeature"
+import ElectronicFeature from "../features/ElectronicFeature"
+
 
 const Engineer = () => {
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isIndModalOpen, setIsIndModalOpen] = useState(false);
+    const [plantOpen, setPlantOpen] = useState(false);
+    const [contractorOpen, setContractorOpen] = useState(false);
+    const [machineOpen, setMachineOpen] = useState(false);
+    const [erectionOpen, setErectionOpen] = useState(false);
+    const [electronicOpen, setElectronicOpen] = useState(false);
+
+
+
 
 
 
@@ -46,7 +56,9 @@ const Engineer = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex lg:mt-5 mt-2 lg:w-[116px] w-[95px] h-[36px] bg-black font-semibold lg:text-[14px] text-[10px] leading-[20px] text-white items-center justify-center">
-                            GET A QUOTE
+                            <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>
+                                GET A QUOTE
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -90,14 +102,14 @@ const Engineer = () => {
                                         <li className="text-[14px] text-[#56575D]">Obstruction or the entry of foreign</li>
                                     </ul>
                                 </div>
-                                <div onClick={() => setIsModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer 
+                                <div onClick={() => setPlantOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer 
                                 shadow-md text-black flex items-center justify-center lg:mt-32 md:mt-24 mt-4">
                                     Insurance Features
                                 </div>
                             </div>
                         </div>
-                        {isModalOpen && (
-                            <StudentFeature closeModal={() => setIsModalOpen(false)} /> // Pass close function to the modal
+                        {plantOpen && (
+                            <PlantRiskFeature closeModal={() => setPlantOpen(false)} /> // Pass close function to the modal
                         )}
                         <div className="lg:w-[627px] w-[347px] lg:h-[770px] md:h-[790px] h-[750px] p-4 border border-b-4 border-b-[#FF0226] bg-white rounded-lg shadow-lg">
                             <img
@@ -122,13 +134,13 @@ const Engineer = () => {
                                         <li className="text-[14px] text-[#56575D]">Covers loss or damage to properties in</li>
                                     </ul>
                                 </div>
-                                <div onClick={() => setIsIndModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
+                                <div onClick={() => setContractorOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                     Insurance Features
                                 </div>
                             </div>
                         </div>
-                        {isIndModalOpen && (
-                            <IndividualFeature closeModal={() => setIsIndModalOpen(false)} /> // Pass close function to the modal
+                        {contractorOpen && (
+                            <ContractorFeature closeModal={() => setContractorOpen(false)} /> // Pass close function to the modal
                         )}
                     </div>
                 </div>
@@ -151,16 +163,19 @@ const Engineer = () => {
                                 moved or re-erected for the purposes of cleaning, inspection, repair or installation in another position within the premises stated in the policy.
                             </p>
                             <div className="flex gap-4">
-                                <div className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
+                                <div onClick={() => setMachineOpen(true)} className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
                                     Insurance Features
                                 </div>
                                 <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    Request & Pay
+                                    <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {machineOpen && (
+                    <MachineFeature closeModal={() => setMachineOpen(false)} /> // Pass close function to the modal
+                )}
             </section>
 
             <section>
@@ -178,11 +193,11 @@ const Engineer = () => {
                                 </ul>
                             </div>
                             <div className="flex gap-4">
-                                <div className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
+                                <div onClick={() => setErectionOpen(true)} className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
                                     Insurance Features
                                 </div>
                                 <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    Request & Pay
+                                    <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
                                 </div>
                             </div>
                         </div>
@@ -191,6 +206,9 @@ const Engineer = () => {
                         <img src={travelbenefit} alt="engineer" className="w-[628px] h-[452px]" />
                     </div>
                 </div>
+                {erectionOpen && (
+                    <ErectionFeature closeModal={() => setErectionOpen(false)} /> // Pass close function to the modal
+                )}
             </section>
 
             <section>
@@ -214,16 +232,19 @@ const Engineer = () => {
                                 </ul>
                             </div>
                             <div className="flex gap-4">
-                                <div className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
+                                <div onClick={() => setElectronicOpen(true)} className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
                                     Insurance Features
                                 </div>
                                 <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    Request & Pay
+                                    <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {electronicOpen && (
+                    <ElectronicFeature closeModal={() => setElectronicOpen(false)} /> // Pass close function to the modal
+                )}
             </section>
 
             <section>
@@ -252,7 +273,8 @@ const Engineer = () => {
                                         </ul>
                                     </div>
                                 </div>
-                                <Link className="font-semibold text-[14px] leading-[20px] text-black lg:mt-6 md:mt-0">
+                                <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'
+                                    className="font-semibold text-[14px] leading-[20px] text-black lg:mt-6 md:mt-0">
                                     Learn More
                                 </Link>
                             </div>
@@ -269,7 +291,8 @@ const Engineer = () => {
                                         </ul>
                                     </div>
                                 </div>
-                                <Link className="font-semibold text-[14px] leading-[20px] text-black mt-6">
+                                <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'
+                                    className="font-semibold text-[14px] leading-[20px] text-black mt-6">
                                     Learn More
                                 </Link>
                             </div>

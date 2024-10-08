@@ -3,13 +3,17 @@ import "./global.css"
 import marinemainbg from "../assets/marine/marinemainbg.png"
 import mariners from "../assets/marine/mariners.png"
 import marinersmob from "../assets/marine/marinersmob.png"
+import { Link } from "react-router-dom"
+import CargoFeature from "../features/CargoFeature"
+import { useState } from "react"
+import MarinehullFeature from "../features/MarinehullFeature"
 // import { useState } from "react"
 
 
 
 const Marine = () => {
-    // const [isModalOpen, setIsModalOpen] = useState(false);
-    // const [isHouseModalOpen, setIsHouseModalOpen] = useState(false);
+    const [cargoOpen, setCargoOpen] = useState(false);
+    const [marinehullOpen, setMarinehullOpen] = useState(false);
 
 
     return (
@@ -84,14 +88,17 @@ const Marine = () => {
                             Loss or damage to imported goods being conveyed by sea or air.
                         </span>
                         <div className="flex gap-4">
-                            <div className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
+                            <div onClick={() => setCargoOpen(true)} className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
                                 Insurance Features
                             </div>
                             <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                Request & Pay
+                                <Link to="https://ecoronation.com/marine" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
                             </div>
                         </div>
                     </div>
+                    {cargoOpen && (
+                        <CargoFeature closeModal={() => setCargoOpen(false)} /> // Pass close function to the modal
+                    )}
                     <div className="lg:w-[720px] w-full lg:h-[292px] flex flex-col items-start justify-center">
                         <h3 className="text-[24px] font-semibold leading-8">
                             Marine hull
@@ -100,14 +107,17 @@ const Marine = () => {
                             Loss or damage to vessels, yachts and their machinery.
                         </span>
                         <div className="flex gap-4">
-                            <div className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
+                            <div onClick={() => setMarinehullOpen(true)} className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
                                 Insurance Features
                             </div>
                             <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                Request & Pay
+                                <Link to="https://ecoronation.com/marine" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
                             </div>
                         </div>
                     </div>
+                    {marinehullOpen && (
+                        <MarinehullFeature closeModal={() => setMarinehullOpen(false)} /> // Pass close function to the modal
+                    )}
                 </div>
             </section>
 
