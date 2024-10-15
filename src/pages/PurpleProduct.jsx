@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import productbg from "../assets/purpleproduct/productbg.png"
-import product1 from "../assets/purpleproduct/product1.png"
-import product2 from "../assets/purpleproduct/product2.png"
-import product3 from "../assets/purpleproduct/product3.png"
+// import productbg from "../assets/purpleproduct/productbg.png"
+// import product1 from "../assets/purpleproduct/product1.png"
+// import product2 from "../assets/purpleproduct/product2.png"
+// import product3 from "../assets/purpleproduct/product3.png"
 import product4 from "../assets/purpleproduct/product4.png"
 import product5 from "../assets/purpleproduct/product5.png"
 
@@ -12,19 +12,48 @@ import product44 from "../assets/purpleproduct/product44.png"
 
 
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 
 const PurpleProduct = () => {
+    const [productData, setProductData] = useState(null);
+
+
+    useEffect(() => {
+        const fetchproductData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/pns/fetch');
+                const data = await response.json();
+                console.log('purple product Data:', data);
+                setProductData(data[0]);
+            } catch (error) {
+                console.error('Error fetching product data:', error);
+            }
+        };
+        fetchproductData();
+    }, []);
+
+    // Check if either aboutData or bodData is still loading
+    if (!productData) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className="overflow-hidden">
             <div className="relative">
-                <img src={productbg} alt="about" className="hidden lg:block w-full bg-cover lg:w-full" loading="lazy" />
-                <img src={productmob} alt="about" className="lg:hidden block bg-cover w-full md:h-[800px]" loading="lazy" />
+                <img
+                    src={productData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.header_image}` : "assets/purpleproduct/productbg.png"}
+                    alt="about"
+                    className="hidden lg:block w-full bg-cover lg:w-full"
+                    loading="lazy" />
+                <img
+                    src={productmob} alt="about"
+                    className="lg:hidden block bg-cover w-full md:h-[800px]"
+                    loading="lazy" />
                 <div className="absolute lg:top-[293px] md:top-[500px] top-[470px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">
-                    <h2 className="lg:text-[56px] md:text-[40px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Individual Insurance</h2>
-                    <span className="w-full h-[72px] lg:text-[18px] md:text-[24px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
-                        Coronation Insurance Ghana Ltd offers comprehensive insurance for your car, home, business and life - with only one telephone call. Find out more & get a quote.
-                    </span>
+                    <h2 className="lg:text-[56px] md:text-[40px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white"
+                        dangerouslySetInnerHTML={{ __html: productData.header_caption }} />
+                    <span className="w-full h-[72px] lg:text-[18px] md:text-[24px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white"
+                        dangerouslySetInnerHTML={{ __html: productData.header_body }} />
                 </div>
                 <div className="absolute lg:top-[280px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-black bg-opacity-40 rounded-lg shadow-md">
                     <div className="lg:p-4 p-4">
@@ -53,19 +82,17 @@ const PurpleProduct = () => {
                         <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:px-40 lg:px-0 px-0 w-full lg:h-[524px] h-[1204px]">
                             <div className="w-[436px] h-full">
                                 <img
-                                    src={product1}
+                                    src={productData?.motor_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.motor_image}` : "assets/purpleproduct/product1.png"}
                                     alt="pic"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy"
                                 />
                                 <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Motor Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
-                                        Our car insurance plans are designed to help protect you, your vehicle and the ones you love.
-                                        We also settle claims within 48 hours leaving you free to cruise on with absolute peace of mind.
-                                    </p>
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
+                                        dangerouslySetInnerHTML={{ __html: productData.motor_caption }} />
+
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0"
+                                        dangerouslySetInnerHTML={{ __html: productData.motor_body }} />
                                     <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
                                         <Link to="/purpleproductdetails/motor">Read More</Link>
                                     </div>
@@ -74,18 +101,17 @@ const PurpleProduct = () => {
 
                             <div className="w-[436px] h-full">
                                 <img
-                                    src={product2}
+                                    src={productData?.travel_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.travel_image}` : "assets/purpleproduct/product2.png"}
                                     alt="pic"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy"
                                 />
                                 <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Travel Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
-                                        Travelling should be an enjoyable experience, our plans are designed to keep it that way.
-                                    </p>
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
+                                        dangerouslySetInnerHTML={{ __html: productData.travel_caption }} />
+
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
+                                        dangerouslySetInnerHTML={{ __html: productData.travel_body }} />
                                     <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
                                         <Link to="/purpleproductdetails/travel">Read More</Link>
                                     </div>
@@ -94,17 +120,15 @@ const PurpleProduct = () => {
 
                             <div className="w-[436px] h-full">
                                 <img
-                                    src={product3}
+                                    src={productData?.house_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.house_image}` : "assets/purpleproduct/product3.png"}
                                     alt="pic"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy" />
                                 <div className="w-full h-[204px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Home Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
-                                        Coronation Home Insurance protects your home inside and out, covering your building and belongings.
-                                    </p>
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
+                                        dangerouslySetInnerHTML={{ __html: productData.house_caption }} />
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
+                                        dangerouslySetInnerHTML={{ __html: productData.house_body }} />
                                     <div className="text-[#B580D1] font-medium text-[14px] leading-[20px]">
                                         <Link to="/purpleproductdetails/home">Read More</Link>
                                     </div>

@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import "./global.css"
-import motorbg from "../assets/purplemotor/motorbg.png"
-import student from "../assets/purpletravel/student1.png"
-import travelguy from "../assets/purpletravel/travelguy.png"
+// import motorbg from "../assets/purplemotor/motorbg.png"
+// import student from "../assets/purpletravel/student1.png"
+// import travelguy from "../assets/purpletravel/travelguy.png"
 
 import StudentFeature from "../features/StudentFeature";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IndividualFeature from "../features/IndividualFeature";
 
 import travelmob from "../assets/purpletravel/travelmob.png"
@@ -17,6 +17,28 @@ const PurpleTravel = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isIndModalOpen, setIsIndModalOpen] = useState(false);
 
+    const [travelData, setTravelData] = useState(null);
+
+
+    useEffect(() => {
+        const fetchmotorData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/travel/individual/fetch');
+                const data = await response.json();
+                console.log('purple travel Data:', data);
+                setTravelData(data[0]);
+            } catch (error) {
+                console.error('Error fetching travel data:', error);
+            }
+        };
+        fetchmotorData();
+    }, []);
+
+    // Check if either aboutData or bodData is still loading
+    if (!travelData) {
+        return <div>Loading...</div>;
+    }
+
 
 
     return (
@@ -24,16 +46,18 @@ const PurpleTravel = () => {
             <div className="flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px]">
                 <div className="flex-1 flex-col bg-[#EFEFF0] flex lg:items-center justify-center">
                     <div className="p-4">
-                        <h2 className="lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-bold">Travel Insurance</h2>
-                        <p className="lg:w-[560px] md:w-[600px] w-[319px] lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4">
-                            Travel insurance provides cover for risks associated with travelling out of your country of residence on a temporary basis.
-                            This cover includes medical expenses as a result of accident or illness, cost of repatriation and financial
-                            compensation to your beneficiaries in the event of unfortunate case of death while under cover and many more.
-                        </p>
+                        <h2 className="lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-bold"
+                            dangerouslySetInnerHTML={{ __html: travelData.header_caption }} />
+                        <p className="lg:w-[560px] md:w-[600px] w-[319px] lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4"
+                            dangerouslySetInnerHTML={{ __html: travelData.header_body }} />
+
                     </div>
                 </div>
                 <div className="">
-                    <img src={motorbg} alt="about" className="hidden lg:flex bg-cover w-full h-full" loading="lazy" />
+                    <img
+                        src={travelData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${travelData.header_image}` : "assets/purplemotor/motorbg.png"}
+                        className="hidden lg:flex bg-cover w-full h-full"
+                        loading="lazy" />
                     <img src={travelmob} alt="about" className="flex lg:hidden md:h-[500px] bg-cover w-full h-[458px]" loading="lazy" />
                 </div>
                 <div className="glass absolute lg:bottom-[137px] md:bottom-[235px] small:bottom-[305px]
@@ -54,12 +78,11 @@ const PurpleTravel = () => {
             <section>
                 <div className="w-full h-[250px] bg-black lg:px-28 px-4 items-center lg:py-12 md:py-20 py-10">
                     <div className="flex flex-col">
-                        <h3 className="text-white lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-bold lg:w-[572px]">
-                            WHY CHOOSE CORONATION INSURANCE GHANA LTD?
-                        </h3>
+                        <h3 className="text-white lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-bold lg:w-[572px]"
+                            dangerouslySetInnerHTML={{ __html: travelData.sec1_caption }} />
                         <div className="flex items-center mt-4">
-                            <span className="text-white lg:text-[18px] md:text-[16px] text-[14px] leading-[24px] font-normal w-[703px] h-[48px]">
-                                No matter where you are in the world, you’ll enjoy the support and cover you need. There’s a reason we’re one of Africa’s most respected insurance companies.                            </span>
+                            <span className="text-white lg:text-[18px] md:text-[16px] text-[14px] leading-[24px] font-normal w-[703px] h-[48px]"
+                                dangerouslySetInnerHTML={{ __html: travelData.sec1_body }} />
                         </div>
                     </div>
                 </div>
@@ -70,16 +93,15 @@ const PurpleTravel = () => {
                     <div className="flex lg:flex-row md:flex-row flex-col gap-6 lg:w-[1280px] h-full">
                         <div className="lg:w-[627px] w-[347px] lg:h-[540px] h-[404px] p-4 border border-b-4 border-b-[#B580D1] bg-white rounded-lg shadow-lg">
                             <img
-                                src={student} alt="hero"
+                                src={travelData?.student_ins_image ? `https://coronation-cms.interactivedigital.com.gh/${travelData.student_ins_image}` : "assets/purpletravel/student1.png"}
                                 className="lg:w-[580px] w-[343px] lg:h-[280px] h-[220px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
                                     STUDENT
                                 </h3>
-                                <p className="w-full lg:h-[72px] h-[50px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-4">
-                                    Protection for students that study outside their country or travel for school excursion.
-                                </p>
+                                <p className="w-full lg:h-[72px] h-[50px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-4"
+                                    dangerouslySetInnerHTML={{ __html: travelData.student_insurance_body }} />
                                 <div onClick={() => setIsModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center lg:mt-6">
                                     Insurance Features
                                 </div>
@@ -90,16 +112,15 @@ const PurpleTravel = () => {
                         )}
                         <div className="lg:w-[627px] w-[347px] lg:h-[540px] h-[404px] p-4 border border-b-4 border-b-[#B580D1] bg-white rounded-lg shadow-lg">
                             <img
-                                src={travelguy} alt="hero"
+                                src={travelData?.individual_ins_image ? `https://coronation-cms.interactivedigital.com.gh/${travelData.individual_ins_image}` : "assets/purpletravel/travelguy.png"}
                                 className="lg:w-[580px] w-[343px] lg:h-[280px] h-[220px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
                                     INDIVIDUALS
                                 </h3>
-                                <p className="w-full lg:h-[72px] h-[50px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-4">
-                                    Traveling abroad? Solo or with people? Business or leisure, we’ve got something to make the journey better.
-                                </p>
+                                <p className="w-full lg:h-[72px] h-[50px] font-normal lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] text-[#56575d] lg:mt-6 mt-4"
+                                    dangerouslySetInnerHTML={{ __html: travelData.individual_insurance_body }} />
                                 <div onClick={() => setIsIndModalOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                     Insurance Features
                                 </div>

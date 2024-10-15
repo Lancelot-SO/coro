@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { IoIosArrowBack } from "react-icons/io";
 
 import brochureUrl from "../assets/purpleinsight/Staying_ahead_of_the_storm.pdf"
@@ -14,20 +14,49 @@ import Insight6 from "../assets/purpleinsight/insight6.png"
 import strate from "../assets/purpleinsight/strate.png"
 
 import insightbanner from "../assets/purpleinsight/insightbanner.png"
+import { useEffect, useState } from "react";
 
 
 
 
 const DetailOne = () => {
+
+    const { id } = useParams(); // Get the blog id from the URL
+    const [articleDetails, setArticleDetails] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchArticleDetails = async () => {
+            try {
+                const response = await fetch(`https://coronation-cms.interactivedigital.com.gh/api/blog/${id}/details`);
+                const data = await response.json();
+                setArticleDetails(data[0]);
+                console.log(data)
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching article details:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchArticleDetails();
+    }, [id]);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!articleDetails) {
+        return <div>No details available for this article.</div>;
+    }
     return (
         <div className="overflow-hidden">
             <div className="relative">
                 <img src={storm} alt="about" className="w-full h-[400px] bg-cover" loading="lazy" />
                 <div className="absolute top-[20px] lg:left-20 left-4 w-[858px] h-[152px]">
                     <div className="text-white flex items-center gap-1 mb-2"><IoIosArrowBack /><Link to="/purpleinsights">Back</Link></div>
-                    <span className="w-[681px] h-[48px] lg:text-[40px] text-[24px] font-normal leading-[24px] text-white">
-                        Staying ahead of the storm
-                    </span>
+                    <span className="w-[681px] h-[48px] lg:text-[40px] text-[24px] font-normal leading-[24px] text-white"
+                        dangerouslySetInnerHTML={{ __html: articleDetails.caption }} />
                     <div className="flex gap-8 mt-3">
                         <h3 className="text-[12px] text-[#888991]">Insurance</h3>
                         <ul className="list-disc">
@@ -39,7 +68,7 @@ const DetailOne = () => {
 
                     <a href={brochureUrl} download className="flex mt-5 w-[120px] h-[35px] text-[12px] gap-2 bg-white text-black rounded-lg items-center justify-center">
                         <MdOutlineFileDownload size={20} />
-                        GET A QUOTE
+                        Download
                     </a>
                 </div>
             </div>
@@ -49,67 +78,12 @@ const DetailOne = () => {
                     <div className="lg:w-[1280px] lg:h-[1672px] flex lg:flex-row flex-col gap-10">
                         <div className="lg:w-[827px] md:w-full w-[347px] h-full flex flex-col gap-4 ">
                             <div className="lg:w-[803px] lg:h-[264px] flex flex-col gap-6">
-                                <p className="font-normal text-[16px] leading-[24px] text-[#56575D]">
-                                    In today's age of global warming, characterised by a rise in the frequency and severity of floods and fires,
-                                    the significance of taking preventive measures cannot be overstated.
-                                    Ghana, in particular, experiences periodic flooding attributed to various factors such as heavy rainfall,
-                                    inadequate drainage systems, and human activities like improper waste management and urbanisation.
-                                    Urban areas of the country are particularly susceptible to frequent flooding during moderate to heavy rainfalls.
-                                </p>
-                                <p className="font-normal text-[16px] leading-[24px] text-[#56575D]">
-                                    The consequences of flooding can be severe, including loss of lives, displacement of people,
-                                    property damage, and more. Therefore, it is crucial to identify strategies that can mitigate these impacts.
-                                    As we approach the rainy season, it is advisable to take immediate steps to avoid, prevent,
-                                    or minimize the adverse effects and costs of flooding.
-                                </p>
+                                <p className="font-normal text-[16px] leading-[24px] text-[#56575D]"
+                                    dangerouslySetInnerHTML={{ __html: articleDetails.body }} />
                             </div>
-                            <div className="lg:w-[803px] lg:h-[72px] border-4 border-t-0 border-b-0 border-r-0 border-[#B580D1] flex items-center p-4">
-                                <p className="W-[771px] font-medium text-[16px] leading-[24px]">
-                                    “With a same-day/24-hour claims payout policy on all household and business covers, Coronation Insurance ensures prompt assistance in times of need through its dedicated account managers.”
-                                </p>
-                            </div>
-                            <div className="lg:W-[771px] lg:h-[72px]">
-                                <p className="font-normal text-[16px] leading-[24px] text-[#56575D]">
-                                    We have partnered with highly regarded global institutions to build Nigeria's first fully integrated technology-enabled investment platform, thus allowing us to become one of the region's fastest-growing fund managers.
-                                </p>
-                            </div>
-                            <div>
+                            {/* <div>
                                 <img src={storm} alt="about" className="lg:w-[803px] h-[320px] bg-cover" loading="lazy" />
-                            </div>
-
-                            <div className="lg:w-[803px] lg:h-[120px] flex flex-col gap-6">
-                                <p className="font-normal text-[16px] leading-[24px] text-[#56575D]">
-                                    Although developing a strategy for flood or fire may seem complex,
-                                    an insurance product will simplify the process significantly.
-                                    It is advisable to consult with risk experts to tailor insurance coverage to
-                                    specific risks and working with a reputable and qualified insurer may just be the icing on the cake.
-                                    Even more important, is getting a claim paid out when a loss occurs. Coronation Insurance stands out in Ghana for its effective, comprehensive, and speedy claims payment.
-                                </p>
-                            </div>
-
-                            <div className="lg:w-[803px] lg:h-[264px] flex flex-col gap-2">
-                                <h2 className="font-medium text-[24px] leading-8">Here are some key aspects of home insurance:</h2>
-                                <ul className="text-[#56575D] text-[16px] leading-6 font-normal list-decimal pl-6 flex flex-col gap-2">
-                                    <li>Protects the structure of your home, including its foundation, walls, roof, and attached structures like garages or decks</li>
-                                    <li>Covers your personal belongings, such as furniture, appliances, electronics, clothing, and valuables against damage</li>
-                                    <li>Provides 3rd party liability cover for events that occur within your premises.</li>
-                                    <li>Provides compensation for the cost of alternative accommodation in the event that flood, fire, or other incidents require you to move out of your home during repairs</li>
-                                    <li>Provides personal accident cover</li>
-                                </ul>
-                            </div>
-
-                            <div className="lg:w-[803px] lg:h-[264px] flex flex-col gap-2">
-                                <h2 className="font-medium text-[24px] leading-8">Regarding fire risks, it is crucial to adhere to some of the tips below:</h2>
-                                <ul className="text-[#56575D] text-[16px] leading-6 font-normal list-decimal pl-6 flex flex-col gap-2">
-                                    <li>Address faulty electrical wiring, which remains a significant cause of fires in Ghana.</li>
-                                    <li>Employ professionally qualified electricians who are knowledgeable about building and wiring requirements.</li>
-                                    <li>Ensure all electrical repairs adhere to statutory building and wiring codes.</li>
-                                    <li>Report Illegal electricity connections to the relevant authorities, as they pose a danger to the entire neighborhood.</li>
-                                    <li>Avoid accumulating flammable materials on the premises. Flammable goods should be stored in safe and fire-protected buildings or storage areas.</li>
-                                    <li>Practise responsible personal behaviour, such as switching off electrical equipment when not in use and unplugging them.</li>
-                                    <li>Proper handling of gas, including turning it off when not in use and storing gas cylinders in purpose-built protective structures or using approved cylinders for internal domestic use and storage.</li>
-                                </ul>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="lg:w-[413px] h-full flex flex-col gap-10">
                             <div className="w-full h-[120px] bg-[#F7F7F8] flex flex-col gap-4 rounded-md">
@@ -201,7 +175,7 @@ const DetailOne = () => {
                     <div className="absolute lg:top-[25%] top-2 left-[7%] lg:text-[56px] text-[24px] font-semibold leading-[64px] text-white">
                         Get Insured Today
                     </div>
-                    <div className="bg-white absolute g:top-[70%] top-16 left-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
+                    <div className="bg-white absolute lg:top-[60%] top-16 left-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
                         <Link>Contact Us</Link>
                     </div>
                 </div>

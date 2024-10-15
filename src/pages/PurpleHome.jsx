@@ -68,7 +68,7 @@ const PurpleHome = () => {
                     My Insurance Account
                 </div>
                 <div className="flex text-[16px] leading-[30px] font-semibold w-[120px] h-10 bg-white rounded-lg items-center justify-center">
-                    <Link to="/" >Request & Pay</Link>
+                    <Link to="https://coronation.ng/institutional/" target='_blank' rel='noopener noreferrer' >Request & Pay</Link>
                 </div>
             </div>
             <section id="pruplehome_section3">

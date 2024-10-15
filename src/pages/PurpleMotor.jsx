@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import motorbg from "../assets/purplemotor/motorbg.png"
-import motorfeature from "../assets/purplemotor/motorfeature.png"
+// import motorbg from "../assets/purplemotor/motorbg.png"
 import product5 from "../assets/purpleproduct/product5.png"
 import motormob from "../assets/purplemotor/motormob.png"
 import motorbanner from "../assets/purplemotor/motorbanner.png"
@@ -9,7 +8,7 @@ import motorbanner from "../assets/purplemotor/motorbanner.png"
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 import "./global.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import MotorFeature from "../features/MotorFeature";
 import TheftFeature from "../features/TheftFeature";
@@ -17,7 +16,6 @@ import PartyFeature from "../features/PartyFeature";
 
 
 const PurpleMotor = () => {
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isTravelModalOpen, setIsTravelModalOpen] = useState(false);
     const [isPartyModalOpen, setIsPartyModalOpen] = useState(false);
@@ -29,6 +27,30 @@ const PurpleMotor = () => {
         thirdPartyFire: false,
         thirdPartyOnly: false,
     });
+
+    const [motorData, setMotorData] = useState(null);
+
+
+    useEffect(() => {
+        const fetchmotorData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/motor/individual/fetch');
+                const data = await response.json();
+                console.log('purple motor Data:', data);
+                setMotorData(data[0]);
+            } catch (error) {
+                console.error('Error fetching motor data:', error);
+            }
+        };
+        fetchmotorData();
+    }, []);
+
+    // Check if either aboutData or bodData is still loading
+    if (!motorData) {
+        return <div>Loading...</div>;
+    }
+
+
 
     const toggleExpand = (section) => {
         setIsExpanded((prevState) => ({
@@ -43,21 +65,23 @@ const PurpleMotor = () => {
                 <div className="flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px] ">
                     <div className="flex-1 flex-col bg-[#EFEFF0] flex lg:items-center justify-center">
                         <div className="p-4">
-                            <h2 className="lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-bold">Motor Insurance</h2>
-                            <p className="lg:w-[560px] md:w-[600px] w-[319px] lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] lg:mt-4 mt-2">
-                                This is an insurance product that pays for damages to your vehicle (private or commercial) as a result of theft,
-                                accident or fire. It also covers third-party injury and death,
-                                property damage and legal cost. It comes in 3 variants namely Third Party, Third Party, Fire and theft & Comprehensive.
-                            </p>
+                            <h2 className="lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-bold"
+                                dangerouslySetInnerHTML={{ __html: motorData.header_caption }} />
+                            <p className="lg:w-[560px] md:w-[600px] w-[319px] lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] lg:mt-4 mt-2"
+                                dangerouslySetInnerHTML={{ __html: motorData.header_body }} />
                         </div>
                     </div>
                     <div className="">
-                        <img src={motorbg} alt="about" className="hidden lg:flex bg-cover w-full h-full" loading="lazy" />
+                        <img
+                            src={motorData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${motorData.header_image}` : "assets/purplemotor/motorbg.png"}
+                            alt="about"
+                            className="hidden lg:flex bg-cover w-full h-full"
+                            loading="lazy" />
                         <img src={motormob} alt="about" className="flex lg:hidden bg-cover w-full h-[458px]" loading="lazy" />
                     </div>
-                    <div className="glass absolute lg:bottom-[137px] md:bottom-[227px] small:bottom-[297px] nsm:bottom-[262px] xsm:bottom-[32px]
-                    msm:bottom-[105px] rsm:bottom-[280px]
-                    xxsm:bottom-[208px] bottom-[261px] right-0 lg:w-[385px] w-[243px] lg:h-[164px] h-[140px]">
+                    <div className="glass absolute lg:bottom-[137px] md:bottom-[227px] small:bottom-[317px] nsm:bottom-[280px] xsm:bottom-[51px]
+                    msm:bottom-[125px] rsm:bottom-[299px]
+                    xxsm:bottom-[228px] bottom-[261px] right-0 lg:w-[385px] w-[243px] lg:h-[164px] h-[140px]">
                         <div className="lg:p-4 p-2">
                             <span className="text-white w-[300px] h-[32px] lg:text-[24px] leading-[32px] font-semibold">My Insurance Account</span>
                             <p className="text-white lg:text-[16px] text-[12px] leading-[24px] font-normal lg:mt-2 mt-0">
@@ -74,13 +98,13 @@ const PurpleMotor = () => {
             <section>
                 <div className="w-full h-[290px] bg-black lg:px-28 px-4 items-center lg:py-20 md:py-20 py-10">
                     <div className="flex flex-col">
-                        <h3 className="text-white lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-bold lg:w-[483px]">
-                            CAR INSURANCE THAT IS CUSTOMIZED FOR YOU
-                        </h3>
+                        <h3 className="text-white lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-bold lg:w-[483px]"
+                            dangerouslySetInnerHTML={{ __html: motorData.sec1_caption }} />
+
                         <div className="flex items-center mt-4">
-                            <span className="text-white lg:text-[18px] md:text-[16px] text-[14px] leading-[24px] font-normal w-[703px] h-[48px]">
-                                Your car is as unique as you. This is why our plans are flexible and designed to fit your specific needs. No matter the size of your car (or pocket), we’ve got something for you.
-                            </span>
+                            <span className="text-white lg:text-[18px] md:text-[16px] text-[14px] leading-[24px] font-normal w-[703px] h-[48px]"
+                                dangerouslySetInnerHTML={{ __html: motorData.sec1_body }} />
+
                         </div>
                     </div>
                 </div>
@@ -88,7 +112,10 @@ const PurpleMotor = () => {
 
             <section>
                 <div className="relative overflow-hidden">
-                    <img src={motorfeature} alt="feature" className="h-[657px] md:w-[400px] lg:w-[599px] object-cover" loading="lazy" />
+                    <img
+                        src={motorData?.sec1_image ? `https://coronation-cms.interactivedigital.com.gh/${motorData.sec1_image}` : "assets/purplemotor/motorfeature.png"}
+                        className="h-[657px] md:w-[400px] lg:w-[599px] object-cover"
+                        loading="lazy" />
                     <div className="absolute top-[20%] lg:left-[20%] md:left-[40%] left-5 lg:w-[954px] w-[350px] bg-white border rounded-lg shadow-md">
                         <div className="p-4">
                             {/* Comprehensive Insurance Section */}
@@ -104,10 +131,10 @@ const PurpleMotor = () => {
                                 </div>
                                 {isExpanded.comprehensive && (
                                     <>
-                                        <span className="w-[906px] h-[72px] lg:text-[16px] text-[12px] leading-[24px] font-normal text-[#888991]">
-                                            This is an insurance product that pays for damages to your vehicle as a result of theft,
-                                            accident or fire. It also covers legal liability to third-parties in the event of death, bodily injury, legal cost and property damage. With this policy, the cost of replacing or repairing your vehicle is covered.
-                                        </span>
+                                        <span className="w-[906px] h-[72px] lg:text-[16px] text-[12px] leading-[24px] font-normal text-[#888991]"
+                                            dangerouslySetInnerHTML={{
+                                                __html: motorData.compliance_ins_body
+                                            }} />
                                         <div className="flex gap-4">
                                             <span onClick={() => setIsModalOpen(true)} className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                                 Insurance Features
@@ -137,9 +164,10 @@ const PurpleMotor = () => {
                                 </div>
                                 {isExpanded.thirdPartyFire && (
                                     <>
-                                        <span className="w-[906px] h-[72px] lg:text-[16px] text-[12px] leading-[24px] font-normal text-[#888991]">
-                                            This is an insurance product which covers the policy holder against legal liability to third parties in the event of death, bodily injury and property damage. Beyond these, this policy also covers theft or damage by fire. Under Third party fire & theft the cost of repairs and/or outright replacement is also covered. The policy allows you to buy additional features such as personal accident and cover for riots along with the standard features of the product.
-                                        </span>
+                                        <span className="w-[906px] h-[72px] lg:text-[16px] text-[12px] leading-[24px] font-normal text-[#888991]"
+                                            dangerouslySetInnerHTML={{
+                                                __html: motorData.tp_fire_theft_body
+                                            }} />
                                         <div className="flex gap-4">
                                             <span onClick={() => setIsTravelModalOpen(true)} className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                                 Insurance Features
@@ -170,9 +198,10 @@ const PurpleMotor = () => {
                                 </div>
                                 {isExpanded.thirdPartyOnly && (
                                     <>
-                                        <span className="lg:w-[906px] w-[347px] h-[72px] lg:text-[16px] text-[12px] leading-[24px] font-normal text-[#888991]">
-                                            It is a simple insurance product which covers the policy holder against legal liability to third parties in the event of death, bodily injury, legal cost and property damage involving the insured vehicle. Third party insurance is a mandatory requirement for all vehicles on Ghanaian roads. It became mandatory through the Motor Vehicle (third party) Insurance Act of 1958.
-                                        </span>
+                                        <span className="lg:w-[906px] w-[347px] h-[72px] lg:text-[16px] text-[12px] leading-[24px] font-normal text-[#888991]"
+                                            dangerouslySetInnerHTML={{
+                                                __html: motorData.tp_only_body
+                                            }} />
                                         <div className="flex gap-4">
                                             <span onClick={() => setIsPartyModalOpen(true)} className="w-[142px] h-[36px] bg-[#B580D1] font-semibold text-[14px] leading-[20px] cursor-pointer rounded-lg shadow-md text-white flex items-center justify-center mt-6">
                                                 Insurance Features

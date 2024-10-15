@@ -3,8 +3,29 @@
 import { FaTimes } from "react-icons/fa";
 import motor5 from "../assets/purplemotor/motor5.png";
 import "./globalfeature.css";
+import { useEffect, useState } from "react";
 
 const TheftFeature = ({ closeModal }) => { // Receive closeModal as prop
+    const [motorData, setMotorData] = useState(null);
+
+    useEffect(() => {
+        const fetchmotorData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/motor/individual/fetch');
+                const data = await response.json();
+                console.log('purple motor Data:', data);
+                setMotorData(data[0]);
+            } catch (error) {
+                console.error('Error fetching motor data:', error);
+            }
+        };
+        fetchmotorData();
+    }, []);
+
+    // Check if either aboutData or bodData is still loading
+    if (!motorData) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className="modal-overlay">
             <div className="content lg:h-[580px] h-[680px]">
@@ -19,18 +40,11 @@ const TheftFeature = ({ closeModal }) => { // Receive closeModal as prop
                         <div className="text-[24px] leading-[32px] font-semibold">THIRD PARTY FIRE & THEFT</div>
                         <div className="pl-6 mt-2">
                             <ul className="list-disc flex flex-col gap-2">
-                                <li className="text-[14px] text-[#56575D]">Third party bodily injury & death as stated in our policy document</li>
-                                <li className="text-[14px] text-[#56575D]">Third-party property damage limit: GHS6,000</li>
-                                <li className="text-[14px] text-[#56575D]">Reimbursement of legal fees if policy holder is prosecuted in court over an accident resulting in a valid claim</li>
-                                <li className="text-[14px] text-[#56575D]">Fire damage to the insured vehicle</li>
-                                <li className="text-[14px] text-[#56575D]">Theft of the vehicle</li>
-                                <li className="text-[14px] text-[#56575D]">Personal Accident for Insured / Driver: GHS7,000</li>
-                                <li className="text-[14px] text-[#56575D]">Depreciation rate: as applicable</li>
-                                <li className="text-[14px] text-[#56575D]">Towing charges: not exceed 20% of total repairs bill</li>
-                                <li className="text-[14px] text-[#56575D]">Deductible/excess</li>
-                                <li className="text-[14px] text-[#56575D]">Authorized repair limit: as stated in our policy document</li>
-                                <li className="text-[14px] text-[#56575D]">Passenger liability: as stated in our policy document</li>
-                                <li className="text-[14px] text-[#56575D]">Third-party liabilities Within (ECOWAS) Countries</li>
+                                <li className="text-[14px] text-[#56575D]"
+                                    dangerouslySetInnerHTML={{
+                                        __html: motorData.tp_fire_theft_features
+                                    }} />
+
                             </ul>
                         </div>
                     </div>

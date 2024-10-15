@@ -1,41 +1,68 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { articleNav } from '../data';
-import { articleData } from '../data';
+import { articleNav } from '../data'; // Ensure this has the correct category names
 import Book from './Book';
 
 const ITEMS_PER_PAGE = 6;
 
 function Project() {
-    const [item, setItem] = useState({ name: 'All' });
+    const [item, setItem] = useState({ name: 'All' }); // Default category is 'All'
     const [articles, setArticles] = useState([]);
+    const [filteredArticles, setFilteredArticles] = useState([]); // New state for filtered articles
     const [active, setActive] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
 
+    // Fetch articles on mount
     useEffect(() => {
-        // Get the articles based on the clicked category
+        const fetchArticles = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
+                const data = await response.json();
+
+                // Map API data to the expected article format
+                const formattedArticles = data.map((article) => ({
+                    id: article.id,
+                    image: `https://coronation-cms.interactivedigital.com.gh/${article.main_image}`,
+                    date: new Date(article.created_at).toLocaleDateString(),
+                    heading: article.caption.replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
+                    details: article.excerpt.replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
+                    category: article.category,
+                    link: `/purpledetail/${article.id}` // Modify this based on your routing structure
+                }));
+
+                setArticles(formattedArticles);
+                setFilteredArticles(formattedArticles); // Initialize filteredArticles with all articles
+            } catch (error) {
+                console.error('Error fetching articles:', error);
+            }
+        };
+
+        fetchArticles();
+    }, []); // Empty dependency array to run only on mount
+
+    // Update filteredArticles when the selected category changes
+    useEffect(() => {
         if (item.name === 'All') {
-            setArticles(articleData);
+            setFilteredArticles(articles); // Show all articles
         } else {
-            const filteredArticles = articleData.filter((project) =>
-                project.category.toLowerCase() === item.name.toLowerCase()
+            // Filter articles based on selected category
+            const filtered = articles.filter(article =>
+                article.category.toLowerCase() === item.name.toLowerCase()
             );
-            setArticles(filteredArticles);
+            setFilteredArticles(filtered);
         }
         setCurrentPage(1); // Reset to first page when category changes
-    }, [item]);
+    }, [item, articles]); // Depend on item and articles
 
     const handleClick = (e, index) => {
-        setItem({
-            name: e.target.textContent,
-        });
+        setItem({ name: e.target.textContent }); // Set the selected category
         setActive(index);
     };
 
     // Pagination logic
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const currentArticles = articles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-    const totalPages = Math.ceil(articles.length / ITEMS_PER_PAGE);
+    const currentArticles = filteredArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {

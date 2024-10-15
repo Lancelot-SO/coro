@@ -3,13 +3,35 @@
 import { FaTimes } from "react-icons/fa";
 import home5 from "../assets/purplehomeIns/home5.png";
 import "./globalfeature.css";
+import { useEffect, useState } from "react";
 
 const HomeOwnerFeature = ({ closeModal }) => { // Receive closeModal as prop
+    const [homeInsData, setHomeInsData] = useState(null);
+
+
+    useEffect(() => {
+        const fetchmotorData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
+                const data = await response.json();
+                console.log('purple homeIns Data:', data);
+                setHomeInsData(data[0]);
+            } catch (error) {
+                console.error('Error fetching homeIns data:', error);
+            }
+        };
+        fetchmotorData();
+    }, []);
+
+    // Check if either aboutData or bodData is still loading
+    if (!homeInsData) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className="modal-overlay">
             <div className="content lg:h-[580px] h-[680px]">
                 <button className="close-button absolute lg:top-[10px] top-[15px] lg:right-[10px] right-[15px]" onClick={closeModal}> {/* Close modal on click */}
-                    <FaTimes size={30} className="lg:text-black text-white" />
+                    <FaTimes size={30} className="text-black" />
                 </button>
                 <div className="flex lg:flex-row flex-col">
                     <div className="flex-1">
@@ -19,15 +41,10 @@ const HomeOwnerFeature = ({ closeModal }) => { // Receive closeModal as prop
                         <div className="text-[24px] leading-[32px] font-semibold">HOMEOWNERS</div>
                         <div className="pl-6 mt-2">
                             <ul className="list-disc flex flex-col gap-2">
-                                <li className="text-[14px] text-[#56575D]">Covers the loss of rent or the additional cost of alternative accommodation in case of fire</li>
-                                <li className="text-[14px] text-[#56575D]">Covers replacement of stolen items (based on inventory provided)</li>
-                                <li className="text-[14px] text-[#56575D]">Covers contents while temporarily removed for cleaning, renovating, repairs or similar purpose.</li>
-                                <li className="text-[14px] text-[#56575D]">Covers public liability up to GHS20,000</li>
-                                <li className="text-[14px] text-[#56575D]">Covers personal accident uo to GHS20,000 for the houshold, maximum 5 occupants</li>
-                                <li className="text-[14px] text-[#56575D]">All risk coverage is for laptops, jewelry, and other moveable items. Customer cannot take insurance cover for all risk items alone. It must be taken along side Home owners cover.</li>
-                                <li className="text-[14px] text-[#56575D]">Towing charges: not exceed 20% of total repairs bill</li>
-                                <li className="text-[14px] text-[#56575D]">Authorized repair limit: as stated in our policy document</li>
-                                <li className="text-[14px] text-[#56575D]">Passenger liability: as stated in our policy document</li>
+                                <li className="text-[14px] text-[#56575D]"
+                                    dangerouslySetInnerHTML={{
+                                        __html: homeInsData.homeowner_ins_features
+                                    }} />
                             </ul>
                         </div>
                     </div>

@@ -39,7 +39,7 @@ const RedDetailOne = () => {
 
                     <a href={brochureUrl} download className="flex mt-5 w-[120px] h-[35px] text-[12px] gap-2 bg-white text-black rounded-lg items-center justify-center">
                         <MdOutlineFileDownload size={20} />
-                        GET A QUOTE
+                        Download
                     </a>
                 </div>
             </div>

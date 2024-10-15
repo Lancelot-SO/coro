@@ -8,25 +8,44 @@ import { useEffect, useState } from "react"
 
 const PurpleAbout = () => {
     const [aboutData, setAboutData] = useState(null);
+    const [bodData, setBodData] = useState(null); // State for BOD data
 
+    // Fetch data from about endpoint
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchAboutData = async () => {
             try {
                 const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/about/fetch');
                 const data = await response.json();
-                console.log(data);
+                console.log('About Data:', data);
                 setAboutData(data[0]);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching about data:', error);
             }
         };
-        fetchData();
+        fetchAboutData();
     }, []);
 
+    // Fetch data from bod endpoint
+    useEffect(() => {
+        const fetchBodData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/bod/fetch');
+                const data = await response.json();
+                console.log('BOD Data:', data);
+                setBodData(data[0]);
+            } catch (error) {
+                console.error('Error fetching BOD data:', error);
+            }
+        };
+        fetchBodData();
+    }, []);
 
-    if (!aboutData) {
+    // Check if either aboutData or bodData is still loading
+    if (!aboutData || !bodData) {
         return <div>Loading...</div>;
     }
+
+
     return (
         <div className="overflow-hidden">
             <div className="relative">
@@ -90,7 +109,7 @@ const PurpleAbout = () => {
                 </div>
             </section>
 
-            <sction>
+            <section>
                 <div className="h-[1720px] lg:h-full">
                     <div className="flex lg:flex-row flex-col-reverse w-full h-[488px]">
                         <div className=" flex-1 flex-col lg:h-[400px] px-4 lg:px-20 bg-[#EFEFF0] flex items-start justify-center">
@@ -156,7 +175,7 @@ const PurpleAbout = () => {
                         </div>
                     </div>
                 </div>
-            </sction>
+            </section>
 
             <section>
                 <SlickSlider />

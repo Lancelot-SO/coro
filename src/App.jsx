@@ -23,6 +23,8 @@ import RedService from './pages/RedService'
 import RedProductDetails from './pages/RedProductDetails'
 import Feedback from './components/FeedBack'
 import { useEffect, useState } from 'react'
+import CookieConsent from "react-cookie-consent";
+import Privacy from './pages/Privacy'
 
 
 
@@ -54,7 +56,7 @@ function App() {
           <Route path='/purplecareers' element={<PurpleCareers />} />
           <Route path='/purplecontact' element={<PurpleContact />} />
           <Route path='/purpleinsights' element={<PurpleInsights />} />
-          <Route path='/purpledetailone' element={<DetailOne />} />
+          <Route path='/purpledetail/:id' element={<DetailOne />} />
           <Route path='/purpleservices' element={<PurpleService />} />
           <Route path='/purplewhistle' element={<WhistleBlowing />} />
           <Route path='/redhome' element={<RedHome />} />
@@ -67,10 +69,27 @@ function App() {
           <Route path='/redservices' element={<RedService />} />
           <Route path='/redproductdetails' element={<RedProductDetails />} />
           <Route path="/redproductdetails/*" element={<RedProductDetails />} />
+          <Route path="/privacy" element={<Privacy />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>
       <Feedback showModal={showFeedbackModal} setShowModal={setShowFeedbackModal} />
+      <CookieConsent
+        location="bottom"
+        buttonText="I Accept"
+        cookieName="Coronation Insurance Cookie"
+        style={{ background: "#000000" }}
+        buttonStyle={{ color: "#ffffff", backgroundColor: "#B580D1", fontSize: "16px" }}
+        expires={150}
+        acceptOnScroll={true}
+        acceptOnScrollPercentage={50}
+        enableDeclineButton
+        flipButtons={true}
+      >
+        This website uses cookies to enhance the user experience.{" "}
+        See our <a href="/privacy" className='text-[#B580D1]'>Privacy Policy</a> for more.
+      </CookieConsent>
 
     </div>
   )

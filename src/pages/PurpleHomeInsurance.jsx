@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import "./global.css"
-import homebg from "../assets/purplehomeIns/homebg.png"
-import homeIns1 from "../assets/purplehomeIns/homeIns1.png"
-import homeIns2 from "../assets/purplehomeIns/homeIns2.png"
+// import homebg from "../assets/purplehomeIns/homebg.png"
+// import homeIns1 from "../assets/purplehomeIns/homeIns1.png"
+// import homeIns2 from "../assets/purplehomeIns/homeIns2.png"
 import homeIns3 from "../assets/purplehomeIns/homeIns3.png"
 import homeInsbg from "../assets/purplehomeIns/homeInsbg.png"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import HomeOwnerFeature from "../features/HomeOwnerFeature"
 import HouseHolderFeature from "../features/HouseHolderFeature"
 import { Link } from "react-router-dom"
@@ -15,19 +15,43 @@ const PurpleHomeInsurance = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isHouseModalOpen, setIsHouseModalOpen] = useState(false);
 
+    const [homeInsData, setHomeInsData] = useState(null);
+
+
+    useEffect(() => {
+        const fetchhomeData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/individual/fetch');
+                const data = await response.json();
+                console.log('purple homeIns Data:', data);
+                setHomeInsData(data[0]);
+            } catch (error) {
+                console.error('Error fetching homeIns data:', error);
+            }
+        };
+        fetchhomeData();
+    }, []);
+
+    // Check if either aboutData or bodData is still loading
+    if (!homeInsData) {
+        return <div>Loading...</div>;
+    }
+
 
     return (
         <div className="overflow-hidden">
             <div className="relative">
-                <img src={homebg} alt="about" className="hidden lg:block w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
+                <img
+                    src={homeInsData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${homeInsData.header_image}` : "assets/purplemotor/motorbg.png"}
+                    className="hidden lg:block w-full bg-cover lg:w-full h-[600px]"
+                    loading="lazy" />
                 <img src={homeInsbg} alt="about" className="block lg:hidden w-full bg-cover lg:w-full h-[678px]" loading="lazy" />
                 <div className="absolute inset-0 bg-black opacity-40"></div>
                 <div className="absolute lg:top-[360px] md:top-[450px] top-[370px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">
-                    <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Home Insurance</h2>
-                    <span className="w-full h-[72px] lg:text-[18px] md:text-[16px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
-                        Ask yourself: do you want your home to be protected in the event of flood, fire, theft or other accidental damage?
-                        Or would you rather deal with the expense and the stress on your own? Add to that the fact that some mortgage providers might require you to have building cover. It’s more than a minor detail. We’ll cover your house and belongings against life’s unexpected events. We offer building and contents insurance – plus a range of added extras to make sure you get the protection you need.
-                    </span>
+                    <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white"
+                        dangerouslySetInnerHTML={{ __html: homeInsData.header_caption }} />
+                    <span className="w-full h-[72px] lg:text-[18px] md:text-[16px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white"
+                        dangerouslySetInnerHTML={{ __html: homeInsData.header_body }} />
                 </div>
                 <div className="absolute lg:top-[380px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-black bg-opacity-40 rounded-lg shadow-md">
                     <div className="lg:p-6 p-4">
@@ -44,30 +68,25 @@ const PurpleHomeInsurance = () => {
             <section>
                 <div className="w-full lg:h-[300px] h-[220px] bg-black lg:px-28 px-4 items-center lg:py-20 md:py-20 py-10">
                     <div className="flex flex-col">
-                        <h3 className="text-white lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-bold lg:w-[572px]">
-                            HOME INSURANCE THAT SUITS YOUR NEEDS
-                        </h3>
+                        <h3 className="text-white lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-bold lg:w-[572px]"
+                            dangerouslySetInnerHTML={{ __html: homeInsData.sec1_caption }} />
                         <div className="flex items-center mt-4">
-                            <span className="text-white lg:text-[18px] md:text-[16px] text-[14px] leading-[24px] font-normal w-[703px] h-[48px]">
-                                Whether it’s theft, damage by extreme weather, fire, burst pipes and other losses, we have the right cover for you.                                </span>
+                            <span className="text-white lg:text-[18px] md:text-[16px] text-[14px] leading-[24px] font-normal w-[703px] h-[48px]"
+                                dangerouslySetInnerHTML={{ __html: homeInsData.sec1_body }} />
                         </div>
                     </div>
                 </div>
             </section>
 
-            <sction>
+            <section>
                 <div className="">
                     <div className="flex lg:flex-row flex-col-reverse w-full">
                         <div className=" flex-1 flex-col bg-[#EFEFF0] flex items-center justify-center lg:h-[430px] h-[500px]">
                             <div className="p-4 lg:p-0">
                                 <div className="lg:h-[156px] md:h-[125px] h-[160px] ">
                                     <h2 className="lg:text-[32px] text-[20px] lg:leading-[40px] leading-[24px] font-semibold">HOMEOWNERS</h2>
-                                    <p className="lg:w-[560px] w-full lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4">
-                                        Home Owners is a comprehensive insurance that covers damage to a building occasioned by flood,
-                                        fire and fallen trees as well as injury to visitors to the property.
-                                        The product also covers the contents of a home such as furniture & fittings, jewelries,
-                                        refrigerator and so on.
-                                    </p>
+                                    <p className="lg:w-[560px] w-full lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4"
+                                        dangerouslySetInnerHTML={{ __html: homeInsData.homeowner_ins_body }} />
                                 </div>
                                 <span onClick={() => setIsModalOpen(true)} className="text-white bg-[#B580D1] p-2  rounded-md cursor-pointer">Featured Insurance</span>
                             </div>
@@ -76,22 +95,27 @@ const PurpleHomeInsurance = () => {
                             )}
                         </div>
                         <div className="flex-1">
-                            <img src={homeIns1} alt="about" className="bg-cover w-full lg:h-[430px] object-cover" loading="lazy" />
+                            <img
+                                src={homeInsData?.homeowner_ins_image ? `https://coronation-cms.interactivedigital.com.gh/${homeInsData.homeowner_ins_image}` : "assets/purplehomeIns/homeIns1.png"}
+                                className="bg-cover w-full lg:h-[430px] object-cover"
+                                loading="lazy" />
                         </div>
                     </div>
 
                     <div className="flex lg:flex-row flex-col w-full">
                         <div className="flex-1">
-                            <img src={homeIns2} alt="about" className="bg-cover w-full lg:h-[430px] object-cover" loading="lazy" />
+                            <img
+                                src={homeInsData?.householder_ins_image ? `https://coronation-cms.interactivedigital.com.gh/${homeInsData.householder_ins_image}` : "assets/purplehomeIns/homeIns1.png"}
+                                className="bg-cover w-full lg:h-[430px] object-cover"
+                                loading="lazy" />
                         </div>
                         <div className="flex-1 flex-col flex items-center justify-center h-[430px]">
                             <div className="p-4 lg:p-0">
                                 <div className="lg:h-[156px] md:h-[110px] h-[160px]">
                                     <h2 className="lg:text-[32px] text-[20px] lg:leading-[40px] leading-[24px] font-semibold">HOUSEHOLDERS</h2>
-                                    <p className="lg:w-[560px] w-full lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4">
-                                        This policy is designed to meet the needs of the insured who do not own their
-                                        home (and therefore do not require building insurance) but still desire protection for their belongings.
-                                    </p>
+                                    <p className="lg:w-[560px] w-full lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4"
+                                        dangerouslySetInnerHTML={{ __html: homeInsData.householder_ins_body }} />
+
                                 </div>
                                 <span onClick={() => setIsHouseModalOpen(true)} className="text-white bg-[#B580D1] p-2 rounded-md cursor-pointer">Featured Insurance</span>
                             </div>
@@ -101,7 +125,7 @@ const PurpleHomeInsurance = () => {
                         </div>
                     </div>
                 </div>
-            </sction>
+            </section>
 
             <section>
                 <div className="flex lg:flex-row md:flex-row flex-col-reverse w-full mb-8 lg:mb-0">
