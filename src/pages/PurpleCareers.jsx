@@ -1,27 +1,52 @@
 /* eslint-disable react/no-unescaped-entities */
-import insightbg from "../assets/purpleinsight/insightbg.png"
-import insight1 from "../assets/purpleinsight/insight1.png"
+// import insightbg from "../assets/purpleinsight/insightbg.png"
+// import insight1 from "../assets/purpleinsight/insight1.png"
 
-import career1 from "../assets/career/career1.png"
-import career2 from "../assets/career/career2.png"
+// import career1 from "../assets/career/career1.png"
+// import career2 from "../assets/career/career2.png"
 
 
 import careerbgmob from "../assets/career/careerbgmob.png"
 
 
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 const PurpleCareers = () => {
+    const [careerData, setCareerData] = useState(null);
+
+
+    useEffect(() => {
+        const fetchmotorData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/careerspage/fetch');
+                const data = await response.json();
+                console.log('purple career Data:', data);
+                setCareerData(data[0]);
+            } catch (error) {
+                console.error('Error fetching career data:', error);
+            }
+        };
+        fetchmotorData();
+    }, []);
+
+    // Check if either aboutData or bodData is still loading
+    if (!careerData) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className="overflow-hidden">
             <div className="relative">
-                <img src={insightbg} alt="about" className="hidden lg:block w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
+                <img
+                    src={careerData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.header_image}` : "assets/purpleinsight/insightbg.png"}
+                    className="hidden lg:block w-full bg-cover lg:w-full h-[600px]"
+                    loading="lazy" />
                 <img src={careerbgmob} alt="about" className="block lg:hidden w-full bg-cover lg:w-full lg:h-[600px] md:h-[800px]" loading="lazy" />
                 <div className="absolute lg:top-[370px] md:top-[520px] top-[500px] xsm:top-[450px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">
-                    <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Careers at Coronation</h2>
-                    <span className="w-full h-[72px] lg:text-[18px] md:text-[16px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
-                        Taking you where you want to go. We are always on the lookout for best-in-class talent who enjoy a challenge. In exchange, we provide an environment that fosters the actualization of goals, and career fulfillment for our people while providing transformational solutions for Africa’s challenges.
-                    </span>
+                    <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white"
+                        dangerouslySetInnerHTML={{ __html: careerData.header_caption }} />
+                    <span className="w-full h-[72px] lg:text-[18px] md:text-[16px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white"
+                        dangerouslySetInnerHTML={{ __html: careerData.header_body }} />
                 </div>
                 <div className="absolute lg:top-[350px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-black bg-opacity-40 rounded-lg shadow-md">
                     <div className="lg:p-6 p-4">
@@ -36,41 +61,46 @@ const PurpleCareers = () => {
                 </div>
             </div>
 
-            <sction>
+            <section>
                 <div>
                     <div className="flex lg:flex-row flex-col-reverse w-full">
                         <div className="flex-1 flex-col flex items-center justify-center h-[430px]">
                             <div>
                                 <div className="lg:h-[156px] h-[350px] md:w-[600px] w-[347px] lg:w-full md:pt-14 lg:pt-0 pt-0">
-                                    <h2 className="lg:text-[40px] md:text-[32px] text-[24px] lg:w-[494px] md:w-[380px] w-[267px] lg:h-[88px] lg:leading-[44px] leading-[32px] font-semibold mb-2">Investing in You<br />(We are Interested in You)</h2>
-                                    <span className="lg:text-[16px] text-[18px] leading-[20px] font-semibold text-black">
+                                    <h2 className="lg:text-[40px] md:text-[32px] text-[24px] lg:w-[494px] md:w-[380px] w-[267px]
+                                    lg:h-[88px] lg:leading-[44px] leading-[32px] font-semibold mb-2"
+                                        dangerouslySetInnerHTML={{ __html: careerData.sec1_caption }} />
+                                    {/* <span className="lg:text-[16px] text-[18px] leading-[20px] font-semibold text-black">
                                         CORONATION ACADAMICS
-                                    </span>
-                                    <p className="lg:w-[560px] text-[16px] leading-[20px] font-medium text-[#56575D]">
-                                        Coronation Insurance Ghana Ltd Academies seeks to enhance careers, attract top talent, and support key tenets of the firm’s mission and culture by delivering cutting-edge learning resources. Our vision is that the Coronation Academies will be a competitive differentiator to attract and retain the best talent. Whether your desire is in technology,
-                                        management or strategy, wherever you are; your strengths and interests will influence your career and you have plenty of choice with us. Five Academies, one successful career!
-                                    </p>
+                                    </span> */}
+                                    <p className="lg:w-[560px] text-[16px] leading-[20px] font-medium text-[#56575D]"
+                                        dangerouslySetInnerHTML={{ __html: careerData.sec1_body }} />
                                 </div>
                             </div>
 
                         </div>
                         <div className="flex-1 lg:p-10 p-0">
-                            <img src={insight1} alt="about" className="bg-cover lg:w-[640px] w-full lg:h-[410px] h-[320px] lg:rounded-lg object-cover" loading="lazy" />
+                            <img
+                                src={careerData?.sec1_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.sec1_image}` : "assets/purplehome/purplehomebg.png"}
+                                className="bg-cover lg:w-[640px] w-full lg:h-[410px] h-[320px] lg:rounded-lg object-cover"
+                                loading="lazy" />
                         </div>
                     </div>
 
                     <div className="flex flex-col lg:flex-row w-full mt-4 lg:mt-0 h-[570px]">
                         <div className="flex-1 py-10 lg:pl-20 pl-0">
-                            <img src={insight1} alt="about" className="bg-cover lg:w-[640px] w-full lg:h-[410px] h-[320px] lg:rounded-lg object-cover" loading="lazy" />
+                            <img
+                                src={careerData?.sec2_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.sec2_image}` : "assets/purplehome/purplehomebg.png"}
+                                className="bg-cover lg:w-[640px] w-full lg:h-[410px] h-[320px] lg:rounded-lg object-cover"
+                                loading="lazy" />
                         </div>
                         <div className="flex-1 flex-col flex lg:items-center justify-center lg:h-[430px]">
                             <div className="pl-4 md:pl-20 lg:pl-0">
                                 <div className="lg:h-[156px] h-[350px] w-[200px] lg:w-full">
-                                    <h2 className="text-[32px] leading-[40px] font-semibold">Culture</h2>
-                                    <p className="lg:w-[500px] md:w-[520px] w-[347px] text-[16px] leading-[20px] font-medium text-[#56575D] mt-4">
-                                        Our culture is what brings us together and enables our people and organization to thrive.
-                                        We seek to hire people who believe in the pursuit of our standards, known as the Coronation Values & Attributes.
-                                    </p>
+                                    <h2 className="text-[32px] leading-[40px] font-semibold"
+                                        dangerouslySetInnerHTML={{ __html: careerData.sec2_caption }} />
+                                    <p className="lg:w-[500px] md:w-[520px] w-[347px] text-[16px] leading-[20px] font-medium text-[#56575D] mt-4"
+                                        dangerouslySetInnerHTML={{ __html: careerData.sec2_body }} />
                                 </div>
                             </div>
 
@@ -79,7 +109,7 @@ const PurpleCareers = () => {
                     </div>
                 </div>
 
-            </sction>
+            </section>
 
             <section>
                 <div className="bg-black w-full lg:h-[1169px] h-[400px] lg:p-20">
@@ -87,30 +117,34 @@ const PurpleCareers = () => {
                         <div className="flex w-full h-[492px] gap-6">
                             <div className="bg-[#1D1E20] hidden lg:h-full h-[336px] rounded-lg shadow-lg lg:flex">
                                 <div className="flex-1 hidden lg:flex">
-                                    <img src={career1} alt="career" className="bg-cover w-[631px] h-full rounded-l-md" loading="lazy" />
+                                    <img
+                                        src={careerData?.card1_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card1_image}` : "assets/purplehome/purplehomebg.png"}
+                                        className="bg-cover w-[631px] h-full rounded-l-md"
+                                        loading="lazy" />
                                 </div>
                                 <div className="flex-1 border-b-4 border-b-[#B580D1] flex items-center justify-center">
                                     <div className="lg:w-[357px] h-[220px] lg:pt-10 pt-0">
                                         <div className="mb-4 pl-4 lg:pl-0">
-                                            <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]">Life at CORONATION</h2>
-                                            <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[18px]">
-                                                Being a part of Coronation means being a part of a community of smart and ambitious people from diverse backgrounds that makes the One Coronation.
-                                                Explore Life at Coronation…
-                                            </p>
+                                            <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
+                                                dangerouslySetInnerHTML={{ __html: careerData.card1_caption }} />
+                                            <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[18px]"
+                                                dangerouslySetInnerHTML={{ __html: careerData.card1_body }} />
                                         </div>
                                         <Link to="https://www.instagram.com/coronationgh/" target='_blank' rel='noopener noreferrer' className="text-[#B580D1] pl-4 lg:pl-0">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
                             <div className="bg-[#1D1E20] hidden lg:block lg:w-[424px] w-[300px] h-[336px] p-4 lg:p-0 lg:h-full border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                <img src={career2} alt="career" className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full" />
+                                <img
+                                    src={careerData?.card2_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card2_image}` : "assets/purplehome/purplehomebg.png"}
+                                    className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
+                                    loading="lazy" />
                                 <div className="p-4">
                                     <div className="lg:mt-4 mt-0">
-                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]">Satisfy Your Curosity</h2>
-                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2">
-                                            Being a part of Coronation means being a part of a community of smart and ambitious people from diverse backgrounds that makes the One Coronation.
-                                            Explore Life at Coronation…
-                                        </p>
+                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
+                                            dangerouslySetInnerHTML={{ __html: careerData.card2_caption }} />
+                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
+                                            dangerouslySetInnerHTML={{ __html: careerData.card2_body }} />
                                     </div>
                                 </div>
                             </div>
@@ -118,63 +152,74 @@ const PurpleCareers = () => {
                         <div className="flex gap-6">
                             <div className="lg:hidden flex gap-6">
                                 <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                    <img src={career1} alt="career" className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full" />
+                                    <img
+                                        src={careerData?.card1_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card3_image}` : "assets/purplehome/purplehomebg.png"}
+                                        className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
+                                        loading="lazy" />
                                     <div className="p-4">
                                         <div className="mt-4 mb-1">
-                                            <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]">Life at CORONATION</h2>
-                                            <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2">
-                                                Being a part of Coronation means being a part of a community of smart and ambitious people from diverse backgrounds that makes the One Coronation. Explore Life at Coronation…
-                                            </p>
+                                            <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
+                                                dangerouslySetInnerHTML={{ __html: careerData.card1_caption }} />
+                                            <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
+                                                dangerouslySetInnerHTML={{ __html: careerData.card1_body }} />
                                         </div>
                                         <Link to="https://www.instagram.com/coronationgh/" target='_blank' rel='noopener noreferrer' className="text-[#B580D1]">Learn More</Link>
 
                                     </div>
                                 </div>
                                 <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                    <img src={career2} alt="career" className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full" />
+                                    <img
+                                        src={careerData?.card1_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card4_image}` : "assets/purplehome/purplehomebg.png"}
+                                        className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
+                                        loading="lazy" />
                                     <div className="p-4">
                                         <div className="mt-4">
-                                            <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]">Satisfy Your Curosity</h2>
-                                            <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2">
-                                                Being a part of Coronation means being a part of a community of smart and ambitious people from diverse backgrounds that makes the One Coronation. Explore Life at Coronation…
-                                            </p>
-                                        </div>
+                                            <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
+                                                dangerouslySetInnerHTML={{ __html: careerData.card2_caption }} />
+                                            <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
+                                                dangerouslySetInnerHTML={{ __html: careerData.card2_body }} />                                       </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                <img src={career2} alt="career" className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full" />
+                                <img
+                                    src={careerData?.card3_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card3_image}` : "assets/purplehome/purplehomebg.png"}
+                                    className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
+                                    loading="lazy" />
                                 <div className="p-4">
                                     <div className="mt-4">
-                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]">Find Your Crown</h2>
-                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2">
-                                            Being a part of Coronation means being a part of a community of smart and ambitious people from diverse backgrounds that makes the One Coronation.
-                                            Explore Life at Coronation…
-                                        </p>
+                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
+                                            dangerouslySetInnerHTML={{ __html: careerData.card3_caption }} />
+                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
+                                            dangerouslySetInnerHTML={{ __html: careerData.card3_body }} />
                                     </div>
                                 </div>
                             </div>
                             <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                <img src={career2} alt="career" className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full" />
+                                <img
+                                    src={careerData?.card4_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card4_image}` : "assets/purplehome/purplehomebg.png"}
+                                    className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
+                                    loading="lazy" />
                                 <div className="p-4">
                                     <div className="mt-4">
-                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]">Our Value Stays With You</h2>
-                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2">
-                                            Being a part of Coronation means being a part of a community of smart and ambitious people from diverse backgrounds that makes the One Coronation.
-                                            Explore Life at Coronation…
-                                        </p>
+                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
+                                            dangerouslySetInnerHTML={{ __html: careerData.card4_caption }} />
+                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
+                                            dangerouslySetInnerHTML={{ __html: careerData.card4_body }} />
                                     </div>
                                 </div>
                             </div>
                             <div className="bg-[#1D1E20] lg:w-[410px] w-[276px] lg:h-[492px] h-[336px] border-b-4 border-b-[#B580D1] rounded-md shadow-md">
-                                <img src={career2} alt="career" className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full" />
+                                <img
+                                    src={careerData?.card5_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.card5_image}` : "assets/purplehome/purplehomebg.png"}
+                                    className="bg-cover rounded-t-md lg:h-[280px] h-[160px] w-[276px] lg:w-full"
+                                    loading="lazy" />
                                 <div className="p-4">
                                     <div className="mt-4">
-                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]">Come as You Are</h2>
-                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2">
-                                            Being a part of Coronation means being a part of a community of smart and ambitious people from diverse backgrounds that makes the One Coronation.
-                                            Explore Life at Coronation…
-                                        </p>
+                                        <h2 className="text-white lg:text-[24px] text-[20px] font-semibold lg:leading-[32px] leading-[20px]"
+                                            dangerouslySetInnerHTML={{ __html: careerData.card5_caption }} />
+                                        <p className="text-[#888991] lg:text-[16px] text-[10px] font-normal lg:leading-[24px] leading-[20px] mt-2"
+                                            dangerouslySetInnerHTML={{ __html: careerData.card5_body }} />
                                     </div>
                                 </div>
                             </div>

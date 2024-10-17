@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { articleNav } from '../data'; // Ensure this has the correct category names
 import Book from './Book';
 
 const ITEMS_PER_PAGE = 6;
@@ -8,8 +7,9 @@ const ITEMS_PER_PAGE = 6;
 function Project() {
     const [item, setItem] = useState({ name: 'All' }); // Default category is 'All'
     const [articles, setArticles] = useState([]);
-    const [filteredArticles, setFilteredArticles] = useState([]); // New state for filtered articles
+    const [filteredArticles, setFilteredArticles] = useState([]); // State for filtered articles
     const [active, setActive] = useState(0);
+    const [categories, setCategories] = useState([{ name: 'All' }]); // Default category 'All'
     const [currentPage, setCurrentPage] = useState(1);
 
     // Fetch articles on mount
@@ -39,6 +39,24 @@ function Project() {
 
         fetchArticles();
     }, []); // Empty dependency array to run only on mount
+
+    // Fetch categories on mount
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
+                const data = await response.json();
+                const fetchedCategories = data.map((category) => ({
+                    name: category.category
+                }));
+                setCategories([{ name: 'All' }, ...fetchedCategories]);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
 
     // Update filteredArticles when the selected category changes
     useEffect(() => {
@@ -80,7 +98,7 @@ function Project() {
         <div>
             <nav className="w-full h-[44px] px-4 flex items-center">
                 <ul className="flex gap-4">
-                    {articleNav.map((navItem, index) => (
+                    {categories.map((navItem, index) => (
                         <li
                             onClick={(e) => handleClick(e, index)}
                             key={index}

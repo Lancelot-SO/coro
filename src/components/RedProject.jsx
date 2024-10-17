@@ -1,41 +1,87 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { redarticleNav } from '../data';
-import { redarticleData } from '../data';
 import RedBook from './RedBook';
 
 const ITEMS_PER_PAGE = 6;
 
 function RedProject() {
-    const [item, setItem] = useState({ name: 'All' });
+    const [item, setItem] = useState({ name: 'All' }); // Default category is 'All'
     const [articles, setArticles] = useState([]);
+    const [filteredArticles, setFilteredArticles] = useState([]); // New state for filtered articles
+    const [categories, setCategories] = useState([{ name: 'All' }]); // Categories state, initialized with 'All'
     const [active, setActive] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
 
+    // Fetch articles on mount
     useEffect(() => {
-        // Get the articles based on the clicked category
+        const fetchArticles = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards');
+                const data = await response.json();
+
+                // Map API data to the expected article format
+                const formattedArticles = data.map((article) => ({
+                    id: article.id,
+                    image: `https://coronation-cms.interactivedigital.com.gh/${article.main_image}`,
+                    date: new Date(article.created_at).toLocaleDateString(),
+                    heading: article.caption.replace(/<\/?[^>]+(>|$)/g, ""), // Strip HTML tags from caption
+                    details: article.excerpt.replace(/<\/?[^>]+(>|$)/g, "") || "No details available.",
+                    category: article.category,
+                    link: `/reddetail/${article.id}` // Modify this based on your routing structure
+                }));
+
+                setArticles(formattedArticles);
+                setFilteredArticles(formattedArticles); // Initialize filteredArticles with all articles
+            } catch (error) {
+                console.error('Error fetching articles:', error);
+            }
+        };
+
+        fetchArticles();
+    }, []); // Empty dependency array to run only on mount
+
+    // Fetch categories on mount
+    // Fetch categories on mount
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/blog-categories');
+                const data = await response.json();
+                const fetchedCategories = data.map((category) => ({
+                    name: category.category
+                }));
+                setCategories([{ name: 'All' }, ...fetchedCategories]);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
+    // Update filteredArticles when the selected category changes
+    useEffect(() => {
         if (item.name === 'All') {
-            setArticles(redarticleData);
+            setFilteredArticles(articles); // Show all articles
         } else {
-            const filteredArticles = redarticleData.filter((project) =>
-                project.category.toLowerCase() === item.name.toLowerCase()
+            // Filter articles based on selected category
+            const filtered = articles.filter(article =>
+                article.category.toLowerCase() === item.name.toLowerCase()
             );
-            setArticles(filteredArticles);
+            setFilteredArticles(filtered);
         }
         setCurrentPage(1); // Reset to first page when category changes
-    }, [item]);
+    }, [item, articles]); // Depend on item and articles
 
     const handleClick = (e, index) => {
-        setItem({
-            name: e.target.textContent,
-        });
+        setItem({ name: e.target.textContent }); // Set the selected category
         setActive(index);
     };
 
     // Pagination logic
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const currentArticles = articles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-    const totalPages = Math.ceil(articles.length / ITEMS_PER_PAGE);
+    const currentArticles = filteredArticles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
@@ -53,14 +99,14 @@ function RedProject() {
         <div>
             <nav className="w-full h-[44px] px-4 flex items-center">
                 <ul className="flex gap-4">
-                    {redarticleNav.map((navItem, index) => (
+                    {categories.map((navItem, index) => (
                         <li
                             onClick={(e) => handleClick(e, index)}
                             key={index}
                             className={`${active === index
                                 ? 'bg-[#FF0226] text-white'
                                 : 'bg-[#F7F7F8] text-black'
-                                } p-2 cursor-pointer lg:text-[16px] text-[10px] font-semibold leading-[24px]`}
+                                } p-2 rounded-lg cursor-pointer lg:text-[16px] md:text-[14px] text-[10px] font-semibold leading-[24px]`}
                         >
                             {navItem.name}
                         </li>
@@ -70,7 +116,7 @@ function RedProject() {
 
             {/* Project grid */}
             <section>
-                <div className="w-full mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="w-full mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-6 md:gap-2">
                     {currentArticles.map((item) => (
                         <RedBook item={item} key={item.id} />
                     ))}

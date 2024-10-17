@@ -63,14 +63,13 @@ function App() {
           <Route path='/redabout' element={<RedAbout />} />
           <Route path='/redproduct' element={<RedProduct />} />
           <Route path='/redinsights' element={<RedInsights />} />
-          <Route path='/reddetailone' element={<RedDetailOne />} />
+          <Route path='/reddetail/:id' element={<RedDetailOne />} />
           <Route path='/redcareers' element={<RedCareers />} />
           <Route path='/redcontact' element={<RedContact />} />
           <Route path='/redservices' element={<RedService />} />
           <Route path='/redproductdetails' element={<RedProductDetails />} />
           <Route path="/redproductdetails/*" element={<RedProductDetails />} />
           <Route path="/privacy" element={<Privacy />} />
-
         </Routes>
         <Footer />
       </BrowserRouter>

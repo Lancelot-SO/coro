@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import PhoneInput, { isValidPhoneNumber, isPossiblePhoneNumber } from 'react-phone-number-input';
 
-import contactbg from "../assets/contact/contactBg.png";
+// import contactbg from "../assets/contact/contactBg.png";
 import contactbanner from "../assets/contact/contactbanner.png"
 
 import { format } from 'date-fns';
@@ -20,12 +20,14 @@ import { MdOutlineMarkEmailUnread, MdOutlineLocationOn } from "react-icons/md";
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Import DatePicker CSS
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const PurpleContact = () => {
     const form = useRef();
     const [phoneNumber, setPhoneNumber] = useState('');
     const [selectedDate, setSelectedDate] = useState(null); // State for DatePicker
+    const [contactData, setContactData] = useState(null);
+
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -52,16 +54,40 @@ const PurpleContact = () => {
         setSelectedDate(null); // Reset DatePicker
     };
 
+
+
+    useEffect(() => {
+        const fetchcontactData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/contactpage/fetch');
+                const data = await response.json();
+                console.log('purple contact Data:', data);
+                setContactData(data[0]);
+                console.log(data)
+            } catch (error) {
+                console.error('Error fetching contact data:', error);
+            }
+        };
+        fetchcontactData();
+    }, []);
+
+    if (!contactData) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div className='overflow-hidden'>
             <ToastContainer />
             <div className="relative">
-                <img src={contactbg} alt="about" className="w-full lg:h-full h-[250px] bg-cover" loading="lazy" />
+                <img
+                    src={contactData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${contactData.header_image}` : "assets/purplehome/purplehomebg.png"}
+                    className="w-full lg:h-full h-[250px] bg-cover"
+                    loading="lazy" />
                 <div className="absolute lg:top-[293px] top-[160px] lg:left-20 left-4 w-[858px] h-[152px]">
-                    <h2 className="lg:text-[56px] text-[24px] w-[511px] h-[128px] font-bold leading-[64px] text-white">HOW MAY WE BE OF SERVICE?</h2>
-                    <span className="hidden lg:block lg:text-[18px] text-[12px] font-normal lg:leading-[24px] leading-3 text-white">
-                        We would love to get to know you better! Please fill in your details below so we can<br /> connect you with the right member of our team.
-                    </span>
+                    <h2 className="lg:text-[56px] text-[24px] w-[511px] h-[128px] font-bold leading-[64px] text-white"
+                        dangerouslySetInnerHTML={{ __html: contactData.header_caption }} />
+                    <span className="hidden lg:block lg:text-[18px] text-[12px] font-normal lg:leading-[24px] leading-3 text-white"
+                        dangerouslySetInnerHTML={{ __html: contactData.header_body }} />
                 </div>
             </div>
 
@@ -221,7 +247,7 @@ const PurpleContact = () => {
                                 title="Google Maps Location"
                                 height="360"
                                 style={{ border: '0' }}
-                                allowfullscreen=""
+                                allowFullScreen=""
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                                 className='lg:w-[628px] w-[320px] rounded-lg'
@@ -235,21 +261,24 @@ const PurpleContact = () => {
                                     <BiPhoneCall size={24} />
                                     <div>
                                         <span className='text-[12px] font-medium leading-[24px] text-black'>Call uS</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'>0302772606 / 0308249068</p>
+                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
+                                            dangerouslySetInnerHTML={{ __html: contactData.gh_call_no }} />
                                     </div>
                                 </div>
                                 <div className='flex items-center gap-1'>
                                     <MdOutlineMarkEmailUnread size={24} />
                                     <div>
                                         <span className='text-[12px] font-medium leading-[24px] text-black'>Email</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'>infoghana@coronationinsurance.com.ng</p>
+                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
+                                            dangerouslySetInnerHTML={{ __html: contactData.gh_email }} />
                                     </div>
                                 </div>
                                 <div className='flex items-center gap-1'>
                                     <MdOutlineLocationOn size={24} />
                                     <div>
                                         <span className='text-[12px] font-medium leading-[24px] text-black'>Head Office</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'>35, Aviation Road, Airport Residential Area</p>
+                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
+                                            dangerouslySetInnerHTML={{ __html: contactData.gh_headoffice }} />
                                     </div>
                                 </div>
                             </div>
@@ -259,7 +288,7 @@ const PurpleContact = () => {
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.6043676377985!2d3.4222550747525275!3d6.44481589354647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf4d470073e31%3A0x1bed2f1a92ae38de!2s119%20Awolowo%20Rd%2C%20Ikoyi%2C%20Lagos%20106104%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sgh!4v1726824339546!5m2!1sen!2sgh" title="Google Maps Location"
                                 height="360"
                                 style={{ border: '0' }}
-                                allowfullscreen=""
+                                allowFullScreen=""
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                                 className='lg:w-[628px] w-[320px] rounded-lg'
@@ -273,21 +302,24 @@ const PurpleContact = () => {
                                     <BiPhoneCall size={24} />
                                     <div>
                                         <span className='text-[12px] font-medium leading-[24px] text-black'>Call uS</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'>0302772606 / 0308249068</p>
+                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
+                                            dangerouslySetInnerHTML={{ __html: contactData.ng_call_no }} />
                                     </div>
                                 </div>
                                 <div className='flex items-center gap-1'>
                                     <MdOutlineMarkEmailUnread size={24} />
                                     <div>
                                         <span className='text-[12px] font-medium leading-[24px] text-black'>Email</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'>info@coronationinsurance.com.ng</p>
+                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
+                                            dangerouslySetInnerHTML={{ __html: contactData.ng_email }} />
                                     </div>
                                 </div>
                                 <div className='flex items-center gap-1'>
                                     <MdOutlineLocationOn size={24} />
                                     <div>
                                         <span className='text-[12px] font-medium leading-[24px] text-black'>Head Office</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'>No. 119, Awolowo Road, LAGOS, Lagos</p>
+                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
+                                            dangerouslySetInnerHTML={{ __html: contactData.ng_headoffice }} />
                                     </div>
                                 </div>
                             </div>

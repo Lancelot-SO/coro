@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* eslint-disable react/no-unescaped-entities */
 import { Link, useParams } from "react-router-dom"
 import { IoIosArrowBack } from "react-icons/io";
@@ -9,12 +10,16 @@ import storm from "../assets/purpleinsight/storm.png"
 import { MdOutlineFileDownload } from "react-icons/md";
 
 
-import Insight13 from "../assets/purpleinsight/insight13.png"
-import Insight6 from "../assets/purpleinsight/insight6.png"
-import strate from "../assets/purpleinsight/strate.png"
+// import Insight13 from "../assets/purpleinsight/insight13.png"
+// import Insight6 from "../assets/purpleinsight/insight6.png"
+// import strate from "../assets/purpleinsight/strate.png"
 
 import insightbanner from "../assets/purpleinsight/insightbanner.png"
 import { useEffect, useState } from "react";
+
+// import ReactMarkdown from 'react-markdown';
+// import rehypeSanitize from 'rehype-sanitize';
+import DOMPurify from 'dompurify';
 
 
 
@@ -24,6 +29,22 @@ const DetailOne = () => {
     const { id } = useParams(); // Get the blog id from the URL
     const [articleDetails, setArticleDetails] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    const [insightLatestData, setInsightLatestData] = useState([]);
+
+    useEffect(() => {
+        const fetchCardLatestData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/published-blogs/cards/latest-two');
+                const data = await response.json();
+                console.log('purple cardlatest Data:', data);
+                setInsightLatestData(data); // Set the entire data array
+            } catch (error) {
+                console.error('Error fetching card latest data:', error);
+            }
+        };
+        fetchCardLatestData();
+    }, []);
 
     useEffect(() => {
         const fetchArticleDetails = async () => {
@@ -49,18 +70,35 @@ const DetailOne = () => {
     if (!articleDetails) {
         return <div>No details available for this article.</div>;
     }
+
+    // Sanitize the content to remove the `style` attributes
+    const sanitizedCaption = DOMPurify.sanitize(articleDetails.caption, {
+        ALLOWED_TAGS: ['h1', 'h2', 'h3', 'p', 'a', 'strong', 'em', 'ul', 'li'],  // Allow specific tags
+        ALLOWED_ATTR: ['href', 'target'],  // Allow only necessary attributes, excluding `style`
+    });
+
     return (
         <div className="overflow-hidden">
             <div className="relative">
                 <img src={storm} alt="about" className="w-full h-[400px] bg-cover" loading="lazy" />
                 <div className="absolute top-[20px] lg:left-20 left-4 w-[858px] h-[152px]">
                     <div className="text-white flex items-center gap-1 mb-2"><IoIosArrowBack /><Link to="/purpleinsights">Back</Link></div>
-                    <span className="w-[681px] h-[48px] lg:text-[40px] text-[24px] font-normal leading-[24px] text-white"
-                        dangerouslySetInnerHTML={{ __html: articleDetails.caption }} />
+                    <div
+                        className="lg:w-[800px] lg:h-[48px] lg:text-[40px] text-[18px] font-normal leading-[24px] text-[#ffffff]"
+                        dangerouslySetInnerHTML={{ __html: sanitizedCaption }}
+                    />
+
                     <div className="flex gap-8 mt-3">
-                        <h3 className="text-[12px] text-[#888991]">Insurance</h3>
+                        <h3 className="text-[12px] text-[#888991]"
+                            dangerouslySetInnerHTML={{ __html: articleDetails.category }} />
                         <ul className="list-disc">
-                            <li className="text-[12px] text-[#888991]">Oct 27, 2023</li>
+                            <li className="text-[12px] text-[#888991]">
+                                {new Date(articleDetails.created_at).toLocaleDateString("en-US", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric"
+                                })}
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -75,7 +113,7 @@ const DetailOne = () => {
 
             <section>
                 <div className="lg:p-20 p-4">
-                    <div className="lg:w-[1280px] lg:h-[1672px] flex lg:flex-row flex-col gap-10">
+                    <div className="lg:w-[1280px] flex lg:flex-row flex-col gap-10">
                         <div className="lg:w-[827px] md:w-full w-[347px] h-full flex flex-col gap-4 ">
                             <div className="lg:w-[803px] lg:h-[264px] flex flex-col gap-6">
                                 <p className="font-normal text-[16px] leading-[24px] text-[#56575D]"
@@ -96,72 +134,39 @@ const DetailOne = () => {
                                 </ul>
                             </div>
 
-                            <div className="w-full lg:h-[1196px] flex lg:flex-col flex-row gap-5 overflow-x-auto lg:overflow-x-visible">
-                                <div className="w-full max-w-sm flex-shrink-0">
-                                    <img
-                                        src={Insight13}
-                                        alt="heading"
-                                        className="w-full h-[200px] object-cover rounded-lg"
-                                    />
-                                    <div className="p-4">
-                                        <div className="text-sm text-[#999881] flex gap-8 mb-2">
-                                            <span className="text-[12px]">June 05, 2024</span>
+                            <div className="w-full flex lg:flex-col flex-row gap-5 overflow-x-auto lg:overflow-x-visible">
+                                {insightLatestData.slice(0, 2).map((article, index) => (
+                                    <div key={index} className="w-full bg-[#f4f4f2] max-w-sm flex-shrink-0">
+                                        <img
+                                            src={article?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${article.main_image}` : "assets/purplemotor/motorbg.png"}
+                                            alt="heading"
+                                            className="w-full h-[200px] object-cover rounded-lg"
+                                        />
+                                        <div className="p-4 h-[170px]">
+                                            <div className="text-sm text-[#999881] flex gap-8 mb-2">
+                                                <h3 className="text-[12px] text-[#888991]">
+                                                    {article.category}
+                                                </h3>
+                                                <span className="text-[12px]">
+                                                    {new Date(article.created_at).toLocaleDateString("en-US", {
+                                                        year: "numeric",
+                                                        month: "long",
+                                                        day: "numeric"
+                                                    })}
+                                                </span>
+                                            </div>
+                                            <h3 className="text-xl font-semibold mb-2 text-gray-800"
+                                                dangerouslySetInnerHTML={{ __html: article.caption }} />
+                                            <p className="text-gray-600 text-sm mb-4"
+                                                dangerouslySetInnerHTML={{ __html: article.excerpt }} />
+                                            {/* <Link to={`/purpleinsights/${article.id}`} className="text-[#B580D1] font-semibold">
+                                                Read More
+                                            </Link> */}
                                         </div>
-                                        <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                                            A Strategy for Resilience: The Role of Insurance in Your Retail Business's Long-Term Plan
-                                        </h3>
-                                        <p className="text-gray-600 text-sm mb-4">
-                                            Life in retail is full of rewards, but it also comes with its share of risks.
-                                        </p>
-                                        <Link href="/" className="text-[#B580D1] font-semibold">
-                                            Read More
-                                        </Link>
                                     </div>
-                                </div>
+                                ))}
 
-                                <div className="w-full max-w-sm flex-shrink-0">
-                                    <img
-                                        src={Insight6}
-                                        alt="heading"
-                                        className="w-full h-[200px] object-cover rounded-lg"
-                                    />
-                                    <div className="p-4">
-                                        <div className="text-sm text-[#999881] flex gap-8 mb-2">
-                                            <span className="text-[12px]">June 05, 2024</span>
-                                        </div>
-                                        <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                                            Revolutionising customer experience
-                                        </h3>
-                                        <p className="text-gray-600 text-sm mb-4">
-                                            Regardless of industry or sector, almost all businesses today are seeking to digitalise their operations to improve customer experience.
-                                        </p>
-                                        <Link href="/" className="text-[#B580D1] font-semibold">
-                                            Read More
-                                        </Link>
-                                    </div>
-                                </div>
 
-                                <div className="w-full max-w-sm flex-shrink-0">
-                                    <img
-                                        src={strate}
-                                        alt="heading"
-                                        className="w-full h-[200px] object-cover rounded-lg"
-                                    />
-                                    <div className="p-4">
-                                        <div className="text-sm text-[#999881] flex gap-8 mb-2">
-                                            <span className="text-[12px]">June 05, 2024</span>
-                                        </div>
-                                        <h3 className="text-xl font-semibold mb-2 text-gray-800">
-                                            A Strategy for Resilience: The Role of Insurance in Your Retail Business's Long-Term Plan...
-                                        </h3>
-                                        <p className="text-gray-600 text-sm mb-4">
-                                            Life in retail is full of rewards, but it also comes with its share of risks.
-                                        </p>
-                                        <Link href="/" className="text-[#B580D1] font-semibold">
-                                            Read More
-                                        </Link>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>

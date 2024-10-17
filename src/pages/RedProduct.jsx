@@ -11,9 +11,30 @@ import product44 from "../assets/purpleproduct/redprodmob.png"
 
 
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 
 const RedProduct = () => {
+    const [homeData, setHomeData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/fetch');
+                const data = await response.json();
+                console.log(data);
+                setHomeData(data[0]);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+
+    if (!homeData) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className="overflow-hidden">
             <div className="relative">

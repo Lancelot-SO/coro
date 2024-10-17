@@ -27,7 +27,7 @@ const Book = ({ item }) => {
 
                 {/* Heading and details */}
                 <div className="h-[130px]">
-                    <h3 className="text-xl font-semibold mb-2 text-gray-800">
+                    <h3 className="text-xl font-semibold mb-2 text-black">
                         {item.heading} {/* This is coming from the caption */}
                     </h3>
                     <p className="text-gray-600 text-sm mb-4">
