@@ -6,10 +6,11 @@ import { Link } from "react-router-dom"
 import bannerbg from "../assets/purplehome/bannerbg.png"
 
 
-import heroInsight from "../assets/purplehome/homeInsight1.png"
-import heroIns2 from "../assets/purplehome/heroIns2.jpg"
-import heroInsight3 from "../assets/purplehome/homeInsight3.png"
+// import heroInsight from "../assets/purplehome/homeInsight1.png"
+// import heroIns2 from "../assets/purplehome/heroIns2.jpg"
+// import heroInsight3 from "../assets/purplehome/homeInsight3.png"
 import { useEffect, useState } from "react"
+import Articles from "../components/Articles"
 
 
 
@@ -133,7 +134,7 @@ const PurpleHome = () => {
                 </div>
             </section>
 
-            <section id="purplehome_section4">
+            {/* <section id="purplehome_section4">
                 <div className="w-full lg:h-[700px] h-[500px] bg-[#F4F5F7] lg:p-20 p-4">
                     <div className="flex flex-col w-full h-[588px]">
                         <div className="w-full lg:h-[88px] h-[100px]">
@@ -187,6 +188,26 @@ const PurpleHome = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section> */}
+            <section>
+                <div className="lg:p-20">
+                    <div className="w-full lg:h-[88px] h-[100px]">
+                        <h3 className="lg:text-[40px] text-[24px] font-semibold lg:leading-[44px] leading-[32px] text-[#141415]">
+                            Our Insights
+                        </h3>
+                        <div className="lg:flex flex-col lg:flex-row items-center justify-between ">
+                            <span className="lg:text-[20px] text-[14px] lg:font-medium font-normal lg:leading-[28px] leading-[20px] text-[#888991]">
+                                Hear the latest trends from our industry experts
+                            </span>
+                            <div className="w-[97px] h-[44px] bg-[#B580D1] rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
+                                <Link to="/purpleinsights">See more</Link>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-[1280px] md:w-full lg:pl-[40px]">
+                        <Articles />
                     </div>
                 </div>
             </section>

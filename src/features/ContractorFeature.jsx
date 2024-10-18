@@ -3,8 +3,31 @@
 import { FaTimes } from "react-icons/fa";
 import hero2 from "../assets/engineer/engineer3.png"
 import "./globalfeature.css";
+import { useEffect, useState } from "react";
 
 const ContractorFeature = ({ closeModal }) => {
+
+    const [engineerData, setEngineerData] = useState(null);
+
+
+    useEffect(() => {
+        const fetchengineerData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
+                const data = await response.json();
+                console.log('purple engineer Data:', data);
+                setEngineerData(data[0]);
+            } catch (error) {
+                console.error('Error fetching engineer data:', error);
+            }
+        };
+        fetchengineerData();
+    }, []);
+
+    // Check if either aboutData or bodData is still loading
+    if (!engineerData) {
+        return <div>Loading...</div>;
+    }
     return (
         <div className="modal-overlay">
             <div className="content lg:h-[580px] h-[680px]">
@@ -16,39 +39,13 @@ const ContractorFeature = ({ closeModal }) => {
                         <img src={hero2} alt="motor" className="object-cover w-full lg:h-[548px] h-[180px]" loading="lazy" />
                     </div>
                     <div className="flex-1 pt-3">
-                        <div className="text-[24px] leading-[32px] font-semibold">
+                        <div className="text-[24px] lg:pl-2 pl-0 leading-[32px] font-semibold">
                             Contractors All - Risk
                         </div>
                         <div className="pl-6 mt-2">
                             <ul className="list-disc flex flex-col gap-2">
-                                <li className="text-[14px] text-[#56575D]">
-                                    Third party bodily injury & death as stated in our policy document
-                                </li>
-                                <li className="text-[14px] text-[#56575D]">Third-party property damage limit: GHS6,000</li>
-                                <li className="text-[14px] text-[#56575D]">Reimbursement of legal fees if policy holder is prosecuted in court over an accident resulting in a valid claim</li>
-                                <li className="text-[14px] text-[#56575D]">Fire damage to the insured vehicle</li>
-                                <li className="text-[14px] text-[#56575D]">
-                                    Theft of the vehicle
-                                </li>
-                                <li className="text-[14px] text-[#56575D]">
-                                    Personal Accident for Insured / Driver: GHS7,000
-                                </li>
-                                <li className="text-[14px] text-[#56575D]">Deductible/excess</li>
-                                <li className="text-[14px] text-[#56575D]">
-                                    Depreciation rate: as applicable
-                                </li>
-                                <li className="text-[14px] text-[#56575D]">
-                                    Towing charges: not exceed 20% of total repairs bill.
-                                </li>
-                                <li className="text-[14px] text-[#56575D]">
-                                    Authorized repair limit: as stated in our policy document
-                                </li>
-                                <li className="text-[14px] text-[#56575D]">
-                                    Passenger liability: as stated in our policy document
-                                </li>
-                                <li className="text-[14px] text-[#56575D]">
-                                    Third-party liabilities Within (ECOWAS) Countries
-                                </li>
+                                <li className="text-[14px] text-[#56575D]"
+                                    dangerouslySetInnerHTML={{ __html: engineerData.contractors_all_risk_features }} />
                             </ul>
                         </div>
                     </div>

@@ -37,7 +37,7 @@ const TheftFeature = ({ closeModal }) => { // Receive closeModal as prop
                         <img src={motor5} alt="motor" className="object-cover w-full lg:h-[548px] h-[180px]" loading="lazy" />
                     </div>
                     <div className="flex-1 pt-3">
-                        <div className="text-[24px] leading-[32px] font-semibold">THIRD PARTY FIRE & THEFT</div>
+                        <div className="text-[24px] lg:pl-2 pl-0 leading-[32px] font-semibold">THIRD PARTY FIRE & THEFT</div>
                         <div className="pl-6 mt-2">
                             <ul className="list-disc flex flex-col gap-2">
                                 <li className="text-[14px] text-[#56575D]"

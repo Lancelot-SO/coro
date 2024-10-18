@@ -37,7 +37,7 @@ const MotorFeature = ({ closeModal }) => {
                         <img src={motor5} alt="motor" className="object-cover w-full lg:h-[548px] h-[180px]" loading="lazy" />
                     </div>
                     <div className="flex-1 pt-3">
-                        <div className="text-[24px] leading-[32px] font-semibold">
+                        <div className="text-[24px] lg:pl-2 pl-0 leading-[32px] font-semibold">
                             COMPREHENSIVE INSURANCE
                         </div>
                         <div className="pl-6 mt-2">

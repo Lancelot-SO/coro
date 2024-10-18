@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import "./global.css"
-import motorbg from "../assets/purplemotor/motorbg.png"
-import hero1 from "../assets/redmotor/redmotor.png"
-import hero2 from "../assets/engineer/engineer3.png"
-import engineer6 from "../assets/engineer/engineer6.png"
-import { useState } from "react";
+// import motorbg from "../assets/purplemotor/motorbg.png"
+// import hero1 from "../assets/redmotor/redmotor.png"
+// import hero2 from "../assets/engineer/engineer3.png"
+// import engineer6 from "../assets/engineer/engineer6.png"
+import { useEffect, useState } from "react";
 
 import travelmob from "../assets/purpletravel/travelmob.png"
-import travelbenefit from "../assets/purpletravel/travelbenefit.png"
+// import travelbenefit from "../assets/purpletravel/travelbenefit.png"
 import { Link } from "react-router-dom"
 import PlantRiskFeature from "../features/PlantRiskFeature"
 import ContractorFeature from "../features/ContractorFeature"
@@ -24,27 +24,45 @@ const Engineer = () => {
     const [erectionOpen, setErectionOpen] = useState(false);
     const [electronicOpen, setElectronicOpen] = useState(false);
 
+    const [engineerData, setEngineerData] = useState(null);
 
 
+    useEffect(() => {
+        const fetchengineerData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/engineering/fetch');
+                const data = await response.json();
+                console.log('purple engineer Data:', data);
+                setEngineerData(data[0]);
+            } catch (error) {
+                console.error('Error fetching engineer data:', error);
+            }
+        };
+        fetchengineerData();
+    }, []);
 
-
+    // Check if either aboutData or bodData is still loading
+    if (!engineerData) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="overflow-hidden">
             <div className="flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px]">
                 <div className="flex-1 flex-col bg-[#EFEFF0] flex lg:items-center justify-center">
                     <div className="p-4">
-                        <h2 className="lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-bold">Engineering Insurance</h2>
-                        <p className="lg:w-[560px] md:w-[700px] w-[319px] lg:text-[16px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4">
-                            This is a product that covers the risk of accidental, physical loss or damage in respect to contract works,
-                            during the execution of a civil project. It also covers legal liability falling on the insured's contractor
-                            as a result of bodily injury or property damage belonging to a third party. It also covers“All risks” of theft,
-                            loss or accidental damage to property insured subject to terms, exceptions and conditions of the policy.
-                        </p>
+                        <h2 className="lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-bold"
+                            dangerouslySetInnerHTML={{ __html: engineerData.header_caption }} />
+                        <p className="lg:w-[560px] md:w-[700px] w-[319px] lg:text-[16px] text-[12px] leading-[20px] font-medium text-[#56575D] mt-4"
+                            dangerouslySetInnerHTML={{ __html: engineerData.header_body }} />
+
                     </div>
                 </div>
                 <div className="flex-1">
-                    <img src={motorbg} alt="about" className="hidden lg:flex bg-cover w-full h-full" loading="lazy" />
+                    <img
+                        src={engineerData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${engineerData.header_image}` : "assets/purplemotor/motorbg.png"}
+                        className="hidden lg:flex bg-cover w-full h-full"
+                        loading="lazy" />
                     <img src={travelmob} alt="about" className="flex lg:hidden bg-cover w-full h-[458px]" loading="lazy" />
                 </div>
                 <div className="glass absolute bg-[#FF0226] bg-opacity-70 lg:bottom-[112px] md:bottom-[200px] msm:bottom-[146px]
@@ -83,7 +101,7 @@ const Engineer = () => {
                     <div className="flex lg:flex-row md:flex-row flex-col gap-6 lg:w-[1280px] h-full">
                         <div className="lg:w-[627px] w-[347px] lg:h-[770px] md:h-[790px] h-[690px] p-4 border border-b-4 border-b-[#FF0226] bg-white rounded-lg shadow-lg">
                             <img
-                                src={hero1} alt="hero"
+                                src={engineerData?.plant_all_risk_image ? `https://coronation-cms.interactivedigital.com.gh/${engineerData.plant_all_risk_image}` : "assets/purplemotor/motorbg.png"}
                                 className="lg:w-full w-[343px] lg:h-[280px] h-[220px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
@@ -92,14 +110,8 @@ const Engineer = () => {
                                 </h3>
                                 <div className="pl-6 mt-2">
                                     <ul className="list-disc flex flex-col gap-2">
-                                        <li className="text-[14px] text-[#56575D]">Indemnifies in the event of Short-circuit, disruption, electrical overpressure</li>
-                                        <li className="text-[14px] text-[#56575D]">Failure of operation of safety devices</li>
-                                        <li className="text-[14px] text-[#56575D]">Structural defects, material defects or defects of assembly.</li>
-                                        <li className="text-[14px] text-[#56575D]">Fortuitous working accidents such as vibration, maladjustment</li>
-                                        <li className="text-[14px] text-[#56575D]">Loosening of parts, abnormal stresses, fatigue, centrifugal force, excessive speed</li>
-                                        <li className="text-[14px] text-[#56575D]">Defective or accidental lack of lubrication, water, seizure or local overheating</li>
-                                        <li className="text-[14px] text-[#56575D]">Falling, impact, collision or similar occurrences</li>
-                                        <li className="text-[14px] text-[#56575D]">Obstruction or the entry of foreign</li>
+                                        <li className="text-[14px] text-[#56575D]"
+                                            dangerouslySetInnerHTML={{ __html: engineerData.plant_all_risk_body }} />
                                     </ul>
                                 </div>
                                 <div onClick={() => setPlantOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer 
@@ -113,7 +125,7 @@ const Engineer = () => {
                         )}
                         <div className="lg:w-[627px] w-[347px] lg:h-[770px] md:h-[790px] h-[750px] p-4 border border-b-4 border-b-[#FF0226] bg-white rounded-lg shadow-lg">
                             <img
-                                src={hero2} alt="hero"
+                                src={engineerData?.contractors_all_risk_body ? `https://coronation-cms.interactivedigital.com.gh/${engineerData.contractors_all_risk_body}` : "assets/purplemotor/motorbg.png"}
                                 className="lg:w-full w-[343px] lg:h-[280px] h-[220px] rounded-lg bg-cover"
                                 loading="lazy" />
                             <div>
@@ -122,16 +134,8 @@ const Engineer = () => {
                                 </h3>
                                 <div className="pl-6 mt-2">
                                     <ul className="list-disc flex flex-col gap-2">
-                                        <li className="text-[14px] text-[#56575D]">This insurance provides an ‘all risk ‘cover for contract work. All perils are covered unless specifically excluded</li>
-                                        <li className="text-[14px] text-[#56575D]">This Policy can also extend the policy to cover:</li>
-                                        <li className="text-[14px] text-[#56575D]">Temporary buildings and contents on the worksite,Temporary buildings and contents on the worksite,</li>
-                                        <li className="text-[14px] text-[#56575D]">The policyholder’s existing property</li>
-                                        <li className="text-[14px] text-[#56575D]">Contractors’ plant and equipment brought onto the site</li>
-                                        <li className="text-[14px] text-[#56575D]">Clearance of debris,</li>
-                                        <li className="text-[14px] text-[#56575D]">Professional advisers’ fees</li>
-                                        <li className="text-[14px] text-[#56575D]">Off-site storage cover</li>
-                                        <li className="text-[14px] text-[#56575D]">Covers damages or loss of materials in transit</li>
-                                        <li className="text-[14px] text-[#56575D]">Covers loss or damage to properties in</li>
+                                        <li className="text-[14px] text-[#56575D]"
+                                            dangerouslySetInnerHTML={{ __html: engineerData.contractors_all_risk_body }} />
                                     </ul>
                                 </div>
                                 <div onClick={() => setContractorOpen(true)} className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
@@ -149,19 +153,18 @@ const Engineer = () => {
             <section>
                 <div className="flex lg:flex-row flex-col lg:mt-40 mt-0 lg:px-28 px-0 lg:gap-10 gap-6">
                     <div>
-                        <img src={travelbenefit} alt="engineer" className="w-[628px] md:ml-[70px] lg:ml-0 ml-0 h-[452px]" />
+                        <img
+                            src={engineerData?.machinery_breakdown_image ? `https://coronation-cms.interactivedigital.com.gh/${engineerData.machinery_breakdown_image}` : "assets/purplemotor/motorbg.png"}
+                            className="w-[628px] md:ml-[70px] lg:ml-0 ml-0 h-[452px]"
+                            loading="lazy" />
                     </div>
                     <div className="flex flex-col items-center justify-center">
                         <div className="lg:w-[467px] md:w-[650px] w-[375px] lg:h-[328px] md:h-[300px] h-[400px] px-4 lg:px-0">
                             <h3 className="w-full lg:h-[40px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2">
                                 Machinery Breakdown
                             </h3>
-                            <p className="mt-2">
-                                This policy is designed to indemnify the insured against damage to the machinery (already fixed and in use) caused by breakdown,
-                                principally from the sources within the machinery It covers unforeseen and sudden physical loss of or damage to the insured items,
-                                necessitating their repair or replacement. The breakdown could result to the machinery while Working or at rest Being dismantled,
-                                moved or re-erected for the purposes of cleaning, inspection, repair or installation in another position within the premises stated in the policy.
-                            </p>
+                            <p className="mt-2"
+                                dangerouslySetInnerHTML={{ __html: engineerData.machinery_breakdown_body }} />
                             <div className="flex gap-4">
                                 <div onClick={() => setMachineOpen(true)} className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
                                     Insurance Features
@@ -187,9 +190,8 @@ const Engineer = () => {
                             </h3>
                             <div className="pl-6 mt-2">
                                 <ul className="list-disc flex flex-col gap-2">
-                                    <li className="text-[14px] text-[#56575D]">Indemnifies in the event of fire, lightning, explosion, aircraft damage, riot, strike, malicious act, flood, inundation, storm, cyclone and allied perils</li>
-                                    <li className="text-[14px] text-[#56575D]">Indemnifies in the event of landslide, subsidence and rockslide</li>
-                                    <li className="text-[14px] text-[#56575D]">Indemnifies in the event of burglary and/or theft of the subject matter</li>
+                                    <li className="text-[14px] text-[#56575D]"
+                                        dangerouslySetInnerHTML={{ __html: engineerData.erection_all_body }} />
                                 </ul>
                             </div>
                             <div className="flex gap-4">
@@ -203,7 +205,10 @@ const Engineer = () => {
                         </div>
                     </div>
                     <div className="">
-                        <img src={travelbenefit} alt="engineer" className="w-[628px] h-[452px]" />
+                        <img
+                            src={engineerData?.erection_all_image ? `https://coronation-cms.interactivedigital.com.gh/${engineerData.erection_all_image}` : "assets/purplemotor/motorbg.png"}
+                            className="w-[628px] h-[452px]"
+                            loading="lazy" />
                     </div>
                 </div>
                 {erectionOpen && (
@@ -214,7 +219,10 @@ const Engineer = () => {
             <section>
                 <div className="flex lg:flex-row flex-col lg:mt-40 mt-0 lg:px-28 px-0 lg:gap-10 gap-6">
                     <div>
-                        <img src={engineer6} alt="engineer" className="w-[628px] md:ml-[70px] lg:ml-0 ml-0 h-[452px]" />
+                        <img
+                            src={engineerData?.computer_all_risk_image ? `https://coronation-cms.interactivedigital.com.gh/${engineerData.computer_all_risk_image}` : "assets/purplemotor/motorbg.png"}
+                            className="w-[628px] md:ml-[70px] lg:ml-0 ml-0 h-[452px]"
+                            loading="lazy" />
                     </div>
                     <div className="flex flex-col items-center">
                         <div className="lg:w-[467px] md:w-[650px] w-[375px] lg:h-[328px] md:h-[300px] h-[430px] px-4 lg:px-0 mt-4 lg:mt-0">
@@ -227,8 +235,8 @@ const Engineer = () => {
                             </p>
                             <div className="pl-6 mt-2">
                                 <ul className="list-disc flex flex-col gap-2">
-                                    <li className="text-[14px] text-[#56575D]">This insurance provides an ‘all risk ‘cover for electronic equipments. All perils are covered unless specifically excluded The electronic equipment may range from industrial to IT related equipment e.g. Servers, routers, UPS, Stabilizers etc.</li>
-                                    <li className="text-[14px] text-[#56575D]">It provides cover for increase cost of working as result of loss.</li>
+                                    <li className="text-[14px] text-[#56575D]"
+                                        dangerouslySetInnerHTML={{ __html: engineerData.computer_all_risk_body }} />
                                 </ul>
                             </div>
                             <div className="flex gap-4">
@@ -253,8 +261,8 @@ const Engineer = () => {
                         <div className="w-full h-[108px]">
                             <h2 className="text-[40px] leading-[44px] font-semibold">BENEFITS</h2>
                             <div className="flex lg:flex-row flex-col lg:items-center justify-between mt-2">
-                                <span className="lg:w-[518px] md:w-[400px] w-[296px] lg:h-[48px] h-[60px] text-[14px] leading-[20px] text-[#56575D]">
-                                    The product has been designed with a combination of Enhanced term life which gives you an additional benefit.                                </span>
+                                <span className="lg:w-[518px] md:w-[400px] w-[296px] lg:h-[48px] h-[60px] text-[14px] leading-[20px] text-[#56575D]"
+                                    dangerouslySetInnerHTML={{ __html: engineerData.benefits_body }} />
                             </div>
                         </div>
                         <div className="flex lg:flex-row md:flex-row flex-col lg:gap-4 gap-8 lg:mt-4 mt-10">
@@ -263,13 +271,8 @@ const Engineer = () => {
                                     <div className="lg:text-[24px] text-[18px] lg:leading-[32px] leading-[24px] font-semibold">COMPREHENSIVE INSURANCE</div>
                                     <div className="pl-6 mt-2">
                                         <ul className="list-disc flex flex-col gap-2">
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Free tracker for vehicles with value GHS100,000</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">No-Claim discount at renewal</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Reimbursement of legal fees if policy holder is prosecuted in court over an accident resulting in a valid claim</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Nil depreciation on total write off for a brand new vehicle of less than twelve months</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Waives your windscreen excess</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Foreign Use (Ecowas Countries) for additional premium</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Multi-car Discount</li>
+                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]"
+                                                dangerouslySetInnerHTML={{ __html: engineerData.comprehensive_benefits }} />
                                         </ul>
                                     </div>
                                 </div>
@@ -283,11 +286,8 @@ const Engineer = () => {
                                     <div className="lg:text-[24px] text-[18px] lg:leading-[32px] leading-[24px] font-semibold">THIRD PARTY FIRE & THEFT</div>
                                     <div className="pl-6 mt-2">
                                         <ul className="list-disc flex flex-col gap-2">
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Free tracker for vehicles with value GHS100,000</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">No-Claim discount at renewal</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Reimbursement of legal fees if policy holder is prosecuted in court over an accident resulting in a valid claim</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Foreign Use (Ecowas Countries) for additional premium</li>
-                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]">Multi-car Discount</li>
+                                            <li className="lg:text-[16px] text-[12px] text-[#56575D]"
+                                                dangerouslySetInnerHTML={{ __html: engineerData.tp_fire_theft_benefits }} />
                                         </ul>
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom'; // Import useLocation
 import Book from './Book';
 
 const ITEMS_PER_PAGE = 6;
@@ -11,6 +12,8 @@ function Project() {
     const [active, setActive] = useState(0);
     const [categories, setCategories] = useState([{ name: 'All' }]); // Default category 'All'
     const [currentPage, setCurrentPage] = useState(1);
+
+    const location = useLocation(); // Get the current path
 
     // Fetch articles on mount
     useEffect(() => {
@@ -96,22 +99,25 @@ function Project() {
 
     return (
         <div>
-            <nav className="w-full h-[44px] px-4 flex items-center">
-                <ul className="flex gap-4">
-                    {categories.map((navItem, index) => (
-                        <li
-                            onClick={(e) => handleClick(e, index)}
-                            key={index}
-                            className={`${active === index
-                                ? 'bg-[#B580D1] text-white'
-                                : 'bg-[#F7F7F8] text-black'
-                                } p-2 rounded-lg cursor-pointer lg:text-[16px] md:text-[14px] text-[10px] font-semibold leading-[24px]`}
-                        >
-                            {navItem.name}
-                        </li>
-                    ))}
-                </ul>
-            </nav>
+            {/* Conditionally render the categories based on the current path */}
+            {location.pathname !== '/' && (
+                <nav className="w-full h-[44px] px-4 flex items-center">
+                    <ul className="flex gap-4">
+                        {categories.map((navItem, index) => (
+                            <li
+                                onClick={(e) => handleClick(e, index)}
+                                key={index}
+                                className={`${active === index
+                                    ? 'bg-[#B580D1] text-white'
+                                    : 'bg-[#F7F7F8] text-black'
+                                    } p-2 rounded-lg cursor-pointer lg:text-[16px] md:text-[14px] text-[10px] font-semibold leading-[24px]`}
+                            >
+                                {navItem.name}
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            )}
 
             {/* Project grid */}
             <section>
@@ -121,35 +127,37 @@ function Project() {
                     ))}
                 </div>
 
-                {/* Pagination controls */}
-                <div className="flex lg:justify-center lg:items-center mt-8 mb-8 lg:mb-0">
-                    <button
-                        onClick={handlePreviousPage}
-                        disabled={currentPage === 1}
-                        className="px-3 py-1 mx-1 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-200 disabled:opacity-50"
-                    >
-                        &lt;
-                    </button>
-                    {Array.from({ length: totalPages }, (_, index) => (
+                {/* Conditionally render pagination controls based on the current path */}
+                {location.pathname !== '/' && (
+                    <div className="flex lg:justify-center lg:items-center mt-8 mb-8 lg:mb-0">
                         <button
-                            key={index + 1}
-                            onClick={() => setCurrentPage(index + 1)}
-                            className={`px-3 py-1 mx-1 border ${currentPage === index + 1
-                                ? 'bg-purple-500 text-white'
-                                : 'border-gray-300 text-gray-500'
-                                } rounded-lg hover:bg-purple-500 hover:text-white`}
+                            onClick={handlePreviousPage}
+                            disabled={currentPage === 1}
+                            className="px-3 py-1 mx-1 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-200 disabled:opacity-50"
                         >
-                            {index + 1}
+                            &lt;
                         </button>
-                    ))}
-                    <button
-                        onClick={handleNextPage}
-                        disabled={currentPage === totalPages}
-                        className="px-3 py-1 mx-1 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-200 disabled:opacity-50"
-                    >
-                        &gt;
-                    </button>
-                </div>
+                        {Array.from({ length: totalPages }, (_, index) => (
+                            <button
+                                key={index + 1}
+                                onClick={() => setCurrentPage(index + 1)}
+                                className={`px-3 py-1 mx-1 border ${currentPage === index + 1
+                                    ? 'bg-[#B580D1] text-white'
+                                    : 'border-gray-300 text-gray-500'
+                                    } rounded-lg hover:bg-[#B580D1] hover:text-white`}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+                        <button
+                            onClick={handleNextPage}
+                            disabled={currentPage === totalPages}
+                            className="px-3 py-1 mx-1 border border-gray-300 rounded-lg text-gray-500 hover:bg-gray-200 disabled:opacity-50"
+                        >
+                            &gt;
+                        </button>
+                    </div>
+                )}
             </section>
         </div>
     );

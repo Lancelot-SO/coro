@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import productbg from "../assets/purpleproduct/productbg.png"
-import product1 from "../assets/redmotor/redmotor.png"
-import product2 from "../assets/engineer/engineerbg.png"
-import product3 from "../assets/marine/marinebg.png"
+// import productbg from "../assets/purpleproduct/productbg.png"
+// import product1 from "../assets/redmotor/redmotor.png"
+// import product2 from "../assets/engineer/engineerbg.png"
+// import product3 from "../assets/marine/marinebg.png"
 import product4 from "../assets/purpleproduct/redprodbg.png"
 import product5 from "../assets/purpleproduct/redbanner.png"
 
@@ -15,44 +15,48 @@ import { useEffect, useState } from "react"
 
 
 const RedProduct = () => {
-    const [homeData, setHomeData] = useState(null);
+    const [productData, setProductData] = useState(null);
+
 
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchproductData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/home/fetch');
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/pns/fetch');
                 const data = await response.json();
-                console.log(data);
-                setHomeData(data[0]);
+                console.log('purple redproduct Data:', data);
+                setProductData(data[0]);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching redproduct data:', error);
             }
         };
-        fetchData();
+        fetchproductData();
     }, []);
 
-
-    if (!homeData) {
+    // Check if either aboutData or bodData is still loading
+    if (!productData) {
         return <div>Loading...</div>;
     }
     return (
         <div className="overflow-hidden">
             <div className="relative">
-                <img src={productbg} alt="about" className="hidden lg:block w-full bg-cover lg:w-full" loading="lazy" />
+                <img
+                    src={productData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.header_image}` : "assets/purpleproduct/productbg.png"}
+                    className="hidden lg:max-h-[570px] lg:block w-full bg-cover lg:w-full"
+                    loading="lazy" />
                 <img src={productmob} alt="about" className="lg:hidden block bg-cover w-full md:h-[800px]" loading="lazy" />
-                <div className="absolute lg:top-[293px] md:top-[500px] top-[470px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">
-                    <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Individual Insurance</h2>
-                    <span className="w-full h-[72px] lg:text-[18px] md:text-[24px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
-                        Coronation Insurance Ghana Ltd offers comprehensive insurance for your car, home, business and life - with only one telephone call. Find out more & get a quote.
-                    </span>
+                <div className="absolute lg:top-[350px] md:top-[500px] top-[470px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">
+                    <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white"
+                        dangerouslySetInnerHTML={{ __html: productData.header_caption }} />
+                    <span className="w-full h-[72px] lg:text-[18px] md:text-[24px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white"
+                        dangerouslySetInnerHTML={{ __html: productData.header_body }} />
                 </div>
-                <div className="absolute lg:top-[280px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-[#FF0226] bg-opacity-70 shadow-md">
+                <div className="absolute lg:top-[340px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-[#FF0226] bg-opacity-70 shadow-md">
                     <div className="lg:p-6 p-4">
                         <span className="text-white lg:w-[232px] lg:h-[32px] h-[24px] lg:text-[24px] text-[16px] lg:leading-[32px] leading-6 font-semibold">My Insurance Account</span>
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
                         </p>
-                        <div className="flex mt-5 w-[90px] h-[35px] bg-black text-white rounded-lg items-center justify-center">
+                        <div className="flex mt-5 w-[90px] h-[35px] bg-black text-white items-center justify-center">
                             Contact Us
                         </div>
                     </div>
@@ -73,19 +77,16 @@ const RedProduct = () => {
                         <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:px-40 lg:px-0 px-0 w-full lg:h-[524px] h-[1204px]">
                             <div className="w-[436px] h-full">
                                 <img
-                                    src={product1}
+                                    src={productData?.motor_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.motor_image}` : "assets/purpleproduct/product1.png"}
                                     alt="pic"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] rounded-[12px] object-cover transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy"
                                 />
                                 <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Motor Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0">
-                                        Our car insurance plans are designed to help protect you, your vehicle and the ones you love.
-                                        We also settle claims within 48 hours leaving you free to cruise on with absolute peace of mind.
-                                    </p>
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
+                                        dangerouslySetInnerHTML={{ __html: productData.motor_caption }} />
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[100px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] lg:mt-4 mt-0"
+                                        dangerouslySetInnerHTML={{ __html: productData.motor_body }} />
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
                                         <Link to="/redproductdetails/redmotor">Read More</Link>
                                     </div>
@@ -94,18 +95,16 @@ const RedProduct = () => {
 
                             <div className="w-[436px] h-full">
                                 <img
-                                    src={product2}
+                                    src={productData?.eng_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.eng_image}` : "assets/purpleproduct/product1.png"}
                                     alt="pic"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy"
                                 />
                                 <div className="w-full lg:h-[204px] h-[150px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Engineering Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
-                                        Travelling should be an enjoyable experience, our plans are designed to keep it that way.
-                                    </p>
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
+                                        dangerouslySetInnerHTML={{ __html: productData.eng_caption }} />
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
+                                        dangerouslySetInnerHTML={{ __html: productData.eng_body }} />
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
                                         <Link to="/redproductdetails/engineer">Read More</Link>
                                     </div>
@@ -114,17 +113,17 @@ const RedProduct = () => {
 
                             <div className="w-[436px] h-full">
                                 <img
-                                    src={product3}
+                                    src={productData?.marine_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.marine_image}` : "assets/purpleproduct/product1.png"}
                                     alt="pic"
                                     className="lg:w-full w-[343px] lg:h-[295px] h-[220px] object-cover rounded-[12px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                                     loading="lazy" />
                                 <div className="w-full h-[204px] mt-4">
-                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white">
-                                        Marine Insurance
-                                    </h2>
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4">
-                                        Coronation Home Insurance protects your home inside and out, covering your building and belongings.
-                                    </p>
+                                    <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
+                                        dangerouslySetInnerHTML={{ __html: productData.marine_caption }} />
+
+                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
+                                        dangerouslySetInnerHTML={{ __html: productData.marine_body }} />
+
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
                                         <Link to="/redproductdetails/marine">Read More</Link>
                                     </div>

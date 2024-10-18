@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import "./global.css"
-import marinemainbg from "../assets/marine/marinemainbg.png"
+// import marinemainbg from "../assets/marine/marinemainbg.png"
 import mariners from "../assets/marine/mariners.png"
 import marinersmob from "../assets/marine/marinersmob.png"
 import { Link } from "react-router-dom"
 import CargoFeature from "../features/CargoFeature"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MarinehullFeature from "../features/MarinehullFeature"
-// import { useState } from "react"
 
 
 
@@ -15,13 +14,35 @@ const Marine = () => {
     const [cargoOpen, setCargoOpen] = useState(false);
     const [marinehullOpen, setMarinehullOpen] = useState(false);
 
+    const [marineData, setMarineData] = useState(null);
+
+
+    useEffect(() => {
+        const fetchmarineData = async () => {
+            try {
+                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/institute/marine/fetch');
+                const data = await response.json();
+                console.log('purple marine Data:', data);
+                setMarineData(data[0]);
+            } catch (error) {
+                console.error('Error fetching marine data:', error);
+            }
+        };
+        fetchmarineData();
+    }, []);
+
+    // Check if either aboutData or bodData is still loading
+    if (!marineData) {
+        return <div>Loading...</div>;
+    }
+
 
     return (
         <div className="overflow-hidden">
             <div className="relative">
                 {/* Background images */}
                 <img
-                    src={marinemainbg}
+                    src={marineData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${marineData.header_image}` : "assets/purplemotor/motorbg.png"}
                     alt="about"
                     className="hidden lg:block w-full h-[600px] object-cover"
                     loading="lazy"
@@ -38,16 +59,15 @@ const Marine = () => {
 
                 {/* Content on top of the image */}
                 <div className="absolute lg:top-[380px] top-[500px] lg:left-20 left-4 lg:w-[681px] w-[347px] lg:h-[152px] h-[172px]">
-                    <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">
-                        Marine Insurance
-                    </h2>
-                    <span className="w-[681px] h-[48px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
-                        Marine insurance covers risks associated with travelling out of your country of residence on a temporary basis.
-                    </span>
+                    <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white"
+                        dangerouslySetInnerHTML={{ __html: marineData.header_caption }} />
+
+                    <span className="w-[681px] h-[48px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white"
+                        dangerouslySetInnerHTML={{ __html: marineData.header_body }} />
                 </div>
 
                 {/* Contact Us Box */}
-                <div className="absolute lg:top-[340px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-[#FF0226] bg-opacity-70 rounded-lg shadow-md">
+                <div className="absolute lg:top-[340px] top-0 lg:right-20 right-0 lg:w-[300px] w-[225px] lg:h-[174px] h-[160px] bg-[#FF0226] bg-opacity-70 shadow-md">
                     <div className="lg:p-6 p-4">
                         <span className="text-white lg:w-[232px] lg:h-[32px] h-[24px] lg:text-[24px] text-[16px] lg:leading-[32px] leading-6 font-semibold">
                             My Insurance Account
@@ -84,9 +104,9 @@ const Marine = () => {
                         <h3 className="text-[24px] font-semibold leading-8">
                             Marine Cargo
                         </h3>
-                        <span className="text-[18px] font-normal leading-6 text-[#888991]">
-                            Loss or damage to imported goods being conveyed by sea or air.
-                        </span>
+                        <span className="text-[18px] font-normal leading-6 text-[#888991]"
+                            dangerouslySetInnerHTML={{ __html: marineData.marine_cargo_body }} />
+
                         <div className="flex gap-4">
                             <div onClick={() => setCargoOpen(true)} className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
                                 Insurance Features
@@ -103,9 +123,9 @@ const Marine = () => {
                         <h3 className="text-[24px] font-semibold leading-8">
                             Marine hull
                         </h3>
-                        <span className="text-[18px] font-normal leading-6 text-[#888991]">
-                            Loss or damage to vessels, yachts and their machinery.
-                        </span>
+                        <span className="text-[18px] font-normal leading-6 text-[#888991]"
+                            dangerouslySetInnerHTML={{ __html: marineData.marine_hull_body }} />
+
                         <div className="flex gap-4">
                             <div onClick={() => setMarinehullOpen(true)} className="w-[142px] h-[36px] bg-[#FF0226] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-white flex items-center justify-center mt-6">
                                 Insurance Features
