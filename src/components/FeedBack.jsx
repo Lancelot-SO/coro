@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import emailjs from '@emailjs/browser';
 
 const Feedback = ({ showModal, setShowModal }) => {
     const [rangeValue, setRangeValue] = useState(0);
@@ -11,32 +12,69 @@ const Feedback = ({ showModal, setShowModal }) => {
 
     useEffect(() => {
         if (showModal) {
-            setRangeValue(0); // Reset range value to 0 when modal is shown
-            setStarRating(0); // Reset star rating to 0 when modal is shown
-            setFeedback(''); // Reset feedback to empty when modal is shown
+            setRangeValue(0);
+            setStarRating(0);
+            setFeedback('');
         }
     }, [showModal]);
 
     const handleStarClick = (index) => {
-        setStarRating(index + 1); // Stars are 0-indexed, so add 1 to the clicked index
+        setStarRating(index + 1);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (starRating === 0 || rangeValue === 0) {
             toast.error('Please provide a star rating and a recommendation score.');
             return;
         }
 
-        // Save the user's feedback to local storage
-        localStorage.setItem('starRating', starRating);
-        localStorage.setItem('rangeValue', rangeValue);
-        localStorage.setItem('feedback', feedback);
+        const feedbackData = {
+            rating: starRating,
+            likely_to_recommend: rangeValue,
+            feedback,
+        };
 
-        // Show success toast message
-        toast.success('Submitted successfully');
+        console.log('API Endpoint:', 'https://coronation-cms.interactivedigital.com.gh/api/feedback/form');
+        console.log('Feedback Data:', feedbackData);
 
-        // Close the modal
-        setShowModal(false);
+        try {
+            // Send feedback to the API
+            const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/feedback/form', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(feedbackData),
+            });
+
+            if (response.ok) {
+                // Send an email using EmailJS
+                emailjs.send(
+                    'service_8o5f2xd',       // Your EmailJS Service ID
+                    'template_e0khrmr',      // Your EmailJS Template ID
+                    {
+                        rating: starRating,
+                        likely_to_recommend: rangeValue,
+                        feedback: feedback
+                    },
+                    '6aG8jxTKE39zz493J'        // Your EmailJS Public Key
+                )
+                    .then(() => {
+                        toast.success('Submitted successfully and email sent!');
+                    })
+                    .catch((error) => {
+                        console.error('Error sending email:', error);
+                        toast.error('Feedback saved, but failed to send email.');
+                    });
+
+                setShowModal(false);
+            } else {
+                toast.error('Failed to submit feedback. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error submitting feedback:', error);
+            toast.error('An error occurred. Please try again later.');
+        }
     };
 
     if (!showModal) return null;
@@ -64,7 +102,7 @@ const Feedback = ({ showModal, setShowModal }) => {
                     ))}
                 </div>
                 <div className="mb-4">
-                    <p className='text-[12px]'>Star Rating: {starRating}</p> {/* Display the star rating value */}
+                    <p className='text-[12px]'>Star Rating: {starRating}</p>
                 </div>
                 <div className="mb-4">
                     <label className="block mb-6 text-[12px]">

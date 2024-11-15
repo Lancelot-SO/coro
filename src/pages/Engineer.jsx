@@ -170,7 +170,7 @@ const Engineer = () => {
                                     Insurance Features
                                 </div>
                                 <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
+                                    <Link to="/redcontact">Contact Us</Link>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +199,7 @@ const Engineer = () => {
                                     Insurance Features
                                 </div>
                                 <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
+                                    <Link to="/redcontact">Contact Us</Link>
                                 </div>
                             </div>
                         </div>
@@ -244,7 +244,7 @@ const Engineer = () => {
                                     Insurance Features
                                 </div>
                                 <div className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold lg:text-[14px] text-[12px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
-                                    <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
+                                    <Link to="/redcontact">Contact Us</Link>
                                 </div>
                             </div>
                         </div>

@@ -40,7 +40,7 @@ const RedHome = () => {
     return (
         <div className="overflow-hidden">
             <div className="relative">
-                <img src={aboutbg} alt="about" className="w-full bg-cover lg:w-full h-[600px]" loading="lazy" />
+                <img src={aboutbg} alt="about" className="w-full object-cover bg-cover lg:w-full h-[600px]" loading="lazy" />
                 <div className="absolute lg:top-[370px] md:top-[430px] top-[370px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] bg-[#FF0226] bg-opacity-70 px-4 w-[347px] lg:h-[152px] md:h-[120px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white">Coronation</h2>
                     <span className="w-full h-[72px] lg:text-[18px] text-[14px] font-normal lg:leading-[24px] leading-5 text-white">
@@ -54,7 +54,7 @@ const RedHome = () => {
                     My Insurance Account
                 </div>
                 <div className="flex text-[16px] leading-[30px] font-semibold w-[120px] text-white h-10 bg-[#FF0226] items-center justify-center">
-                    <Link to="/" >Request & Pay</Link>
+                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Request & Pay</Link>
                 </div>
             </div>
             <section id="redhome_section3">
@@ -64,7 +64,7 @@ const RedHome = () => {
                             <img
                                 src={homeData?.tile1_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile1_image}` : "assets/purplehome/purplehomebg.png"}
                                 alt="hero"
-                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
+                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg object-cover bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] md:leading-[24px] leading-[28px] mt-2"
@@ -79,8 +79,8 @@ const RedHome = () => {
                                     }}
                                 />
                                 <div className="w-[111px] h-[44px] bg-[#FF0226] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-4">
-                                    <Link to={homeData?.tile1_btn_link || "/purpleabout"}>
-                                        {homeData?.tile1_btn_text || "Learn More"}
+                                    <Link to="/redabout">
+                                        Learn More
                                     </Link>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@ const RedHome = () => {
                             <img
                                 src={homeData?.tile2_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile2_image}` : "assets/purplehome/purplehomebg.png"}
                                 alt="hero"
-                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
+                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg object-cover bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2"
@@ -105,12 +105,12 @@ const RedHome = () => {
                                 />
                                 <div className="flex gap-6">
                                     <div className="w-[111px] h-[44px] bg-[#FF0226] shadow-md text-white flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to={homeData?.tile2_btn_link || "/"} target='_blank' rel='noopener noreferrer'>
-                                            {homeData?.tile2_btn_text || "Make a Claim"}
+                                        <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>
+                                            Get a Quote
                                         </Link>
                                     </div>
                                     <div className="w-[111px] h-[44px] bg-[#F7F7F8] shadow-md text-[#141415] flex items-center justify-center rounded-xl lg:mt-8 mt-0">
-                                        <Link to="/purpleabout">Learn More</Link>
+                                        <Link to="/redabout">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@ const RedHome = () => {
                                 We are affiliated to our mother company in Nigeria
                             </span>
                             <div className="w-[97px] h-[44px] bg-[#FF0226] text-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center mt-8 lg:mt-0">
-                                <Link to="/">Contact Us</Link>
+                                <Link to="https://coronation.ng/institutional/about-us/">About Us</Link>
                             </div>
                         </div>
                     </div>

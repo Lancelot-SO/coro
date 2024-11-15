@@ -1,10 +1,11 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 import { FaBars, FaTimes } from 'react-icons/fa'; // Hamburger and close icons
 
 const PurpleNavbar = () => {
     const location = useLocation();
+    const navigate = useNavigate();  // Use navigate to redirect
     const [activeLink, setActiveLink] = useState('');
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -26,6 +27,15 @@ const PurpleNavbar = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
+    // Handle logo click to navigate to home page
+    const handleLogoClick = () => {
+        if (activeLink === 'individual') {
+            navigate('/');  // Navigate to the home page for 'individual'
+        } else if (activeLink === 'institution') {
+            navigate('/redhome');  // Navigate to the home page for 'institution'
+        }
+    };
+
     return (
         <div className="overflow-hidden">
             {/* First Navbar */}
@@ -37,7 +47,7 @@ const PurpleNavbar = () => {
                     <Link
                         to="/"
                         onClick={() => handleLinkClick('individual')}
-                        className={`text-[14px] leading-[20px] font-medium ${activeLink === 'individual' ? 'text-[#B580D1] font-bold' : 'text-[#888991]'}`}
+                        className={`text-[14px] leading-[20px] font-medium transform transition duration-300 hover:scale-105 ${activeLink === 'individual' ? 'text-[#B580D1] font-bold' : 'text-[#888991]'}`}
                     >
                         Individual
                         {activeLink === 'individual' && (
@@ -47,9 +57,9 @@ const PurpleNavbar = () => {
                     <Link
                         to="/redhome"
                         onClick={() => handleLinkClick('institution')}
-                        className={`text-[14px] leading-[20px] font-medium ${activeLink === 'institution' ? 'text-[#FF0226] font-bold' : 'text-[#888991]'}`}
+                        className={`text-[14px] leading-[20px] font-medium transform transition duration-300 hover:scale-105 ${activeLink === 'institution' ? 'text-[#FF0226] font-bold' : 'text-[#888991]'}`}
                     >
-                        Institution
+                        Corporate
                         {activeLink === 'institution' && (
                             <div className="w-full h-[2px] bg-[#FF0226] mt-1" />
                         )}
@@ -60,25 +70,30 @@ const PurpleNavbar = () => {
             {/* Conditional Second Navbar */}
             <div className="flex w-full h-[60px] items-center justify-between px-4 py-2 md:px-10">
                 <div className="flex items-center gap-4">
-                    <img src={logo} alt="logo" className="w-32 h-auto" loading="lazy" />
-
+                    <img
+                        src={logo}
+                        alt="logo"
+                        className="w-32 h-auto cursor-pointer"
+                        loading="lazy"
+                        onClick={handleLogoClick}  // Add onClick handler to the logo
+                    />
                     {/* Desktop Links */}
                     <ul className="hidden md:flex flex-row gap-4">
                         {activeLink === 'individual' ? (
                             <>
-                                <Link to="/purpleabout"><li className="text-[#56575d] text-[14px] leading-[20px]">About Us</li></Link>
-                                <Link to="/purpleproduct"><li className="text-[#56575d] text-[14px] leading-[20px]">Product & Solutions</li></Link>
-                                <Link to="/purpleinsights"><li className="text-[#56575d] text-[14px] leading-[20px]">Insights</li></Link>
-                                <Link to="/purplecareers"><li className="text-[#56575d] text-[14px] leading-[20px]">Careers</li></Link>
-                                <Link to="/purplecontact"><li className="text-[#56575d] text-[14px] leading-[20px]">Contact Us</li></Link>
+                                <Link to="/purpleabout"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">About Us</li></Link>
+                                <Link to="/purpleproduct"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Product & Solutions</li></Link>
+                                <Link to="/purpleinsights"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Insights</li></Link>
+                                <Link to="/purplecareers"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Careers</li></Link>
+                                <Link to="/purplecontact"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Contact Us</li></Link>
                             </>
                         ) : (
                             <>
-                                <Link to="/redabout"><li className="text-[#56575d] text-[14px] leading-[20px]">About</li></Link>
-                                <Link to="/redproduct"><li className="text-[#56575d] text-[14px] leading-[20px]">Product & Solutions</li></Link>
-                                <Link to="/redinsights"><li className="text-[#56575d] text-[14px] leading-[20px]">Insights</li></Link>
-                                <Link to="/redcareers"><li className="text-[#56575d] text-[14px] leading-[20px]">Careers</li></Link>
-                                <Link to="/redcontact"><li className="text-[#56575d] text-[14px] leading-[20px]">Contact Us</li></Link>
+                                <Link to="/redabout"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">About Us</li></Link>
+                                <Link to="/redproduct"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Product & Solutions</li></Link>
+                                <Link to="/redinsights"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Insights</li></Link>
+                                <Link to="/redcareers"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Careers</li></Link>
+                                <Link to="/redcontact"><li className="text-[#56575d] hover:scale-105 transform transition duration-300 text-[14px] leading-[20px]">Contact Us</li></Link>
                             </>
                         )}
                     </ul>

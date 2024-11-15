@@ -49,7 +49,7 @@ const RedInsights = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[111px] h-[35px] bg-black text-white items-center justify-center">
-                            <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
+                            <Link to="/redcontact">Contact Us</Link>
                         </div>
                     </div>
                 </div>
@@ -89,10 +89,15 @@ const RedInsights = () => {
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <h2 className="lg:w-[512px] md:w-[400px] w-[160px] h-auto md:h-[60px] text-left md:text-left"
+                                            <h2 className="lg:w-[512px] md:w-[400px] w-[160px] h-auto text-left md:text-left"
                                                 dangerouslySetInnerHTML={{ __html: article.caption }} />
-                                            <span className="hidden lg:flex lg:w-[512px] w-[347px] h-auto md:h-[60px] text-[#888991] text-[12px] lg:text-[16px] text-center md:text-left"
+                                            <span className="hidden lg:flex lg:w-[512px] w-[347px] h-auto text-[#888991] text-[12px] lg:text-[16px] text-center md:text-left"
                                                 dangerouslySetInnerHTML={{ __html: article.excerpt }} />
+
+                                            <Link to={`/reddetail/${article.id}`} className="text-[#FF0226] font-semibold hover:underline mt-4">
+                                                Read More
+                                            </Link>
+
                                         </div>
                                     </div>
                                 </div>

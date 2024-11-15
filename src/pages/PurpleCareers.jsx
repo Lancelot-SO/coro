@@ -1,14 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-// import insightbg from "../assets/purpleinsight/insightbg.png"
-// import insight1 from "../assets/purpleinsight/insight1.png"
-
-// import career1 from "../assets/career/career1.png"
-// import career2 from "../assets/career/career2.png"
-
-
-import careerbgmob from "../assets/career/careerbgmob.png"
-
-
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 
@@ -39,9 +29,12 @@ const PurpleCareers = () => {
             <div className="relative">
                 <img
                     src={careerData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.header_image}` : "assets/purpleinsight/insightbg.png"}
-                    className="hidden lg:block w-full bg-cover lg:w-full h-[600px]"
+                    className="hidden lg:block w-full object-cover bg-cover lg:w-full h-[600px]"
                     loading="lazy" />
-                <img src={careerbgmob} alt="about" className="block lg:hidden w-full bg-cover lg:w-full lg:h-[600px] md:h-[800px]" loading="lazy" />
+                <img
+                    src={careerData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${careerData.header_image}` : "assets/purpleinsight/insightbg.png"}
+                    alt="about"
+                    className="block lg:hidden w-full bg-cover lg:w-full lg:h-[600px] md:h-[800px]" loading="lazy" />
                 <div className="absolute lg:top-[370px] md:top-[520px] top-[500px] xsm:top-[450px] lg:left-20 left-4 lg:w-[858px] md:w-[600px] w-[347px] lg:h-[152px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white"
                         dangerouslySetInnerHTML={{ __html: careerData.header_caption }} />
@@ -55,7 +48,7 @@ const PurpleCareers = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[90px] h-[35px] text-[12px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
-                            <Link to="https://claims-gh.coronation.ng/" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
+                            <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                         </div>
                     </div>
                 </div>
@@ -233,7 +226,7 @@ const PurpleCareers = () => {
                 <div className="w-full h-[164px] bg-[#B580D1] flex lg:flex-row flex-col lg:items-center lg:justify-between lg:pr-40 lg:pl-20 pr-0 pl-4 py-14 lg:py-0 gap-2 lg:gap-0">
                     <h2 className="text-white w-[343px] lg:w-full h-[40px]  font-bold lg:text-[40px] text-[32px] lg:leading-[44px] leading-[40px]">Get Insured Today</h2>
                     <div className="w-[110px] h-[44px]  bg-white flex items-center justify-center p-2 lg:p-2 rounded-lg text-[16px] leading-[24px] font-semibold">
-                        <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
+                        <Link to="/purplecontact">Contact Us</Link>
                     </div>
                 </div>
             </section>

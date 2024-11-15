@@ -30,7 +30,7 @@ const PurpleService = () => {
                                 Want to know more about our services? Let's talk
                             </p>
                             <div className="flex lg:mt-5 mt-2 lg:w-[116px] w-[95px] h-[36px] bg-white font-semibold lg:text-[14px] text-[10px] leading-[20px] text-black rounded-lg items-center justify-center">
-                                <Link to="https://claims-gh.coronation.ng/" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
+                                <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ const PurpleService = () => {
                                         Discover the most convenient way to plan your insurance with Coronation Mobile App,                                    </p>
                                 </div>
 
-                                <Link to="/" className="text-[#B580D1]">Buy Insurance</Link>
+                                <Link to="https://ecoronation.com/" className="text-[#B580D1]">Buy Insurance</Link>
                             </div>
                         </div>
                     </div>

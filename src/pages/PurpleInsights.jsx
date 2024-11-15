@@ -49,7 +49,7 @@ const PurpleInsights = () => {
                             Want to know more about our services? Let's talk
                         </p>
                         <div className="flex mt-5 w-[111px] h-[35px] bg-white text-black rounded-lg items-center justify-center">
-                            <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
+                            <Link to="/purplecontact">Contact Us</Link>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ const PurpleInsights = () => {
                             Read all our articles
                         </h2>
 
-                        <div className="w-full lg:h-[708px] md:h-[500px] h-[380px] flex flex-col lg:gap-6 md:gap-10 gap-4">
+                        <div className="w-full lg:h-auto md:h-auto h-auto flex flex-col lg:gap-6 md:gap-10 gap-4">
                             {insightLatestData.slice(0, 2).map((article, index) => (
                                 <div key={index} className="w-full lg:h-[342px] h-[200px] flex flex-row">
                                     <div className="lg:flex-1">
@@ -73,7 +73,7 @@ const PurpleInsights = () => {
                                             alt={article.caption}
                                         />
                                     </div>
-                                    <div className="lg:flex-1 h-[170px] lg:h-[342px] md:h-[220px] w-[167px] flex flex-col gap-2 lg:items-center md:items-center md:justify-center lg:justify-center px-2">
+                                    <div className="lg:flex-1 h-[170px] lg:h-auto md:h-auto w-[167px] flex flex-col gap-2 lg:items-center md:items-center md:justify-center lg:justify-center px-2">
                                         <div className="lg:pl-8 md:pl-64 pl-0 py-2 lg:py-0">
                                             <div className="flex lg:flex-row  md:flex-row flex-col lg:gap-10 md:gap-8">
                                                 <h3 className="text-[12px] text-[#888991]">
@@ -89,10 +89,14 @@ const PurpleInsights = () => {
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <h2 className="lg:w-[512px] md:w-[400px] w-[160px] h-auto md:h-[60px] text-left md:text-left"
+                                            <h2 className="lg:w-[512px] md:w-[400px] w-[160px] h-auto text-left md:text-left"
                                                 dangerouslySetInnerHTML={{ __html: article.caption }} />
-                                            <span className="hidden lg:flex lg:w-[512px] w-[347px] h-auto md:h-[60px] text-[#888991] text-[12px] lg:text-[16px] text-center md:text-left"
+                                            <span className="hidden lg:flex lg:w-[512px] w-[347px] h-auto  text-[#888991] text-[12px] lg:text-[16px] text-center md:text-left"
                                                 dangerouslySetInnerHTML={{ __html: article.excerpt }} />
+
+                                            <a href={`/purpledetail/${article.id}`} className="text-[#B580D1] font-semibold hover:underline">
+                                                Read More
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

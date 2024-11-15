@@ -26,7 +26,7 @@ const RedBook = ({ item }) => {
                 </div>
 
                 {/* Heading and details */}
-                <div className="h-[130px]">
+                <div className="h-auto">
                     <h3 className="text-xl font-semibold mb-2 text-gray-800">
                         {item.heading} {/* This is coming from the caption */}
                     </h3>

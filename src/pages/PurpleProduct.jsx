@@ -1,13 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-// import productbg from "../assets/purpleproduct/productbg.png"
-// import product1 from "../assets/purpleproduct/product1.png"
-// import product2 from "../assets/purpleproduct/product2.png"
-// import product3 from "../assets/purpleproduct/product3.png"
-import product4 from "../assets/purpleproduct/product4.png"
 import product5 from "../assets/purpleproduct/product5.png"
 
 import productmob from "../assets/purpleproduct/productmob.png"
-import product44 from "../assets/purpleproduct/product44.png"
 
 
 
@@ -43,7 +37,7 @@ const PurpleProduct = () => {
                 <img
                     src={productData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.header_image}` : "assets/purpleproduct/productbg.png"}
                     alt="about"
-                    className="hidden lg:block w-full bg-cover lg:w-full"
+                    className="hidden lg:block w-full object-cover h-auto bg-cover lg:w-full"
                     loading="lazy" />
                 <img
                     src={productmob} alt="about"
@@ -72,7 +66,7 @@ const PurpleProduct = () => {
                     <div className="w-full lg:h-[748px]">
                         <div className="hidden md:block lg:block md:mb-4 lg:mb-0 mb-0">
                             <h2 className="text-[48px] font-bold leading-[56px] text-white w-[790px] h-[112px]">
-                                Looking for The <br />Right Insurance for You?
+                                Looking for The <br />Right Insurance Cover for You?
                             </h2>
                             <span className="text-[16px] font-normal leading-[24px] text-[#888991] w-[846px] h-[48px]">
                                 Life doesn't wait, neither should your insurance coverage. Coronation Insurance Ghana Ltd offers<br /> comprehensive plans for car, home,
@@ -143,20 +137,23 @@ const PurpleProduct = () => {
                 <div className="flex lg:flex-row flex-col w-full lg:p-20">
                     <div className="flex-1">
                         <img
-                            src={product4} alt="about"
-                            className="hidden lg:block bg-cover w-[662px] h-[442px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                            src={productData?.sec2_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.sec2_image}` : "assets/purpleproduct/product2.png"}
+                            alt="about"
+                            className="hidden lg:block object-cover bg-cover w-[662px] h-[442px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                             loading="lazy" />
                         <img
-                            src={product44} alt="about"
-                            className="lg:hidden block bg-cover w-[662px] md:w-full md:h-[400px] h-[350px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                            src={productData?.sec2_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.sec2_image}` : "assets/purpleproduct/product2.png"}
+                            alt="about"
+                            className="lg:hidden block object-cover bg-cover w-[662px] md:w-full md:h-[400px] h-[350px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                             loading="lazy" />
                     </div>
                     <div className="flex-1 flex-col flex items-center justify-center">
                         <div className="p-4 lg:p-0">
-                            <h2 className="lg:w-[558px] lg:h-[112px] lg:text-[48px] md:text-[32px] text-[24px] lg:leading-[56px] leading-[32px] font-bold">Get Insurance From CORONATION Today</h2>
-                            <p className="lg:w-[560px] md:w-[400px] lg:text-[16px] text-[14px] leading-[20px] font-medium text-[#56575D] mt-4">
-                                No one should have to wait more than 48 hours for their claims to be paid. That’s why we do it in less.
-                            </p>
+                            <h2 className="lg:w-[558px] lg:h-[112px] lg:text-[48px] md:text-[32px] text-[24px] lg:leading-[56px] leading-[32px] font-bold"
+                                dangerouslySetInnerHTML={{ __html: productData.sec2_caption }} />
+                            <p className="lg:w-[560px] md:w-[400px] lg:text-[16px] text-[14px] leading-[20px] font-medium text-[#56575D] mt-4"
+                                dangerouslySetInnerHTML={{ __html: productData.sec2_body }} />
+
                             <div className="w-[125px] h-[44px] text-[16px] leading-[24px] font-semibold text-white bg-[#B580D1] flex items-center justify-center mt-10 rounded-lg">
                                 <Link to="https://claims-gh.coronation.ng/" target='_blank' rel='noopener noreferrer'>Make a Claim</Link>
                             </div>
@@ -172,7 +169,7 @@ const PurpleProduct = () => {
                         Get Insured Today
                     </div>
                     <div className="bg-white absolute top-[48%] right-[7%] w-[108px] h-[44px] flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
-                        <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
+                        <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Get a Quote</Link>
                     </div>
                 </div>
             </section>

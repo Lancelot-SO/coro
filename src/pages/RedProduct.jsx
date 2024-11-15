@@ -67,14 +67,14 @@ const RedProduct = () => {
                     <div className="w-full lg:h-[748px]">
                         <div className="hidden md:block lg:block md:mb-4 lg:mb-0 mb-0">
                             <h2 className="text-[48px] font-bold leading-[56px] text-white w-[790px] h-[112px]">
-                                Looking for The <br />Right Insurance for You?
+                                Looking for The <br />Right Insurance Cover for You?
                             </h2>
                             <span className="text-[16px] font-normal leading-[24px] text-[#888991] w-[846px] h-[48px]">
                                 Life doesn't wait, neither should your insurance coverage. Coronation Insurance Ghana Ltd offers<br /> comprehensive plans for car, home,
                                 business, and life. One call, and Total protection. Get a quote now!
                             </span>
                         </div>
-                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:px-40 lg:px-0 px-0 w-full lg:h-[524px] h-[1204px]">
+                        <div className="flex lg:flex-row flex-col gap-6 lg:mt-10 md:px-40 lg:px-0 px-0 w-full lg:h-[524px] h-auto">
                             <div className="w-[436px] h-full">
                                 <img
                                     src={productData?.motor_image ? `https://coronation-cms.interactivedigital.com.gh/${productData.motor_image}` : "assets/purpleproduct/product1.png"}
@@ -121,7 +121,7 @@ const RedProduct = () => {
                                     <h2 className="w-[394px] h-[32px] lg:text-[32px] text-[20px] lg:leading-[32px] leading-[28px] font-semibold text-white"
                                         dangerouslySetInnerHTML={{ __html: productData.marine_caption }} />
 
-                                    <p className="lg:w-[370px] w-[347px] lg:h-[120px] h-[70px] lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
+                                    <p className="lg:w-[370px] w-[347px] lg:h-auto h-auto lg:text-[16px] text-[14px] lg:leading-[24px] leading-[20px] font-normal text-[#888991] mt-4"
                                         dangerouslySetInnerHTML={{ __html: productData.marine_body }} />
 
                                     <div className="text-[#FF0226] font-medium text-[14px] leading-[20px]">
@@ -139,11 +139,11 @@ const RedProduct = () => {
                     <div className="flex-1">
                         <img
                             src={product4} alt="about"
-                            className="hidden lg:block bg-cover w-[662px] h-[442px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                            className="hidden lg:block bg-cover object-cover w-[662px] h-[442px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                             loading="lazy" />
                         <img
                             src={product44} alt="about"
-                            className="lg:hidden block bg-cover w-[662px] md:w-full h-[350px] transition-transform duration-500 ease-in-out transform hover:scale-110"
+                            className="lg:hidden block object-cover bg-cover w-[662px] md:w-full h-[350px] transition-transform duration-500 ease-in-out transform hover:scale-110"
                             loading="lazy" />
                     </div>
                     <div className="flex-1 flex-col flex items-center justify-center">
@@ -167,7 +167,7 @@ const RedProduct = () => {
                         Get Insured Today
                     </div>
                     <div className="bg-[#FF0226] absolute top-[48%] right-[7%] w-[108px] h-[44px] text-white flex rounded-lg items-center justify-center text-[16px] leading-[24px] font-semibold">
-                        <Link>Contact Us</Link>
+                        <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer'>Get a Quote</Link>
                     </div>
                 </div>
             </section>

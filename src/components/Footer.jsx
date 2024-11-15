@@ -1,9 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
 import logo from "../assets/logo2.png"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 
 const Footer = () => {
+    const location = useLocation();
+    const isRedHome = location.pathname === "/redhome";
+    const isPurpleHome = location.pathname === "/";
+
     return (
         <div>
             <section className="overflow-hidden">
@@ -56,7 +60,12 @@ const Footer = () => {
                                     <div className="w-[199px]">
                                         <div className="mb-2 text-white">Whistle Blowing</div>
                                         <ul>
-                                            <Link to="/purplewhistle"><li className="text-[#888991]">Whistle Blowing: Coronation Insurance Ghana</li></Link>
+                                            {isRedHome && (
+                                                <Link to="/redwhistle"><li className="text-[#888991]">Whistle Blowing: Coronation Insurance Ghana</li></Link>
+                                            )}
+                                            {isPurpleHome && (
+                                                <Link to="/purplewhistle"><li className="text-[#888991]">Whistle Blowing: Coronation Insurance Ghana</li></Link>
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
@@ -80,4 +89,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default Footer;

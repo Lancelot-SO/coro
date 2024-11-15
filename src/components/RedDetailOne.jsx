@@ -2,16 +2,9 @@
 import { Link, useParams } from "react-router-dom"
 import { IoIosArrowBack } from "react-icons/io";
 
-import brochureUrl from "../assets/purpleinsight/Staying_ahead_of_the_storm.pdf"
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa"
 
-import storm from "../assets/purpleinsight/storm.png"
 import { MdOutlineFileDownload } from "react-icons/md";
-
-
-// import Insight13 from "../assets/purpleinsight/insight13.png"
-// import Insight6 from "../assets/purpleinsight/insight6.png"
-// import strate from "../assets/purpleinsight/strate.png"
 
 import insightbanner from "../assets/purpleinsight/insightbanner.png"
 import { useEffect, useState } from "react";
@@ -24,6 +17,7 @@ const RedDetailOne = () => {
 
     const { id } = useParams(); // Get the blog id from the URL
     const [articleDetails, setArticleDetails] = useState(null);
+
     const [loading, setLoading] = useState(true);
 
     const [insightLatestData, setInsightLatestData] = useState([]);
@@ -41,6 +35,7 @@ const RedDetailOne = () => {
         };
         fetchCardLatestData();
     }, []);
+
 
 
     useEffect(() => {
@@ -75,7 +70,11 @@ const RedDetailOne = () => {
     return (
         <div className="overflow-hidden">
             <div className="relative">
-                <img src={storm} alt="about" className="w-full h-[400px] bg-cover" loading="lazy" />
+                <img
+                    src={articleDetails?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.main_image}` : "assets/purplemotor/motorbg.png"}
+                    alt="about"
+                    className="w-full h-[500px] object-cover bg-cover"
+                    loading="lazy" />
                 <div className="absolute top-[20px] lg:left-20 left-4 w-[858px] h-[152px]">
                     <div className="text-white flex items-center gap-1 mb-2"><IoIosArrowBack /><Link to="/redinsights">Back</Link></div>
                     <div
@@ -99,7 +98,10 @@ const RedDetailOne = () => {
                 </div>
                 <div className="absolute lg:top-[50px] top-[110px] lg:right-20 md:right-[82%] right-[65%] rounded-lg shadow-md">
 
-                    <a href={brochureUrl} download className="flex mt-5 w-[120px] h-[35px] text-[12px] gap-2 bg-white text-black rounded-lg items-center justify-center">
+                    <a href={articleDetails?.pdf_file ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.pdf_file}` : ""}
+                        download
+                        target="_blank"
+                        className="flex mt-5 w-[120px] h-[35px] text-[12px] gap-2 bg-white text-black rounded-lg items-center justify-center">
                         <MdOutlineFileDownload size={20} />
                         Download
                     </a>

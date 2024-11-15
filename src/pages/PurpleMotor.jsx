@@ -115,14 +115,15 @@ const PurpleMotor = () => {
                     <img
                         src={motorData?.sec1_image ? `https://coronation-cms.interactivedigital.com.gh/${motorData.sec1_image}` : "assets/purplemotor/motorfeature.png"}
                         className="h-[657px] md:w-[400px] lg:w-[599px] object-cover"
-                        loading="lazy" />
+                        loading="lazy"
+                    />
                     <div className="absolute top-[20%] lg:left-[20%] md:left-[40%] left-5 lg:w-[954px] w-[350px] bg-white border rounded-lg shadow-md">
-                        <div className="p-4">
+                        {/* Setting a max-height and making it scrollable */}
+                        <div className="p-4 max-h-[400px] overflow-y-scroll scrollbar-hide">
                             {/* Comprehensive Insurance Section */}
                             <div className="mb-4">
                                 <div className="flex items-center justify-between">
-                                    <h2 className={`${isExpanded.comprehensive ? "text-black lg:text-[24px] text-[16px]" : "text-[#888991]"
-                                        }`}>
+                                    <h2 className={`${isExpanded.comprehensive ? "text-black lg:text-[24px] text-[16px]" : "text-[#888991]"}`}>
                                         COMPREHENSIVE INSURANCE
                                     </h2>
                                     <div onClick={() => toggleExpand("comprehensive")} className="cursor-pointer">
@@ -147,15 +148,13 @@ const PurpleMotor = () => {
                                 )}
                             </div>
                             {isModalOpen && (
-                                <MotorFeature closeModal={() => setIsModalOpen(false)} /> // Pass close function to the modal
+                                <MotorFeature closeModal={() => setIsModalOpen(false)} />
                             )}
 
                             {/* Third Party Fire & Theft Section */}
                             <div className="mb-4">
                                 <div className="flex items-center justify-between">
-                                    <h2 className={`${isExpanded.thirdPartyFire ? "text-black lg:text-[24px] text-[16px]" : "text-[#888991]"
-                                        }`}
-                                    >
+                                    <h2 className={`${isExpanded.thirdPartyFire ? "text-black lg:text-[24px] text-[16px]" : "text-[#888991]"}`}>
                                         THIRD PARTY FIRE & THEFT
                                     </h2>
                                     <div onClick={() => toggleExpand("thirdPartyFire")} className="cursor-pointer">
@@ -174,22 +173,19 @@ const PurpleMotor = () => {
                                             </span>
                                             <span className="w-[142px] h-[36px] bg-[#F7F7F8] font-semibold text-[14px] leading-[20px] cursor-pointer shadow-md text-black flex items-center justify-center mt-6">
                                                 <Link to="https://ecoronation.com/motor" target='_blank' rel='noopener noreferrer'>GET A QUOTE</Link>
-
                                             </span>
                                         </div>
                                     </>
                                 )}
                             </div>
                             {isTravelModalOpen && (
-                                <TheftFeature closeModal={() => setIsTravelModalOpen(false)} /> // Pass close function to the modal
+                                <TheftFeature closeModal={() => setIsTravelModalOpen(false)} />
                             )}
 
                             {/* Third Party Only Section */}
                             <div className="mb-4">
                                 <div className="flex items-center justify-between">
-                                    <h2 className={`${isExpanded.thirdPartyOnly ? "text-black lg:text-[24px] text-[16px]" : "text-[#888991]"
-                                        }`}
-                                    >
+                                    <h2 className={`${isExpanded.thirdPartyOnly ? "text-black lg:text-[24px] text-[16px]" : "text-[#888991]"}`}>
                                         THIRD PARTY ONLY
                                     </h2>
                                     <div onClick={() => toggleExpand("thirdPartyOnly")} className="cursor-pointer">
@@ -214,12 +210,13 @@ const PurpleMotor = () => {
                                 )}
                             </div>
                             {isPartyModalOpen && (
-                                <PartyFeature closeModal={() => setIsPartyModalOpen(false)} /> // Pass close function to the modal
+                                <PartyFeature closeModal={() => setIsPartyModalOpen(false)} />
                             )}
                         </div>
                     </div>
                 </div>
             </section>
+
 
             <section>
                 <div className="lg:p-20 p-4 small:p-10">

@@ -17,3 +17,20 @@
     scrollbar-width: none;
     /* Firefox */
 }
+
+/* Hide scrollbar for WebKit browsers */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hide {
+    scrollbar-width: none;
+}
+
+/* Optional: Ensure overflow works without showing scrollbar */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    overflow-y: scroll;
+}

@@ -97,9 +97,9 @@ const RedMotor = () => {
             <section>
                 <div className="w-full h-[290px] bg-black lg:px-28 px-4 items-center lg:py-20 md:py-20 py-10">
                     <div className="flex flex-col">
-                        <h3 className="text-white lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-bold lg:w-[483px]"
+                        <h3 className="text-white lg:text-[40px] text-[24px] lg:leading-[44px] leading-[32px] font-bold lg:w-[883px]"
                             dangerouslySetInnerHTML={{ __html: motorData.sec1_caption }} />
-                        <div className="flex items-center mt-4">
+                        <div className="flex items-center mt-2">
                             <span className="text-white lg:text-[18px] md:text-[16px] text-[14px] leading-[24px] font-normal w-[703px] h-[48px]"
                                 dangerouslySetInnerHTML={{ __html: motorData.sec1_body }} />
 
@@ -115,7 +115,7 @@ const RedMotor = () => {
                         className="h-[657px] md:w-[400px] lg:w-[599px] object-cover"
                         loading="lazy" />
                     <div className="absolute top-[20%] lg:left-[20%] md:left-[40%] left-5 lg:w-[954px] w-[350px] bg-white border rounded-lg shadow-md">
-                        <div className="p-4">
+                        <div className="p-4 max-h-[400px] overflow-y-scroll scrollbar-hide">
                             {/* Comprehensive Insurance Section */}
                             <div className="mb-4">
                                 <div className="flex items-center justify-between">

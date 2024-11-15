@@ -69,7 +69,7 @@ const PurpleHome = () => {
                     My Insurance Account
                 </div>
                 <div className="flex text-[16px] leading-[30px] font-semibold w-[120px] h-10 bg-white rounded-lg items-center justify-center">
-                    <Link to="https://coronation.ng/institutional/" target='_blank' rel='noopener noreferrer' >Request & Pay</Link>
+                    <Link to="https://ecoronation.com/" target='_blank' rel='noopener noreferrer' >Request & Pay</Link>
                 </div>
             </div>
             <section id="pruplehome_section3">
@@ -79,7 +79,7 @@ const PurpleHome = () => {
                             <img
                                 src={homeData?.tile1_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile1_image}` : "assets/purplehome/purplehomebg.png"}
                                 alt="hero"
-                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
+                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg object-cover bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] md:leading-[24px] leading-[28px] mt-2"
@@ -104,7 +104,7 @@ const PurpleHome = () => {
                             <img
                                 src={homeData?.tile2_image ? `https://coronation-cms.interactivedigital.com.gh/${homeData.tile2_image}` : "assets/purplehome/purplehomebg.png"}
                                 alt="hero"
-                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg bg-cover"
+                                className="w-[347px] h-[220px] lg:w-full lg:h-[420px] rounded-lg object-cover bg-cover"
                                 loading="lazy" />
                             <div>
                                 <h3 className="w-full lg:h-[40px] md:h-[32px] h-[28px] font-semibold lg:text-[32px] text-[20px] lg:leading-[40px] leading-[28px] mt-2"
@@ -223,7 +223,7 @@ const PurpleHome = () => {
                                 We are affiliated to our mother company in Nigeria
                             </span>
                             <div className="w-[97px] h-[44px] bg-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center mt-8 lg:mt-0 md:mt-0">
-                                <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
+                                <Link to="https://coronation.ng/institutional/about-us/" target='_blank' rel='noopener noreferrer'>About Us</Link>
                             </div>
                         </div>
                     </div>

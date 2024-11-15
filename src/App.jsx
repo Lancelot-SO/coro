@@ -25,6 +25,7 @@ import Feedback from './components/FeedBack'
 import { useEffect, useState } from 'react'
 import CookieConsent from "react-cookie-consent";
 import Privacy from './pages/Privacy'
+import RedWhistleBlowing from './pages/RedWhistleBlowing'
 
 
 
@@ -59,6 +60,7 @@ function App() {
           <Route path='/purpledetail/:id' element={<DetailOne />} />
           <Route path='/purpleservices' element={<PurpleService />} />
           <Route path='/purplewhistle' element={<WhistleBlowing />} />
+          <Route path='/redwhistle' element={<RedWhistleBlowing />} />
           <Route path='/redhome' element={<RedHome />} />
           <Route path='/redabout' element={<RedAbout />} />
           <Route path='/redproduct' element={<RedProduct />} />

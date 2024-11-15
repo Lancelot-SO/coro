@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 // import aboutbg from "../assets/purpleabout/aboutbg.png"
-import about1 from "../assets/purpleabout/about1.png"
-// import about2 from "../assets/purpleabout/about2.png"
 import { Link } from "react-router-dom"
 import SlickSlider from "../components/SlickSlider"
 import { useEffect, useState } from "react"
@@ -51,7 +49,7 @@ const PurpleAbout = () => {
             <div className="relative">
                 <img
                     src={aboutData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${aboutData.header_image}` : "assets/purplehome/purplehomebg.png"}
-                    className="w-full bg-cover lg:w-full h-[600px]"
+                    className="w-full bg-cover object-cover lg:w-full h-auto"
                     loading="lazy" />
                 <div className="absolute lg:top-[293px] top-[370px] lg:left-20 left-4 lg:w-[858px] md:w-[500px] w-[347px] lg:h-[152px] h-[172px]">
                     <h2 className="lg:text-[56px] text-[32px] lg:font-bold font-semibold lg:leading-[64px] leading-10 text-white"
@@ -65,9 +63,9 @@ const PurpleAbout = () => {
                         <p className="text-white lg:text-[16px] text-[14px] lg:leading-[24px] leading-5 font-normal lg:mt-2 mt-0">
                             Want to know more about our services? Let's talk
                         </p>
-                        <div className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
+                        <Link to="/purplecontact" className="flex mt-5 w-[90px] h-[35px] bg-[#B580D1] text-white rounded-lg items-center justify-center">
                             Contact Us
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -171,7 +169,9 @@ const PurpleAbout = () => {
                             </div>
                         </div>
                         <div className="">
-                            <img src={about1} alt="about" className="bg-cover lg:w-full md:w-full h-full md:h-[400px]" loading="lazy" />
+                            <img
+                                src={aboutData?.sec4_image ? `https://coronation-cms.interactivedigital.com.gh/${aboutData.sec4_image}` : "assets/purplehome/purplehomebg.png"}
+                                className="bg-cover lg:w-full md:w-full h-full md:h-[400px]" loading="lazy" />
                         </div>
                     </div>
                 </div>
@@ -192,7 +192,7 @@ const PurpleAbout = () => {
                                 We are affiliated to our mother company in Nigeria
                             </span>
                             <div className="w-[97px] h-[44px] bg-[#B580D1] text-white rounded-md shadow-md text-[16px] leading-[24px] font-semibold flex items-center justify-center">
-                                <Link to="https://coronation.ng/contact-us/" target='_blank' rel='noopener noreferrer'>Contact Us</Link>
+                                <Link to="https://coronation.ng/institutional/about-us/">About Us</Link>
                             </div>
                         </div>
                     </div>

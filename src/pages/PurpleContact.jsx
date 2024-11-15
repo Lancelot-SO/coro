@@ -83,6 +83,7 @@ const PurpleContact = () => {
                     src={contactData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${contactData.header_image}` : "assets/purplehome/purplehomebg.png"}
                     className="w-full lg:h-full h-[250px] bg-cover"
                     loading="lazy" />
+                <div className="absolute inset-0 bg-black opacity-50"></div>
                 <div className="absolute lg:top-[293px] top-[160px] lg:left-20 left-4 w-[858px] h-[152px]">
                     <h2 className="lg:text-[56px] text-[24px] w-[511px] h-[128px] font-bold leading-[64px] text-white"
                         dangerouslySetInnerHTML={{ __html: contactData.header_caption }} />
