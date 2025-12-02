@@ -10,6 +10,8 @@ import { useEffect, useState } from "react"
 const PurpleInsights = () => {
 
     const [insightLatestData, setInsightLatestData] = useState([]);
+    const [showLoader, setShowLoader] = useState(true);
+    const [fadeOut, setFadeOut] = useState(false);
 
     useEffect(() => {
         const fetchCardLatestData = async () => {
@@ -18,6 +20,11 @@ const PurpleInsights = () => {
                 const data = await response.json();
                 console.log('purple cardlatest Data:', data);
                 setInsightLatestData(data); // Set the entire data array
+                // Start 2-second loader timer only after data arrives
+                setTimeout(() => {
+                    setFadeOut(true); // start fade
+                    setTimeout(() => setShowLoader(false), 500); // hide after fade
+                }, 2000);
             } catch (error) {
                 console.error('Error fetching card latest data:', error);
             }
@@ -25,8 +32,22 @@ const PurpleInsights = () => {
         fetchCardLatestData();
     }, []);
 
-    if (!insightLatestData || insightLatestData.length === 0) {
-        return <div>Loading...</div>;
+    if (!insightLatestData || insightLatestData.length === 0 || showLoader) {
+        return (
+            <div
+                className={`
+                w-full h-screen flex flex-col items-center justify-center
+                bg-white transition-opacity duration-500
+                ${fadeOut ? "opacity-0" : "opacity-100"}
+            `}
+            >
+                <div className="w-16 h-16 border-4 border-[#B580D1] border-t-transparent rounded-full animate-spin"></div>
+
+                <p className="mt-4 text-[#B580D1] font-semibold text-lg animate-pulse">
+                    Loading content...
+                </p>
+            </div>
+        );
     }
 
     return (

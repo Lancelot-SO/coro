@@ -27,6 +27,8 @@ const RedContact = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [selectedDate, setSelectedDate] = useState(null); // State for DatePicker
     const [contactData, setContactData] = useState(null);
+    const [showLoader, setShowLoader] = useState(true);
+    const [fadeOut, setFadeOut] = useState(false);
 
 
     const sendEmail = (e) => {
@@ -63,6 +65,11 @@ const RedContact = () => {
                 const data = await response.json();
                 console.log('purple contact Data:', data);
                 setContactData(data[0]);
+                // Start 2-second loader timer only after data arrives
+                setTimeout(() => {
+                    setFadeOut(true); // start fade
+                    setTimeout(() => setShowLoader(false), 500); // hide after fade
+                }, 2000);
                 console.log(data)
             } catch (error) {
                 console.error('Error fetching contact data:', error);
@@ -71,8 +78,22 @@ const RedContact = () => {
         fetchcontactData();
     }, []);
 
-    if (!contactData) {
-        return <div>Loading...</div>;
+    if (!contactData || showLoader) {
+        return (
+            <div
+                className={`
+                w-full h-screen flex flex-col items-center justify-center
+                bg-white transition-opacity duration-500
+                ${fadeOut ? "opacity-0" : "opacity-100"}
+            `}
+            >
+                <div className="w-16 h-16 border-4 border-[#FF0226] border-t-transparent rounded-full animate-spin"></div>
+
+                <p className="mt-4 text-[#FF0226] font-semibold text-lg animate-pulse">
+                    Loading content...
+                </p>
+            </div>
+        );
     }
 
     return (

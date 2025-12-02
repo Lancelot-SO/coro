@@ -21,6 +21,8 @@ const RedMotor = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isTravelModalOpen, setIsTravelModalOpen] = useState(false);
     const [isPartyModalOpen, setIsPartyModalOpen] = useState(false);
+    const [showLoader, setShowLoader] = useState(true);
+    const [fadeOut, setFadeOut] = useState(false);
 
 
 
@@ -40,6 +42,11 @@ const RedMotor = () => {
                 const data = await response.json();
                 console.log('purple redmotor Data:', data);
                 setMotorData(data[0]);
+                // Start 2-second loader timer only after data arrives
+                setTimeout(() => {
+                    setFadeOut(true); // start fade
+                    setTimeout(() => setShowLoader(false), 500); // hide after fade
+                }, 2000);
             } catch (error) {
                 console.error('Error fetching redmotor data:', error);
             }
@@ -48,8 +55,22 @@ const RedMotor = () => {
     }, []);
 
     // Check if either aboutData or bodData is still loading
-    if (!motorData) {
-        return <div>Loading...</div>;
+    if (!motorData || showLoader) {
+        return (
+            <div
+                className={`
+                w-full h-screen flex flex-col items-center justify-center
+                bg-white transition-opacity duration-500
+                ${fadeOut ? "opacity-0" : "opacity-100"}
+            `}
+            >
+                <div className="w-16 h-16 border-4 border-[#FF0226] border-t-transparent rounded-full animate-spin"></div>
+
+                <p className="mt-4 text-[#FF0226] font-semibold text-lg animate-pulse">
+                    Loading content...
+                </p>
+            </div>
+        );
     }
 
     const toggleExpand = (section) => {
@@ -64,7 +85,7 @@ const RedMotor = () => {
             <div>
                 <div className="flex lg:flex-row flex-col-reverse w-full lg:h-[450px] h-[678px] ">
                     <div className="flex-1 flex-col bg-[#EFEFF0] flex lg:items-center justify-center">
-                        <div className="p-4">
+                        <div className="p-4 md:p-8">
                             <h2 className="lg:text-[56px] text-[32px] lg:leading-[64px] leading-[40px] font-bold"
                                 dangerouslySetInnerHTML={{ __html: motorData.header_caption }} />
                             <p className="lg:w-[560px] md:w-[600px] w-[319px] lg:text-[16px] md:text-[14px] text-[12px] leading-[20px] font-medium text-[#56575D] lg:mt-4 mt-2"

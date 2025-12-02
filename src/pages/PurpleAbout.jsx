@@ -7,6 +7,8 @@ import { useEffect, useState } from "react"
 const PurpleAbout = () => {
     const [aboutData, setAboutData] = useState(null);
     const [bodData, setBodData] = useState(null); // State for BOD data
+    const [showLoader, setShowLoader] = useState(true);
+    const [fadeOut, setFadeOut] = useState(false);
 
     // Fetch data from about endpoint
     useEffect(() => {
@@ -16,6 +18,11 @@ const PurpleAbout = () => {
                 const data = await response.json();
                 console.log('About Data:', data);
                 setAboutData(data[0]);
+                // Start 2-second loader timer only after data arrives
+                setTimeout(() => {
+                    setFadeOut(true); // start fade
+                    setTimeout(() => setShowLoader(false), 500); // hide after fade
+                }, 2000);
             } catch (error) {
                 console.error('Error fetching about data:', error);
             }
@@ -39,8 +46,22 @@ const PurpleAbout = () => {
     }, []);
 
     // Check if either aboutData or bodData is still loading
-    if (!aboutData || !bodData) {
-        return <div>Loading...</div>;
+    if (!aboutData || !bodData || showLoader) {
+        return (
+            <div
+                className={`
+                w-full h-screen flex flex-col items-center justify-center
+                bg-white transition-opacity duration-500
+                ${fadeOut ? "opacity-0" : "opacity-100"}
+            `}
+            >
+                <div className="w-16 h-16 border-4 border-[#B580D1] border-t-transparent rounded-full animate-spin"></div>
+
+                <p className="mt-4 text-[#B580D1] font-semibold text-lg animate-pulse">
+                    Loading content...
+                </p>
+            </div>
+        );
     }
 
 

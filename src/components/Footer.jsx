@@ -27,19 +27,24 @@ const Footer = () => {
                                     <div className="w-[199px]">
                                         <div className="mb-2 text-white">Main Service</div>
                                         <ul>
-                                            <Link to="/"><li className="text-[#888991] mb-2">Motor Insurance</li></Link>
-                                            <Link to="/"><li className="text-[#888991] mb-2">Marine Insurance</li></Link>
-                                            <Link to="/"><li className="text-[#888991] mb-2">Fire Insurance</li></Link>
-                                            <Link to="/"><li className="text-[#888991] mb-2">Accident Insurance</li></Link>
-                                            <Link to="/"><li className="text-[#888991] mb-2">Engineering</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Travel Insurance</li></Link>
+                                            <a href="https://ecoronation.com/motor" target="_blank" rel="noopener noreferrer">
+                                                <li className="text-[#888991] mb-2">Motor Insurance</li>
+                                            </a>
+
+                                            <a href="https://ecoronation.com/marine" target="_blank" rel="noopener noreferrer">
+                                                <li className="text-[#888991] mb-2">Marine Insurance</li>
+                                            </a>
+
+                                            <a href="https://ecoronation.com/pa" target="_blank" rel="noopener noreferrer">
+                                                <li className="text-[#888991] mb-2">Personal Accident</li>
+                                            </a>
                                         </ul>
+
                                     </div>
                                     <div className="w-[120px]">
                                         <div className="mb-2 text-white">Self Service</div>
                                         <ul>
-                                            <Link to="/"><li className="text-[#888991] mb-2">Login</li></Link>
-                                            <Link to="/"><li className="text-[#888991]">Claims</li></Link>
+                                            <a href="https://claims-gh.coronation.ng/" target="_blank" rel="noopener noreferrer"><li className="text-[#888991]">Claims</li></a>
                                         </ul>
                                     </div>
                                 </div>
@@ -76,10 +81,15 @@ const Footer = () => {
                         <div className="flex md:flex-row lg:flex-row flex-col lg:items-center justify-between lg:px-24 px-4">
                             <span className="text-white">@ 2024 Coronation. All rights reserved.</span>
                             <ul className="flex gap-4">
-                                <Link to="/"><li className="text-white"><FaFacebook /></li></Link>
-                                <Link to="/"><li className="text-white"><FaLinkedin /></li></Link>
-                                <Link to="/"><li className="text-white"><FaInstagram /></li></Link>
-                                <Link to="/"><li className="text-white"><FaTwitter /></li></Link>
+                                <a href="https://www.facebook.com/coronationghana" target="_blank" rel="noopener noreferrer">
+                                    <li className="text-white" ><FaFacebook /></li></a>
+                                <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHMuoEM6XPSiAAAAZrfHLGYn-DS8LzqjPiWMDWe82Qq14Hv-bXom2vIuCF4s-Cv_HTCQYFWyc9hqx5_P8m3gHSy5t2V_Vvx6Lkk-sp6YHY4YPY--ALn61dPZffzByp9eNypqOw=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F76524378%2Fadmin%2Fpage-posts%2Fpublished%2F"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <li className="text-white" target="_blank" rel="noopener noreferrer"><FaLinkedin /></li></a>
+                                <a href="https://www.instagram.com/coronationgh/" target="_blank" rel="noopener noreferrer">
+                                    <li className="text-white"><FaInstagram /></li></a>
+                                <a href="https://x.com/coronationghana" target="_blank" rel="noopener noreferrer">
+                                    <li className="text-white"><FaTwitter /></li></a>
                             </ul>
                         </div>
                     </div>

@@ -18,6 +18,8 @@ import { useEffect, useState } from "react"
 
 const RedHome = () => {
     const [homeData, setHomeData] = useState(null);
+    const [showLoader, setShowLoader] = useState(true);
+    const [fadeOut, setFadeOut] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,6 +28,11 @@ const RedHome = () => {
                 const data = await response.json();
                 console.log(data);
                 setHomeData(data[0]);
+                // Start 2-second loader timer only after data arrives
+                setTimeout(() => {
+                    setFadeOut(true); // start fade
+                    setTimeout(() => setShowLoader(false), 500); // hide after fade
+                }, 2000);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -34,8 +41,22 @@ const RedHome = () => {
     }, []);
 
 
-    if (!homeData) {
-        return <div>Loading...</div>;
+    if (!homeData || showLoader) {
+        return (
+            <div
+                className={`
+                w-full h-screen flex flex-col items-center justify-center
+                bg-white transition-opacity duration-500
+                ${fadeOut ? "opacity-0" : "opacity-100"}
+            `}
+            >
+                <div className="w-16 h-16 border-4 border-[#FF0226] border-t-transparent rounded-full animate-spin"></div>
+
+                <p className="mt-4 text-[#FF0226] font-semibold text-lg animate-pulse">
+                    Loading content...
+                </p>
+            </div>
+        );
     }
     return (
         <div className="overflow-hidden">
