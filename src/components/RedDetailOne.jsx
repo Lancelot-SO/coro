@@ -17,6 +17,8 @@ const RedDetailOne = () => {
 
     const { id } = useParams(); // Get the blog id from the URL
     const [articleDetails, setArticleDetails] = useState(null);
+    const [showLoader, setShowLoader] = useState(true);
+    const [fadeOut, setFadeOut] = useState(false);
 
     const [loading, setLoading] = useState(true);
 
@@ -46,6 +48,11 @@ const RedDetailOne = () => {
                 setArticleDetails(data[0]);
                 console.log(data)
                 setLoading(false);
+                // Start 2-second loader timer only after data arrives
+                setTimeout(() => {
+                    setFadeOut(true); // start fade
+                    setTimeout(() => setShowLoader(false), 500); // hide after fade
+                }, 2000);
             } catch (error) {
                 console.error('Error fetching article details:', error);
                 setLoading(false);
@@ -55,8 +62,22 @@ const RedDetailOne = () => {
         fetchArticleDetails();
     }, [id]);
 
-    if (loading) {
-        return <div>Loading...</div>;
+    if (loading || showLoader) {
+        return (
+            <div
+                className={`
+                w-full h-screen flex flex-col items-center justify-center
+                bg-white transition-opacity duration-500
+                ${fadeOut ? "opacity-0" : "opacity-100"}
+            `}
+            >
+                <div className="w-16 h-16 border-4 border-[#FF0226] border-t-transparent rounded-full animate-spin"></div>
+
+                <p className="mt-4 text-[#FF0226] font-semibold text-lg animate-pulse">
+                    Loading content...
+                </p>
+            </div>
+        );
     }
 
     if (!articleDetails) {
@@ -73,12 +94,14 @@ const RedDetailOne = () => {
                 <img
                     src={articleDetails?.main_image ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.main_image}` : "assets/purplemotor/motorbg.png"}
                     alt="about"
-                    className="w-full h-[500px] object-cover bg-cover"
+                    className="w-full h-[1000px] object-cover bg-center"
                     loading="lazy" />
-                <div className="absolute top-[20px] lg:left-20 left-4 w-[858px] h-[152px]">
+                <div className="absolute inset-0 bg-black/30"></div>
+
+                <div className="absolute top-[20px] lg:left-20 left-4 md:w-[858px]">
                     <div className="text-white flex items-center gap-1 mb-2"><IoIosArrowBack /><Link to="/redinsights">Back</Link></div>
                     <div
-                        className="lg:w-[800px] lg:h-[48px] lg:text-[40px] text-[18px] font-normal leading-[24px] text-[#ffffff]"
+                        className="lg:w-[800px] lg:text-[40px] text-[18px] font-normal md:leading-[34px] text-[#ffffff]"
                         dangerouslySetInnerHTML={{ __html: sanitizedCaption }}
                     />
 
@@ -96,7 +119,7 @@ const RedDetailOne = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="absolute lg:top-[50px] top-[110px] lg:right-20 md:right-[82%] right-[65%] rounded-lg shadow-md">
+                <div className="absolute lg:top-[50px] top-0 lg:right-20 md:right-[82%] right-[16px] rounded-lg shadow-md">
 
                     <a href={articleDetails?.pdf_file ? `https://coronation-cms.interactivedigital.com.gh/${articleDetails.pdf_file}` : ""}
                         download
@@ -124,10 +147,10 @@ const RedDetailOne = () => {
                             <div className="w-full h-[120px] bg-[#F7F7F8] flex flex-col gap-4 rounded-md">
                                 <h3 className="text-[16px] font-normal leading-[24px] text-[#56575D]">Connect with us</h3>
                                 <ul className="flex gap-4">
-                                    <Link to="/"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#FF0226] flex items-center justify-center rounded-full"><FaFacebook size={24} /></li></Link>
-                                    <Link to="/"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#FF0226] flex items-center justify-center rounded-full"><FaLinkedin size={24} /></li></Link>
-                                    <Link to="/"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#FF0226] flex items-center justify-center rounded-full"><FaInstagram size={24} /></li></Link>
-                                    <Link to="/"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#FF0226] flex items-center justify-center rounded-full"><FaTwitter size={24} /></li></Link>
+                                    <a href="https://www.facebook.com/coronationghana" target="_blank" rel="noopener noreferrer"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#FF0226] flex items-center justify-center rounded-full"><FaFacebook size={24} /></li></a>
+                                    <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHMuoEM6XPSiAAAAZrfHLGYn-DS8LzqjPiWMDWe82Qq14Hv-bXom2vIuCF4s-Cv_HTCQYFWyc9hqx5_P8m3gHSy5t2V_Vvx6Lkk-sp6YHY4YPY--ALn61dPZffzByp9eNypqOw=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2F76524378%2Fadmin%2Fpage-posts%2Fpublished%2F" target="_blank" rel="noopener noreferrer"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#FF0226] flex items-center justify-center rounded-full"><FaLinkedin size={24} /></li></a>
+                                    <a href="https://www.instagram.com/coronationgh/" target="_blank" rel="noopener noreferrer"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#FF0226] flex items-center justify-center rounded-full"><FaInstagram size={24} /></li></a>
+                                    <a href="https://x.com/coronationghana" target="_blank" rel="noopener noreferrer"><li className="text-white lg:w-[48px] w-[40px] lg:h-[48px] h-[40px] bg-[#FF0226] flex items-center justify-center rounded-full"><FaTwitter size={24} /></li></a>
                                 </ul>
                             </div>
 

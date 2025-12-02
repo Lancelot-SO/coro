@@ -18,6 +18,8 @@ const PurpleTravel = () => {
     const [isIndModalOpen, setIsIndModalOpen] = useState(false);
 
     const [travelData, setTravelData] = useState(null);
+    const [showLoader, setShowLoader] = useState(true);
+    const [fadeOut, setFadeOut] = useState(false);
 
 
     useEffect(() => {
@@ -27,6 +29,11 @@ const PurpleTravel = () => {
                 const data = await response.json();
                 console.log('purple travel Data:', data);
                 setTravelData(data[0]);
+                // Start 2-second loader timer only after data arrives
+                setTimeout(() => {
+                    setFadeOut(true); // start fade
+                    setTimeout(() => setShowLoader(false), 500); // hide after fade
+                }, 2000);
             } catch (error) {
                 console.error('Error fetching travel data:', error);
             }
@@ -35,8 +42,22 @@ const PurpleTravel = () => {
     }, []);
 
     // Check if either aboutData or bodData is still loading
-    if (!travelData) {
-        return <div>Loading...</div>;
+    if (!travelData || showLoader) {
+        return (
+            <div
+                className={`
+                w-full h-screen flex flex-col items-center justify-center
+                bg-white transition-opacity duration-500
+                ${fadeOut ? "opacity-0" : "opacity-100"}
+            `}
+            >
+                <div className="w-16 h-16 border-4 border-[#B580D1] border-t-transparent rounded-full animate-spin"></div>
+
+                <p className="mt-4 text-[#B580D1] font-semibold text-lg animate-pulse">
+                    Loading content...
+                </p>
+            </div>
+        );
     }
 
 
