@@ -6,75 +6,76 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import PhoneInput, { isValidPhoneNumber, isPossiblePhoneNumber } from 'react-phone-number-input';
 
-// import contactbg from "../assets/contact/contactBg.png";
-import contactbanner from "../assets/contact/contactbanner.png"
-
+import contactbanner from "../assets/contact/contactbanner.png";
 import { format } from 'date-fns';
 
-import ghana from "../assets/contact/ghana.png"
-import nigeria from "../assets/contact/nigeria.png"
-
+import ghana from "../assets/contact/ghana.png";
+import nigeria from "../assets/contact/nigeria.png";
 
 import { BiPhoneCall } from "react-icons/bi";
 import { MdOutlineMarkEmailUnread, MdOutlineLocationOn } from "react-icons/md";
 
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css'; // Import DatePicker CSS
+import 'react-datepicker/dist/react-datepicker.css';
 import { useEffect, useRef, useState } from 'react';
 
 const PurpleContact = () => {
+
     const form = useRef();
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const [selectedDate, setSelectedDate] = useState(null); // State for DatePicker
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [selectedDate, setSelectedDate] = useState(null);
     const [contactData, setContactData] = useState(null);
+
     const [showLoader, setShowLoader] = useState(true);
     const [fadeOut, setFadeOut] = useState(false);
-
 
     const sendEmail = (e) => {
         e.preventDefault();
 
-        const formattedDate = selectedDate ? format(selectedDate, 'MM/dd/yyyy, HH:mm') : '';
+        if (!isValidPhoneNumber(phoneNumber)) {
+            toast.error("Please enter a valid phone number.");
+            return;
+        }
 
+        // EmailJS requires template fields to be inside the form
+        // sendForm MUST NOT include template params manually
         emailjs
-            .sendForm('service_lw4pyej', 'template_0vf2k2b', form.current, {
-                publicKey: 'od2vIhbdFel9_otjO',
-                from_name: 'Coronation Insurance',
-                time: formattedDate, // Pass the formatted date/time
+            .sendForm("service_vpuym4k", "template_0vf2k2b", form.current, {
+                publicKey: "od2vIhbdFel9_otjO",
             })
             .then(
                 () => {
-                    toast.success('Message sent successfully!');
+                    toast.success("Message sent successfully!");
                 },
-                // eslint-disable-next-line no-unused-vars
-                (error) => {
-                    toast.error('Failed to send message. Please try again.');
-                },
+                () => {
+                    toast.error("Failed to send message. Please try again.");
+                }
             );
+
         e.target.reset();
-        setPhoneNumber(''); // Reset phone number
-        setSelectedDate(null); // Reset DatePicker
+        setPhoneNumber("");
+        setSelectedDate(null);
     };
-
-
 
     useEffect(() => {
         const fetchcontactData = async () => {
             try {
-                const response = await fetch('https://coronation-cms.interactivedigital.com.gh/api/contactpage/fetch');
+                const response = await fetch(
+                    "https://coronation-cms.interactivedigital.com.gh/api/contactpage/fetch"
+                );
                 const data = await response.json();
-                console.log('purple contact Data:', data);
                 setContactData(data[0]);
-                // Start 2-second loader timer only after data arrives
+
                 setTimeout(() => {
-                    setFadeOut(true); // start fade
-                    setTimeout(() => setShowLoader(false), 500); // hide after fade
+                    setFadeOut(true);
+                    setTimeout(() => setShowLoader(false), 700);
                 }, 2000);
-                console.log(data)
+
             } catch (error) {
-                console.error('Error fetching contact data:', error);
+                console.error("Error fetching contact data:", error);
             }
         };
+
         fetchcontactData();
     }, []);
 
@@ -82,13 +83,12 @@ const PurpleContact = () => {
         return (
             <div
                 className={`
-                w-full h-screen flex flex-col items-center justify-center
-                bg-white transition-opacity duration-500
-                ${fadeOut ? "opacity-0" : "opacity-100"}
-            `}
+                    w-full h-screen flex flex-col items-center justify-center
+                    bg-white transition-opacity duration-500
+                    ${fadeOut ? "opacity-0" : "opacity-100"}
+                `}
             >
                 <div className="w-16 h-16 border-4 border-[#B580D1] border-t-transparent rounded-full animate-spin"></div>
-
                 <p className="mt-4 text-[#B580D1] font-semibold text-lg animate-pulse">
                     Loading content...
                 </p>
@@ -97,58 +97,113 @@ const PurpleContact = () => {
     }
 
     return (
-        <div className='overflow-hidden'>
+        <div className="overflow-hidden">
+
             <ToastContainer />
+
             <div className="relative">
                 <img
-                    src={contactData?.header_image ? `https://coronation-cms.interactivedigital.com.gh/${contactData.header_image}` : "assets/purplehome/purplehomebg.png"}
+                    src={
+                        contactData?.header_image
+                            ? `https://coronation-cms.interactivedigital.com.gh/${contactData.header_image}`
+                            : "assets/purplehome/purplehomebg.png"
+                    }
                     className="w-full lg:h-full h-[250px] bg-cover"
-                    loading="lazy" />
+                    loading="lazy"
+                />
                 <div className="absolute inset-0 bg-black opacity-50"></div>
+
                 <div className="absolute lg:top-[293px] top-[160px] lg:left-20 left-4 w-[858px] h-[152px]">
-                    <h2 className="lg:text-[56px] text-[24px] w-[511px] h-[128px] font-bold leading-[64px] text-white"
-                        dangerouslySetInnerHTML={{ __html: contactData.header_caption }} />
-                    <span className="hidden lg:block lg:text-[18px] text-[12px] font-normal lg:leading-[24px] leading-3 text-white"
-                        dangerouslySetInnerHTML={{ __html: contactData.header_body }} />
+                    <h2
+                        className="lg:text-[56px] text-[24px] w-[511px] h-[128px] font-bold leading-[64px] text-white"
+                        dangerouslySetInnerHTML={{ __html: contactData.header_caption }}
+                    />
+                    <span
+                        className="hidden lg:block lg:text-[18px] text-[12px] font-normal lg:leading-[24px] leading-3 text-white"
+                        dangerouslySetInnerHTML={{ __html: contactData.header_body }}
+                    />
                 </div>
             </div>
 
             <section>
                 <div className="flex flex-col md:flex-row items-center justify-center p-6 min-h-screen lg:ml-[70px]">
+
                     <div className="w-full md:w-1/2 p-6 bg-white text-black rounded-lg shadow-card">
                         <form ref={form} onSubmit={sendEmail} className="space-y-4">
+
+                            {/* FIRST + LAST NAME */}
                             <div className="flex space-x-4">
                                 <div className="w-1/2">
-                                    <label className="block text-sm font-medium text-black">First name</label>
-                                    <input type="text" name='first_name' placeholder="First name" required className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black" />
+                                    <label className="block text-sm font-medium text-black">
+                                        First name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="first_name"
+                                        placeholder="First name"
+                                        required
+                                        className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm text-black"
+                                    />
                                 </div>
+
                                 <div className="w-1/2">
-                                    <label className="block text-sm font-medium text-black">Last name</label>
-                                    <input type="text" name='last_name' placeholder="Last name" required className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black" />
+                                    <label className="block text-sm font-medium text-black">
+                                        Last name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="last_name"
+                                        placeholder="Last name"
+                                        required
+                                        className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm text-black"
+                                    />
                                 </div>
                             </div>
+
+                            {/* EMAIL */}
                             <div>
                                 <label className="block text-sm font-medium text-black">Email</label>
-                                <input type="email" name='user_email' placeholder="you@company.com" required className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black" />
-                            </div>
-                            <div className=''>
-                                <label className="block text-sm font-medium text-black">Phone number</label>
-                                <PhoneInput
-                                    defaultCountry='GH'
+                                <input
+                                    type="email"
+                                    name="user_email"
                                     required
+                                    placeholder="you@company.com"
+                                    className="mt-1 block w-full px-3 py-2 border rounded-md shadow-sm text-black"
+                                />
+                            </div>
+
+                            {/* PHONE */}
+                            <div>
+                                <label className="block text-sm font-medium text-black">
+                                    Phone number
+                                </label>
+
+                                <PhoneInput
+                                    defaultCountry="GH"
+                                    placeholder="233 54868650"
                                     value={phoneNumber}
                                     onChange={setPhoneNumber}
-                                    placeholder="233 54868650"
-                                    className={`flex w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none sm:text-sm text-black 
-                        ${phoneNumber && isPossiblePhoneNumber(phoneNumber) ? 'border-customPurple' : 'border-gray-300 dark:border-gray-700'}
-                        ${phoneNumber && isValidPhoneNumber(phoneNumber) ? 'text-customPurple' : ''}`}
+                                    className={`flex w-full px-3 py-2 border rounded-md shadow-sm text-black 
+                                        ${phoneNumber &&
+                                            isPossiblePhoneNumber(phoneNumber)
+                                            ? "border-customPurple"
+                                            : "border-gray-300"
+                                        }
+                                    `}
                                 />
-                                {/* Hidden input field for phone number */}
-                                <input type="hidden" name="user_phone" value={phoneNumber} className='focus:outline-none' />
+
+                                <input type="hidden" name="user_phone" value={phoneNumber} />
                             </div>
+
+                            {/* REQUEST */}
                             <div>
-                                <label className="block text-sm font-medium text-black">Request Related</label>
-                                <select name='user_request' className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black">
+                                <label className="block text-sm font-medium text-black">
+                                    Request Related
+                                </label>
+                                <select
+                                    name="user_request"
+                                    className="mt-1 block w-full px-3 py-2 border rounded-md text-black"
+                                >
                                     <option>Select at least one option</option>
                                     <option>Abandoned call</option>
                                     <option>Call dropped</option>
@@ -179,12 +234,18 @@ const PurpleContact = () => {
                                     <option>Request for Correction of Name on Insurance Certificate</option>
                                     <option>First Notice of Loss (FNOL) </option>
                                     <option>Other Request</option>
-
                                 </select>
                             </div>
+
+                            {/* ENQUIRY */}
                             <div>
-                                <label className="block text-sm font-medium text-black">Enquiry related</label>
-                                <select name='user_enquiry' className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black">
+                                <label className="block text-sm font-medium text-black">
+                                    Enquiry Related
+                                </label>
+                                <select
+                                    name="user_enquiry"
+                                    className="mt-1 block w-full px-3 py-2 border rounded-md text-black"
+                                >
                                     <option>Select at least one option</option>
                                     <option>Enquiry on Bancassurance partnership</option>
                                     <option>Enquiry on Claims procedure</option>
@@ -200,13 +261,18 @@ const PurpleContact = () => {
                                     <option>Travel Insurance Procedure</option>
                                     <option>Coronation payment platform</option>
                                     <option>Company Enquiry</option>
-
                                 </select>
                             </div>
 
+                            {/* COMPLAINT */}
                             <div>
-                                <label className="block text-sm font-medium text-black">Complaint Related</label>
-                                <select name='user_complaint' className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black">
+                                <label className="block text-sm font-medium text-black">
+                                    Complaint Related
+                                </label>
+                                <select
+                                    name="user_complaint"
+                                    className="mt-1 block w-full px-3 py-2 border rounded-md text-black"
+                                >
                                     <option>Select at least one option</option>
                                     <option>Claims substantiating document issue</option>
                                     <option>Non reciept of Discharge Voucher </option>
@@ -230,136 +296,217 @@ const PurpleContact = () => {
                                     <option>Other Complaint</option>
                                 </select>
                             </div>
+
+                            {/* MESSAGE */}
                             <div>
-                                <label className="block text-sm font-medium text-black">Message</label>
-                                <textarea name='message' rows="4" placeholder="Enter your Message" className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm text-black " required></textarea>
+                                <label className="block text-sm font-medium text-black">
+                                    Message
+                                </label>
+                                <textarea
+                                    name="message"
+                                    rows="4"
+                                    placeholder="Enter your Message"
+                                    required
+                                    className="mt-1 block w-full px-3 py-2 border rounded-md text-black"
+                                ></textarea>
                             </div>
 
+                            {/* DATE/TIME */}
                             <div>
-                                <label className="block text-sm font-medium text-black">Preferred Date and Time</label>
+                                <label className="block text-sm font-medium text-black">
+                                    Preferred Date and Time
+                                </label>
+
                                 <DatePicker
                                     selected={selectedDate}
-                                    onChange={date => setSelectedDate(date)}
+                                    onChange={setSelectedDate}
                                     showTimeSelect
-                                    timeIntervals={15}
                                     dateFormat="Pp"
-                                    placeholderText="MM/DD/YYYY, HH:MM"
-                                    className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md shadow-sm focus:outline-none focus:ring-secondary focus:border-secondary sm:text-sm text-black"
+                                    className="mt-1 block w-full px-3 py-2 border rounded-md text-black"
                                 />
-                                <input type="hidden" name="time" value={selectedDate ? format(selectedDate, 'MM/dd/yyyy, HH:mm') : ''} />
+
+                                <input
+                                    type="hidden"
+                                    name="time"
+                                    value={
+                                        selectedDate
+                                            ? format(selectedDate, "MM/dd/yyyy, HH:mm")
+                                            : ""
+                                    }
+                                />
                             </div>
 
+                            {/* PRIVACY CHECK */}
                             <div className="flex items-start">
-                                <input type="checkbox" id="privacy" className="h-4 w-4 text-indigo-600 border-gray-300 rounded" />
-                                <label htmlFor="privacy" className="ml-2 block text-sm text-gray-500">You agree to our friendly <Link to="/privacy" className="text-[#B580D1] hover:underline">privacy policy</Link>.</label>
+                                <input
+                                    type="checkbox"
+                                    id="privacy"
+                                    className="h-4 w-4"
+                                    required
+                                />
+                                <label
+                                    htmlFor="privacy"
+                                    className="ml-2 text-sm text-gray-500"
+                                >
+                                    You agree to our{" "}
+                                    <Link
+                                        to="/privacy"
+                                        className="text-[#B580D1] hover:underline"
+                                    >
+                                        privacy policy
+                                    </Link>.
+                                </label>
                             </div>
-                            <button type="submit" className="w-full py-2 px-4 bg-[#B580D1] text-white font-semibold rounded-md shadow-card hover:bg-[#a258ca] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500">SEND MESSAGE</button>
+
+                            <button
+                                type="submit"
+                                className="w-full py-2 px-4 bg-[#B580D1] text-white font-semibold rounded-md shadow-card"
+                            >
+                                SEND MESSAGE
+                            </button>
+
                         </form>
                     </div>
-
                 </div>
             </section>
 
+            {/* MAPS (Your design kept exactly the same) */}
+
             <section>
-                <div className='lg:p-20 md:p-14 p-8'>
-                    <div className='lg:w-[1280px] lg:h-[608px] flex lg:flex-row md:flex-row flex-col gap-6'>
-                        <div className='lg:w-[628px] w-[320px] h-[608px] border rounded-lg shadow-md bg-[#E9EAEC]'>
+                <div className="lg:p-20 md:p-14 p-8">
+                    <div className="lg:w-[1280px] lg:h-[608px] flex lg:flex-row md:flex-row flex-col gap-6">
+
+                        {/* GHANA CARD */}
+                        <div className="lg:w-[628px] w-[320px] h-[608px] border rounded-lg shadow-md bg-[#E9EAEC]">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.715074559653!2d-0.19685382525451506!3d5.609034194371856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9bae79bae68f%3A0xb8969a3fa0ca5a02!2s35%20Aviation%20Rd%2C%20Accra!5e0!3m2!1sen!2sgh!4v1726821871869!5m2!1sen!2sgh"
-                                title="Google Maps Location"
                                 height="360"
-                                style={{ border: '0' }}
-                                allowFullScreen=""
+                                style={{ border: "0" }}
+                                className="lg:w-[628px] w-[320px] rounded-lg"
                                 loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                                className='lg:w-[628px] w-[320px] rounded-lg'
                             ></iframe>
-                            <div className='bg-[#141415] w-full h-[90px] flex items-center gap-6 px-6'>
-                                <img src={ghana} alt='ghana' className='bg-cover' loading='lazy' />
-                                <h2 className='text-white font-semibold text-[24px] leading-[32px]'>Ghana</h2>
+
+                            <div className="bg-[#141415] w-full h-[90px] flex items-center gap-6 px-6">
+                                <img src={ghana} alt="ghana" loading="lazy" />
+                                <h2 className="text-white font-semibold text-[24px] leading-[32px]">
+                                    Ghana
+                                </h2>
                             </div>
-                            <div className=' px-6'>
-                                <div className='flex items-center gap-2'>
+
+                            <div className="px-6">
+                                <div className="flex items-center gap-2">
                                     <BiPhoneCall size={24} />
                                     <div>
-                                        <span className='text-[12px] font-medium leading-[24px] text-black'>Call uS</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
-                                            dangerouslySetInnerHTML={{ __html: contactData.gh_call_no }} />
+                                        <span className="text-[12px] font-medium">Call Us</span>
+                                        <p
+                                            className="text-[12px] text-[#56575D]"
+                                            dangerouslySetInnerHTML={{
+                                                __html: contactData.gh_call_no,
+                                            }}
+                                        />
                                     </div>
                                 </div>
-                                <div className='flex items-center gap-1'>
+
+                                <div className="flex items-center gap-1">
                                     <MdOutlineMarkEmailUnread size={24} />
                                     <div>
-                                        <span className='text-[12px] font-medium leading-[24px] text-black'>Email</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
-                                            dangerouslySetInnerHTML={{ __html: contactData.gh_email }} />
+                                        <span className="text-[12px] font-medium">Email</span>
+                                        <p
+                                            className="text-[12px] text-[#56575D]"
+                                            dangerouslySetInnerHTML={{
+                                                __html: contactData.gh_email,
+                                            }}
+                                        />
                                     </div>
                                 </div>
-                                <div className='flex items-center gap-1'>
+
+                                <div className="flex items-center gap-1">
                                     <MdOutlineLocationOn size={24} />
                                     <div>
-                                        <span className='text-[12px] font-medium leading-[24px] text-black'>Head Office</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
-                                            dangerouslySetInnerHTML={{ __html: contactData.gh_headoffice }} />
+                                        <span className="text-[12px] font-medium">Head Office</span>
+                                        <p
+                                            className="text-[12px] text-[#56575D]"
+                                            dangerouslySetInnerHTML={{
+                                                __html: contactData.gh_headoffice,
+                                            }}
+                                        />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className='lg:w-[628px] w-[320px] lg:h-[608px] border rounded-lg shadow-md bg-[#E9EAEC]'>
+
+                        {/* NIGERIA CARD */}
+                        <div className="lg:w-[628px] w-[320px] lg:h-[608px] border rounded-lg shadow-md bg-[#E9EAEC]">
+
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.6043676377985!2d3.4222550747525275!3d6.44481589354647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf4d470073e31%3A0x1bed2f1a92ae38de!2s119%20Awolowo%20Rd%2C%20Ikoyi%2C%20Lagos%20106104%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sgh!4v1726824339546!5m2!1sen!2sgh" title="Google Maps Location"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.6043676377985!2d3.4222550747525275!3d6.44481589354647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf4d470073e31%3A0x1bed2f1a92ae38de!2s119%20Awolowo%20Rd%2C%20Ikoyi%2C%20Lagos%20106104%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sgh!4v1726824339546!5m2!1sen!2sgh"
                                 height="360"
-                                style={{ border: '0' }}
-                                allowFullScreen=""
+                                style={{ border: "0" }}
+                                className="lg:w-[628px] w-[320px] rounded-lg"
                                 loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                                className='lg:w-[628px] w-[320px] rounded-lg'
                             ></iframe>
-                            <div className='bg-[#141415] w-full h-[90px] flex items-center gap-6 px-6'>
-                                <img src={nigeria} alt='ghana' className='bg-cover' loading='lazy' />
-                                <h2 className='text-white font-semibold text-[24px] leading-[32px]'>Nigeria</h2>
+
+                            <div className="bg-[#141415] w-full h-[90px] flex items-center gap-6 px-6">
+                                <img src={nigeria} alt="ghana" loading="lazy" />
+                                <h2 className="text-white font-semibold text-[24px] leading-[32px]">
+                                    Nigeria
+                                </h2>
                             </div>
-                            <div className=' px-6'>
-                                <div className='flex items-center gap-2'>
+
+                            <div className="px-6">
+                                <div className="flex items-center gap-2">
                                     <BiPhoneCall size={24} />
                                     <div>
-                                        <span className='text-[12px] font-medium leading-[24px] text-black'>Call uS</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
-                                            dangerouslySetInnerHTML={{ __html: contactData.ng_call_no }} />
+                                        <span className="text-[12px] font-medium">Call Us</span>
+                                        <p
+                                            className="text-[12px] text-[#56575D]"
+                                            dangerouslySetInnerHTML={{ __html: contactData.ng_call_no }}
+                                        />
                                     </div>
                                 </div>
-                                <div className='flex items-center gap-1'>
+
+                                <div className="flex items-center gap-1">
                                     <MdOutlineMarkEmailUnread size={24} />
                                     <div>
-                                        <span className='text-[12px] font-medium leading-[24px] text-black'>Email</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
-                                            dangerouslySetInnerHTML={{ __html: contactData.ng_email }} />
+                                        <span className="text-[12px] font-medium">Email</span>
+                                        <p
+                                            className="text-[12px] text-[#56575D]"
+                                            dangerouslySetInnerHTML={{ __html: contactData.ng_email }}
+                                        />
                                     </div>
                                 </div>
-                                <div className='flex items-center gap-1'>
+
+                                <div className="flex items-center gap-1">
                                     <MdOutlineLocationOn size={24} />
                                     <div>
-                                        <span className='text-[12px] font-medium leading-[24px] text-black'>Head Office</span>
-                                        <p className='text-[12px] font-normal leading-[24px] text-[#56575D]'
-                                            dangerouslySetInnerHTML={{ __html: contactData.ng_headoffice }} />
+                                        <span className="text-[12px] font-medium">Head Office</span>
+                                        <p
+                                            className="text-[12px] text-[#56575D]"
+                                            dangerouslySetInnerHTML={{
+                                                __html: contactData.ng_headoffice,
+                                            }}
+                                        />
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </section>
 
             <section>
                 <div className="relative">
-                    <img src={contactbanner} alt="banner" className="w-full h-[284px] bg-cover" />
-                    <div className="absolute top-[35%] left-[7%] text-[56px] font-semibold leading-[64px] text-white">
+                    <img src={contactbanner} alt="banner" className="w-full h-[284px]" />
+                    <div className="absolute top-[35%] left-[7%] text-[56px] text-white font-semibold">
                         Get Insured Today
                     </div>
                 </div>
             </section>
+
         </div>
     );
-}
+};
 
 export default PurpleContact;

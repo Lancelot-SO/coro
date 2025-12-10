@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import { useLocation } from "react-router-dom"; // Import useLocation
 import Board from "../assets/purpleabout/board2.png";
-import Board1 from "../assets/purpleabout/board1.png";
 import Board3 from "../assets/purpleabout/board3.png";
 import Board4 from "../assets/purpleabout/board4.png";
 import Board5 from "../assets/purpleabout/board5.png";
@@ -16,10 +15,10 @@ import "slick-carousel/slick/slick-theme.css";
 const data = [
     {
         id: 1,
-        photo: Board1,
-        name: "Mr. Frank Beecham",
+        photo: Board6,
+        name: "Mrs. Vesta Nunoo",
         position: "Board Chairman",
-        desc: `Mr. Frank Beecham is the Chairman of the Board of Coronation Insurance Ghana LTD. Mr. Beecham is a lawyer by profession and a past National President of the Ghana Bar Association. He has spent the greater part of his working life in banking, having joined Merchant Bank Ghana Ltd as a Banking Officer in 1977.`,
+        desc: `Mrs. Vesta Nunoo has over eighteen years’ experience as a Chartered Accountant. She is a Fellow of the Chartered Certified Accountants (FCCA), England for over fifteen years and a member of the institute of Chartered Accountants Ghana (ICAG).`,
     },
     {
         id: 2,
@@ -51,13 +50,6 @@ const data = [
     },
     {
         id: 6,
-        photo: Board6,
-        name: "Mrs. Vesta Nunoo",
-        position: "Non-Executive Director",
-        desc: `Mrs. Vesta Nunoo has over eighteen years’ experience as a Chartered Accountant. She is a Fellow of the Chartered Certified Accountants (FCCA), England for over fifteen years and a member of the institute of Chartered Accountants Ghana (ICAG).`,
-    },
-    {
-        id: 7,
         photo: Board7,
         name: "Dr. Yaw Adom - Boateng",
         position: "Managing Director",
