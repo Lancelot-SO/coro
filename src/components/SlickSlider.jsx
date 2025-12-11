@@ -13,7 +13,7 @@ const SlickSlider = () => {
 
     const [data, setData] = useState([]);
 
-    // Fetch API (no loader)
+    // Fetch API
     useEffect(() => {
         const fetchBoardMembers = async () => {
             try {
@@ -24,8 +24,7 @@ const SlickSlider = () => {
                 const json = await res.json();
                 console.log("BOD Response:", json);
 
-                // API returns an ARRAY (NOT json.data)
-                setData(json);
+                setData(json); // API returns array directly
             } catch (error) {
                 console.error("BOD API Error:", error);
             }
@@ -34,15 +33,20 @@ const SlickSlider = () => {
         fetchBoardMembers();
     }, []);
 
-
     const settings = {
         dots: false,
         infinite: true,
-        speed: 500,
+        speed: 600,
         slidesToShow: 2,
         slidesToScroll: 1,
         centerMode: true,
         centerPadding: "0",
+
+        // ⭐ NEW — AUTOPLAY SETTINGS ⭐
+        autoplay: true,
+        autoplaySpeed: 2500,
+        pauseOnHover: true,
+
         responsive: [
             {
                 breakpoint: 1024,
@@ -50,7 +54,7 @@ const SlickSlider = () => {
             },
             {
                 breakpoint: 600,
-                settings: { slidesToShow: 1, slidesToScroll: 1, initialSlide: 1 },
+                settings: { slidesToShow: 1, slidesToScroll: 1 },
             },
         ],
     };
@@ -72,7 +76,7 @@ const SlickSlider = () => {
                     <div key={item.id} className="lg:px-4">
                         <div className="flex lg:flex-row flex-col w-full lg:h-[420px] shadow-lg overflow-hidden rounded-lg">
 
-                            {/* Image */}
+                            {/* Image section */}
                             <div className="lg:w-1/2 bg-[#EFEFF0]">
                                 <img
                                     src={`https://coronation-cms.interactivedigital.com.gh/${item.image}`}
@@ -81,7 +85,7 @@ const SlickSlider = () => {
                                 />
                             </div>
 
-                            {/* Text */}
+                            {/* Text section */}
                             <div className="lg:w-1/2 h-[300px] lg:h-full bg-black text-white lg:p-8 p-2 flex flex-col justify-center">
                                 <h3
                                     className="lg:text-2xl text-[20px] font-semibold mb-2"

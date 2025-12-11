@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom"
 import SlickSlider from "../components/SlickSlider"
 import { useEffect, useState } from "react"
+import Executive from "../components/Executive";
 
 const PurpleAbout = () => {
     const [aboutData, setAboutData] = useState(null);
@@ -200,6 +201,10 @@ const PurpleAbout = () => {
 
             <section>
                 <SlickSlider />
+            </section>
+
+            <section>
+                <Executive />
             </section>
 
             <section>
